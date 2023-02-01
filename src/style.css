@@ -1,21 +1,186 @@
-li {
-    color: blueviolet;
-    font-size: large;
-    border: solid 1px lavender;
-}
+/*---*\
+  ALL
+\*---*/
+
 body{
     text-align: center;
     margin: 0;
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif;
 }
-.index-header{
-    width: auto;
-    height: 100px;
-    text-align: center;
-    line-height: 100px;
+*{
+    box-sizing: border-box;
+}
+.dec-txt{
+    font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
+}
+h4{
+    font-size: 36px;
+    font-weight: 100;
+    line-height: 0;
+}
+
+/*------*\
+  HEADER
+\*------*/
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 80px;
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: solid 1px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+}
+
+.nav-logo{
+    width: 330px;
+    height: 66px;
+}
+.search{
+    position: relative;
+}
+.search img{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 20px;
+    top:20%
+}
+.search-bar{
+    background-color: #eee;
+    font-size: 22px;
+    
+    width: 255px;
+    height: 56px;
+    border-radius: 28px;
+    border: none;
+    padding-left: 65px;
+}
+.header-right{
+    display: flex;
+    align-content: center;
+}
+.menu {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#E4FF3F;
+
+    
+}
+
+.bar1, .bar2, .bar3 {
+    width: 42px;
+    height: 4px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.btn{
+    width: 120px;
+    height: 56px;
+    border-radius: 5px;
+    border: solid 1px #656D51;
     font-size: 24px;
-    color: white;
-    background-color: lightcoral;
+    font-family: 'Homenaje', sans-serif;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
 }
+.btn-login{
+    background-color: #E4FF3F;
+    margin-right:1rem;
+}
+.btn:hover{
+    box-shadow:none;
+    transform: translateY(2px);
+}
+/*--------*\ 
+LANDING PAGE
+\*--------*/
+.landing-bg-txt{
+    font-weight: 400;
+    font-family: 'Homenaje', sans-serif;
+    font-size: 170px;
+}
+
+.logo{
+    position: absolute;
+    width:10rem;
+    height: auto;
+    right: 0;
+    bottom: 0;
+}
+.landing-bg-txt-1{
+    position: absolute;
+    right: 0;
+    top: 40px;
+    z-index: -1;
+}
+.landing-bg-txt-2{
+    position: absolute;
+    left: -35px;
+    top: 65px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    z-index: -1;
+}
+.landing-main{
+    margin-top: 103px;
+    display: flex;
+    justify-content: center;
+    margin-left: 5rem;
+}
+.landing-identity{
+    width: 900px;
+    height: 400px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 240px;
+    background: rgb(238,238,238);
+    background: linear-gradient(0deg, rgba(238,238,238,1) 1%, rgba(255,255,255,0) 20%);
+    overflow: hidden;
+}
+
+.landing-identity img{
+    margin: 100px 10px 0 10px;
+    width: 300px;
+    height: 300px;
+    transition: 0.6s;
+}
+.landing-identity img:hover{
+    width: 350px;
+    height: 350px;
+}
+.id-container{
+    position: relative;
+}
+.id-top-txt{
+    position: absolute;
+    top: 20px;
+    left: 450px;
+}
+.id-txt h3{
+    font-family: 'Homenaje', sans-serif;
+    word-spacing: 3px;
+    font-size: 30px;
+    line-height: 0;
+    font-weight: 100;
+}
+
 .main{
     background-color: whitesmoke;
     height: 300px;
@@ -23,20 +188,8 @@ body{
     text-align: center;
     font-size: 30px;
 }
-.button{
-    border: solid 1px;
-    border-radius: 10px;
-    background-color: rgb(99, 99, 203);
-    color: white;
-    font-size: 24px;
-    padding:5px 20px;
-    opacity: 100%;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.button:hover{
-    opacity: 70%;
-}
+
+
 
 /* LIST PAGE */
 .record-input{
