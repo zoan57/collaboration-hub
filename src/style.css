@@ -1,3 +1,11 @@
+/*-Index-*\
+---ALL
+---HEADER
+---LANDING PAGE
+---LOGIN
+
+*/
+
 /*---*\
   ALL
 \*---*/
@@ -16,8 +24,66 @@ body{
 h4{
     font-size: 36px;
     font-weight: 100;
-    line-height: 0;
+    line-height: 1;
 }
+
+/* BUTTON */
+.btn{
+    width: 120px;
+    height: 56px;
+    border-radius: 5px;
+    border: solid 1px #656D51;
+    font-size: 24px;
+    font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover{
+    box-shadow:none;
+    transform: translateY(2px);
+}
+
+.btn-long{
+    width: 450px;
+    height: 48px;
+    border: none;
+    border-radius: 24px;
+    font-size: 22px;
+    margin: 20px 0;
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-long:active, .btn-long:hover{
+    opacity: 80%;
+    box-shadow: none;
+}
+#btn-sp-color{
+    background-color: #E4FF3F;
+}
+#btn-sp-color:active{
+    background-color: #cfed07;
+
+}
+/* INPUT */
+input:focus{
+    outline:none;
+    box-shadow:0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.inputbar-long{
+    width: 450px;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    padding-left: 20px;
+    font-size:20px;
+    box-shadow:0px 1px 5px rgba(0, 0, 0, 0.1);
+
+}
+
 
 /*------*\
   HEADER
@@ -34,7 +100,7 @@ h4{
     border-bottom: solid 1px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    position: fixed;
+    position: mixed;
     top: 0;
 }
 
@@ -87,31 +153,16 @@ h4{
     transition: 0.4s;
 }
 
-.btn{
-    width: 120px;
-    height: 56px;
-    border-radius: 5px;
-    border: solid 1px #656D51;
-    font-size: 24px;
-    font-family: 'Homenaje', sans-serif;
-    transition: 0.5s;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-}
 .btn-login{
     background-color: #E4FF3F;
     margin-right:1rem;
-}
-.btn:hover{
-    box-shadow:none;
-    transform: translateY(2px);
 }
 /*--------*\ 
 LANDING PAGE
 \*--------*/
 .landing-bg-txt{
     font-weight: 400;
-    font-family: 'Homenaje', sans-serif;
+    font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
     font-size: 170px;
 }
 
@@ -145,7 +196,7 @@ LANDING PAGE
 .landing-identity{
     width: 900px;
     height: 400px;
-    margin-top: 50px;
+    margin-top: -10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,11 +221,10 @@ LANDING PAGE
 }
 .id-top-txt{
     position: absolute;
-    top: 20px;
     left: 450px;
 }
 .id-txt h3{
-    font-family: 'Homenaje', sans-serif;
+    font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
     word-spacing: 3px;
     font-size: 30px;
     line-height: 0;
@@ -188,18 +238,41 @@ LANDING PAGE
     text-align: center;
     font-size: 30px;
 }
-
-
-
-/* LIST PAGE */
-.record-input{
+/*-----*\
+  LOGIN
+\*-----*/
+.login{
+    width: 100vw;
+    height: 100vh;
+    padding: 30px 0;
+    background-color: #eee;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    font-size:20px;
 }
-.input{
-    padding-left: 8px;
-    margin-right: 8px;
-    height: 36px;
-    width: 300px;
+.login .form{
+    margin-top: 10px;
+}
+.login .form div span{
+    line-height: 50px;
+}
+
+.input-label{
+    text-align: start;
+}
+.login-form-dividing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgray;
+}
+.login-form-dividing span{
+    margin-top: 3px;
+}
+.login-form-dividing div{
+    display: inline-block;
+    margin: 0 20px;
+    width: 150px;
+    height: 1px;
+    background-color: darkgray;
 }

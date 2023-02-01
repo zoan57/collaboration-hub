@@ -7,11 +7,10 @@ import React from "react";
 function Home(){
     return (
         <div>
-            <Navbar/>
-            <LandingBgTxt/>
             <main className="landing-main">
                 <LandingID/>
             </main>
+            <LandingBgTxt/>
         </div>
     )
 }
