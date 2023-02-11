@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar=()=>{
+    // Set Authentication function for Login or not
     return(
         <header className="header">
             <div>
