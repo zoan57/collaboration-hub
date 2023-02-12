@@ -33,6 +33,7 @@ h4{
 }
 a{
     text-decoration: none;
+    color: #333;
 }
 
 /* BUTTON */
@@ -297,6 +298,10 @@ LANDING PAGE
 }
 
 .login .form, .register .form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     margin-top: 10px;
     width: 450px;
 }
@@ -327,6 +332,7 @@ line-height: 30px;}
 }
 
 @media screen and (max-width: 1000px){
+    /*LANDING PAGE*/
     .landing-bg-txt{
         font-weight: 400;
         font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
@@ -357,6 +363,7 @@ line-height: 30px;}
     }
 }
 @media screen and (max-width: 700px){
+    /*LANDING PAGE*/
     .nav-logo{
         display: none;
     }
@@ -388,6 +395,7 @@ line-height: 30px;}
     }
 }
 @media screen and (max-width: 600px){
+    /*LANDING PAGE*/
     .landing-bg-txt-1{
         font-size: 100px;
         top: 55px;
@@ -416,6 +424,7 @@ line-height: 30px;}
     }
 }
 @media screen and (max-width: 500px){
+    /*LANDING PAGE*/
     .landing-bg-txt-1{
         font-size: 80px;
         top: 58px;
@@ -427,7 +436,6 @@ line-height: 30px;}
         display: inline-block;
         width: 200px;
     }
-
     .nav-logo-sm{
         display: none;
     }
@@ -440,4 +448,16 @@ line-height: 30px;}
     .btn-project{
         margin-right: 0;
     }
+
+    /*REGISTER&LOGIN*/
+    .inputbar-long{
+        width: 300px;
+    }
+    .btn-long{
+        width: 300px;
+    }
+    .login-form-dividing div{
+        width: 120px;
+    }
+
 }

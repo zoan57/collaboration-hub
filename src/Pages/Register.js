@@ -43,6 +43,7 @@ const Register=()=>{
                     <span>Password</span>
                     <br></br>
                     <span className="mark-txt">*Enter at least 8 characters</span>
+                    <br></br>
                     <InputBarLong type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <br></br>

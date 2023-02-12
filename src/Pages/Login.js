@@ -15,8 +15,8 @@ const Login=()=>{
         if (loading) {
           // maybe trigger a loading screen
           return;
-        }
-        if (user) navigate("/");
+        };
+        if (user) navigate("/project");
       }, [user, loading]);
     
     return(
