@@ -18,7 +18,18 @@ const Navbar=()=>{
     return(
         <header className="header">
             <div>
-                <Link to="/"><img src="/images/logo-Collaboration Hub.png" className="nav-logo"></img></Link>
+                {isLoggedIn ? (
+                    <div className="header-left">
+                        <Link to="/"><img src="/images/logo-Collaboration Hub.png" className="nav-logo"></img></Link>
+                        <Link to="/"><img src="/images/logo-sm.png" className="nav-logo-sm"></img></Link>
+                    </div>
+
+                ): (
+                    <div>
+                        <Link to="/register"><img src="/images/logo-Collaboration Hub.png" className="nav-logo"></img></Link>
+                        <Link to="/register"><img src="/images/logo-sm.png" className="nav-logo-sm"></img></Link>
+                    </div>
+                )}
             </div>
             <div className="search">
                 <img src="/images/search.png"></img>
@@ -32,14 +43,14 @@ const Navbar=()=>{
                 ):(
                     <div className="nav-login">
                         <Link to="/ai">
-                            <div className="nav-btn">
-                                <img src="/images/logo-sm.png" className="nav-logo-sm"></img>
+                            <div className="nav-btn nav-display">
+                                <img src="/images/logo-sm.png" className="nav-logo-btn"></img>
                                 <span>Chat with AI</span>
                             </div>
                         </Link>
                         <Link to="/profile">
-                            <div className="nav-btn">
-                                <img src="/images/logo-sm.png" className="nav-logo-sm"></img>
+                            <div className="nav-btn nav-display">
+                                <img src="/images/logo-sm.png" className="nav-logo-btn"></img>
                                 <span>Profile</span>
                             </div>
                         </Link>

@@ -7,8 +7,8 @@ const LandingID=()=>{
             <div className="id-container">
                 <h4 className="id-top-txt">...with who?</h4>
                 <div className="landing-identity">
-                    <img src="/images/landing-developer.png"></img>
-                    <img src="/images/landing-UI.png"></img>
+                    <Link to="/register"><img src="/images/landing-developer.png"></img></Link>
+                    <Link to="/register"><img src="/images/landing-UI.png"></img></Link>
                 </div>
             </div>
             <div className="id-txt">
