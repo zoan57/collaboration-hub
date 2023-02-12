@@ -36,8 +36,8 @@ a{
 
 /* BUTTON */
 .btn{
-    width: 120px;
-    height: 56px;
+    width: 100px;
+    height: 50px;
     border-radius: 5px;
     border: solid 1px #656D51;
     font-size: 24px;
@@ -143,6 +143,9 @@ input:focus{
     display: flex;
     align-content: center;
 }
+.header-right nav{
+    display: inline-flex;
+}
 .menu {
     width: 55px;
     height: 55px;
@@ -150,23 +153,48 @@ input:focus{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color:#E4FF3F;
-
-    
+    align-items: center;    
 }
 
 .bar1, .bar2, .bar3 {
-    width: 42px;
-    height: 4px;
+    width: 32px;
+    height: 3px;
     background-color: #333;
-    margin: 5px 0;
+    margin: 3px 0;
     transition: 0.4s;
 }
 
 .btn-login{
     background-color: #E4FF3F;
     margin-right:1rem;
+}
+/*Login Navbar*/
+.nav-login{
+    display: flex;
+    align-items: center;
+}
+.btn-project{
+    background-color: #DE5CFF;
+    color: white;
+    margin-right:1rem;
+}
+
+.nav-btn{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:1rem;
+    color: #333;
+    text-decoration:underline;
+    font-size: 22px;
+}
+.nav-btn:hover,
+.nav-btn:active{
+    color: #DE5CFF;
+}
+.nav-logo-sm{
+    width: 32px;
+    height: auto;
 }
 /*--------*\ 
 LANDING PAGE

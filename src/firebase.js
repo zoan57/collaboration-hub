@@ -25,7 +25,7 @@ const firebaseConfig = {
     messagingSenderId: "386632839231",
     appId: "1:386632839231:web:619cccbaae31164e0dc88a",
     measurementId: "G-3V93WJVVY1"
-  };
+};
 
 const app= initializeApp(firebaseConfig);
 const auth=getAuth(app);
@@ -44,7 +44,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
-        const docRef = doc(db, "user",user.uid);
+        const docRef = doc(db, "Users",user.uid);
         const payload = {
             uid:user.uid,
             name: name,

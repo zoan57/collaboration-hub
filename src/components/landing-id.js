@@ -1,5 +1,7 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 const LandingID=()=>{
+
     return(
         <div className="dec-txt">
             <div className="id-container">
