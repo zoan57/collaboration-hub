@@ -1,10 +1,13 @@
 import React from "react";
-import "./style.css";
+import "./css/style.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
+import Landing from "./Pages/Landing";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Project from "./Pages/Project";
+import AI from "./Pages/AI";
+
 
 
 const App=()=>{
@@ -12,9 +15,11 @@ const App=()=>{
         <BrowserRouter basename="/">
             <Navbar/>
             <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/" element={<Landing/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
+                <Route path="/project" element={<Project/>}/>
+                <Route path="/AI" element={<AI/>}/>
             </Routes>
         </BrowserRouter>
     )

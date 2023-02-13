@@ -33,7 +33,6 @@ const Login=()=>{
                 <br></br>
                 <ButtonLong id="btn-sp-color" text="Log in" onClick={()=>logInWithEmailAndPassword(email,password)}/>
                 <br></br>
-                <br></br>
                 <span>Forgot your password?</span>
                 <br></br>
                 <br></br>

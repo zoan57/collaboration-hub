@@ -14,6 +14,8 @@ const Register=()=>{
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
+    const [registerColor, setRegisterColor]=useState("");
+    
     const navigate=useNavigate();
     useEffect(() => {
         if (loading) {
@@ -25,12 +27,11 @@ const Register=()=>{
     const register = (e) => {
         if (!name) alert("Please enter name");
         registerWithEmailAndPassword(name, email, password);};
-    useEffect(() => {
-        if (loading) return;
-    }, [user, loading]);
+
     return(
-        <section className="register dec-txt">
+        <section className="register dec-txt" id="register">
             <form className="form dec-txt">
+                <div className="register-last-note">One more thing...</div>
                 <div className="input-label">
                     <span>Username</span><br></br>
                     <InputBarLong type="text" value={name} onChange={(e) => setName(e.target.value)}/>
@@ -47,7 +48,10 @@ const Register=()=>{
                     <InputBarLong type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <br></br>
-                <span className="mark-txt">I’d like to receive email relating to new matches and ipdates about new features</span>
+                <div className="register-check-to-receive">
+                    <input type="checkbox"></input>
+                    <span className="mark-txt">I’d like to receive email relating to new matches and ipdates about new features</span>
+                </div>
                 <br></br>
                 <br></br>
                 <span className="mark-txt">By signing up you agree to our Privacy Policy and Terms & Conditions for Candidates.</span>

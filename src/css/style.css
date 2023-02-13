@@ -3,6 +3,7 @@
 ---HEADER
 ---LANDING PAGE
 ---LOGIN
+---AI
 
 */
 
@@ -30,6 +31,7 @@ h4{
 .mark-txt{
     font-size: small;
     line-height: 0px;
+    margin-left: 5px;
 }
 a{
     text-decoration: none;
@@ -46,6 +48,7 @@ a{
     font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
     transition: 0.5s;
     cursor: pointer;
+    text-align: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -171,6 +174,7 @@ input:focus{
 
 .btn-login{
     background-color: #E4FF3F;
+    color: #333;
     margin-right:1rem;
 }
 /*Login Navbar*/
@@ -218,7 +222,17 @@ LANDING PAGE
     width:10rem;
     right: 0;
     bottom: 0;
+    animation: shimmy 1.5s infinite;
+    animation-direction: alternate;
 }
+@keyframes shimmy {
+    0% {
+      transform: translate(0, 0);    
+    }
+    100% {
+      transform: translate(0,10px);
+    }
+  }
 .landing-bg-txt-1{
     position: absolute;
     right: 0;
@@ -289,7 +303,7 @@ LANDING PAGE
 \*----------------*/
 .login, .register{
     width: 100vw;
-    height: auto;
+    height:100%;
     padding: 30px 0;
     background: #eee;
     display: flex;
@@ -306,7 +320,14 @@ LANDING PAGE
     width: 450px;
 }
 
-
+.register-check-to-receive{
+    display: flex;
+    align-items: center;
+}
+input[type="checkbox"]{
+    width: 24px;
+    height: 24px;
+}
 .input-label{
     text-align: left;
     margin-top: 20px;
@@ -330,6 +351,39 @@ line-height: 30px;}
     height: 1px;
     background-color: darkgray;
 }
+/*----*\
+   AI
+\*----*/
+.ai{
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.logo-ai-move{
+    animation: flipflop 1s infinite;
+}
+@keyframes flipflop {
+    0%{
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    50%{
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    51%{
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(1);
+    }
+    100%{
+
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(1);
+    }
+}
+
 
 @media screen and (max-width: 1000px){
     /*LANDING PAGE*/
