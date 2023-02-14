@@ -40,8 +40,12 @@ a{
     text-decoration: none;
     color: #333;
 }
-.logo-md{
+.logo-sm{
     width: 5rem;
+    height: auto;
+}
+.logo-md{
+    width: 8rem;
     height: auto;
 }
 
@@ -109,7 +113,15 @@ input:focus{
     box-shadow:0px 1px 5px rgba(0, 0, 0, 0.1);
 
 }
-
+/* Page Margin*/
+.addproject,
+.project,
+.login,
+.register,
+.profile,
+.ai{
+    margin-top: 80px;
+}
 
 /*------*\
   HEADER
@@ -126,7 +138,7 @@ input:focus{
     border-bottom: solid 1px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    position: mixed;
+    position: fixed;
     top: 0;
 }
 
@@ -181,6 +193,44 @@ input:focus{
     margin: 3px 0;
     transition: 0.4s;
 }
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.menu-dropdown {
+    position:fixed;
+    right: 0;
+    max-width: 200px;
+    min-width: 100px;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+.dropdown-display{
+    display: none;
+}
+  
+.menu-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+.menu-dropdown li {
+    font-size: 22px;
+    padding: 30px 50px;
+  }
+  
+.menu-dropdown li:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+  }
 
 .btn-login{
     background-color: #E4FF3F;
@@ -287,7 +337,7 @@ LANDING PAGE
     height: 350px;
 }
 .id-container{
-    position: relative;
+    margin-top: 100px;
 }
 .id-top-txt{
     margin: 1rem 0 10px 100px;
@@ -372,6 +422,7 @@ line-height: 30px;}
     align-items: center;
 }
 .logo-ai-move{
+    position: relative;
     animation: flipflop 1s infinite;
 }
 @keyframes flipflop {
@@ -384,12 +435,12 @@ line-height: 30px;}
         transform: scaleX(-1);
     }
     51%{
-        -webkit-transform: scaleX(-1);
+        -webkit-transform: scaleX(1);
         transform: scaleX(1);
     }
     100%{
 
-        -webkit-transform: scaleX(-1);
+        -webkit-transform: scaleX(1);
         transform: scaleX(1);
     }
 }
@@ -407,18 +458,44 @@ line-height: 30px;}
     font-size: 24px;
     background-color:#E4FF3F;
 }
+.scrollable {
+    overflow-y: auto;
+}
+.project-sidebar.scrollable{
+    height: 885px;
+}
+.project-main-list.scrollable{
+    height: 800px;
+}
 .project{
     display: flex;
 }
 .project-sidebar{
     width: 18%;
-    float: left;
     background-color: #656D51;
-    height: 100vw;
+}
+.project-main{
+    margin: 10px;
+    width: 82%;
+    text-align: end;
 }
 .project-main-to-add{
-    margin-top: 3%;
-    margin-left: 10px;
+    margin: 20px 5px;
+}
+.project-main-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.pr-lists{
+    margin: 20px;
+    max-width: 500px;
+    min-height: 150px;
+    border: black solid 0.5px;
+    border-radius: 8px;
+}
+.pr-recmd{
+    background-color:#E4FF3F;
+    padding: 1rem;
 }
 
 /*------------*\
@@ -427,8 +504,9 @@ line-height: 30px;}
 #addpr-submit-btn{
     position: fixed;
     right: 0;
+    bottom: 0px;
     background-color:#E4FF3F;
-    margin-right: 10px;
+    margin: 10px;
 }
 .addpr-welcome{
     display: flex;
@@ -443,9 +521,11 @@ line-height: 30px;}
 .addpr-form{
     display: flex;
     margin: 5px;
+    justify-content: center;
+    align-items: center;
 }
 .addpr-card{
-    margin-left: 30px;
+    margin: 30px;
     width: 700px;
     min-height: 400px;
     border: #333 solid 1px;
@@ -470,8 +550,8 @@ line-height: 30px;}
     flex-direction: column;
     flex-wrap: wrap;
     padding: 5px;
-    margin-left: 50px;
-    width: 300px;
+    margin: 30px;
+    min-width: 150px;
     height: auto;
     background-color: #eee;
 }
@@ -484,6 +564,8 @@ line-height: 30px;}
 \*---------*/
 .profile{
     display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .profile-left h4{
     margin: 20px;
@@ -491,13 +573,18 @@ line-height: 30px;}
     text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.5);
 }
 .profile-left-list{
-    width: 370px;
+    width: 340px;
     min-height: 600px;
     padding: 50px 20px;
     background-color: #F6F6F6;
 }
 .profile-left,
-.profile-middle{
+.profile-middle,
+.profile-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 10px;
 }
 .profile-middle-intro,
@@ -506,7 +593,7 @@ line-height: 30px;}
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-    width: 450px;
+    width: 350px;
     min-height: 250px;
     border: 1px dashed;
     font-weight: 300;
@@ -514,7 +601,20 @@ line-height: 30px;}
 }
 .profile-bg-gradient{
     background:#E4FF3F;
-    background: radial-gradient(circle, #E4FF3F 0%, rgba(148,187,233,0) 45%);
+    background: radial-gradient(circle, #E4FF3F -2%, rgba(148,187,233,0) 30%);
+}
+
+.profile-right-skill,
+.profile-right-interest{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 200px;
+    min-height: 250px;
+    border: 1px dashed;
+    font-weight: 300;
+    font-size: 20px;
 }
 @media screen and (max-width: 1000px){
     /*LANDING PAGE*/
@@ -545,6 +645,11 @@ line-height: 30px;}
     .nav-logo{
         width: 240px;
         height: auto;
+    }
+
+    /*PROJECT*/
+    .project-main-list{
+        grid-template-columns: 1fr 1fr;
     }
 }
 @media screen and (max-width: 700px){
@@ -578,6 +683,14 @@ line-height: 30px;}
     .landing-identity img{
         margin: 0;
     }
+    /* PROFILE */
+    .profile{
+        flex-direction: column;
+    }
+    /*PROJECT*/
+    .project-main-list{
+        grid-template-columns: 1fr;
+    }
 }
 @media screen and (max-width: 600px){
     /*LANDING PAGE*/
@@ -606,6 +719,23 @@ line-height: 30px;}
         height: 600px;
         flex-direction: column;
         background: linear-gradient(45deg, rgba(238,238,238,1) 10%, rgba(255,255,255,0) 60%);
+    }
+    /* ADD PROJECT */
+    .addpr-form{
+        flex-direction: column;
+    }
+    .addpr-card{
+        width: 300px;
+    }
+    #addpr-submit-btn{
+        right:default;
+        bottom: 0;
+        margin-bottom: 10px;
+    }
+    /* PROFILE */
+    .profile-middle-intro,
+    .profile-middle-pr-description{
+        width: 340px;
     }
 }
 @media screen and (max-width: 500px){
@@ -644,5 +774,15 @@ line-height: 30px;}
     .login-form-dividing div{
         width: 120px;
     }
-
+}
+@media screen and (max-width: 350px){
+    /*LANDING PAGE*/
+    .nav-logo{
+        width: 180px;
+    }
+    .btn{
+        width: 70px;
+        font-size: 22px;
+        margin-right: 0;
+    }
 }

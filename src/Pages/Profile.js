@@ -17,7 +17,15 @@ const Profile=()=>{
                     <p contentEditable="true">Describe the projects you like here.</p>
                 </div>
             </div>
-            <div></div>
+            <div className="profile-right">
+                <img src="/images/logo-sm.png" className="logo-md"></img>
+                <div className="profile-right-skill">
+                    <p contentEditable="true">Introduce yourself here.</p>
+                </div>
+                <div className="profile-right-interest">
+                    <p contentEditable="true">Describe the projects you like here.</p>
+                </div>
+            </div>
         </section>
     )
 }

@@ -8,6 +8,20 @@ const Navbar=()=>{
     // Set Authentication function for Login or not
     const [isLoggedIn, setIsLoggedIn]=useState(true);
     const [user, loading, error] = useAuthState(auth);
+    const [isToggle,setIsToggle]=useState(true);
+    const toggle= (e)=>{
+        const dropdown=document.getElementById("menu-dropdown");
+        dropdown.classList.toggle("dropdown-display");
+        window.addEventListener("click", handleOutsideClick);
+    }
+    const handleOutsideClick = (e) => {
+        const dropdown=document.getElementById("menu-dropdown");
+        const navMenu=document.getElementById("nav-menu");
+        if (!navMenu.contains(e.target)) {
+          dropdown.classList.toggle("dropdown-display");
+          window.removeEventListener("click", handleOutsideClick);
+        }
+      };
     useEffect(()=>{
         if(user){
             setIsLoggedIn(false);
@@ -59,11 +73,22 @@ const Navbar=()=>{
                         </Link>
                     </div>
                 )}
-                <div class="menu" onclick="">
-                            <div class="bar1"></div>
-                            <div class="bar2"></div>
-                            <div class="bar3"></div>
+                <div>
+                    <div class="menu" onClick={toggle} id="nav-menu">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <div class="menu-dropdown dropdown-display" id="menu-dropdown">
+                        <ul>
+                            <Link to="profile"><li>Profile</li></Link>
+                            <Link to="AI"><li>Chat with AI</li></Link>
+                            <Link to="add-new-project"><li>Add New Project</li></Link>
+                            <Link to="project"><li>Project</li></Link>
+                        </ul>
+                    </div>
                 </div>
+                
             </div>
         </header>
     );

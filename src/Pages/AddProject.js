@@ -9,14 +9,14 @@ const AddProject=()=>{
         <section className="addproject">
             <div className="addpr-welcome">
                 <div className="addpr-welcome-txt">
-                    <img src="/images/logo-sm.png" className="logo-md"></img>
+                    <img src="/images/logo-sm.png" className="logo-sm"></img>
                     <span>Wirte something about your project.</span>
                 </div>
             </div>
             <ButtonAdd text="Submit" id="addpr-submit-btn"/>
-            <form className="addpr-form">
+            <form className="addpr-form scrollable">
                 <div className="addpr-card">
-                    <h4 contentEditable="true" onInput={(e)=>{setProjectName(e.currentTarget.textContent)}}>Enter your project name here</h4>
+                    <h4 contentEditable="true" onInput={(e)=>{setProjectName(e.currentTarget.textContent)}} data-maxlength="3">Enter your project name here</h4>
                     <p contentEditable="true" onInput={(e)=>{setProjectDescription(e.currentTarget.textContent)}}>
                         <b>Please describe your project purpose and who you want to collaborate with. The content should be no more than 600 words.</b>
                         <br></br>
@@ -25,15 +25,24 @@ const AddProject=()=>{
                     </p>
                 </div>
                 <div>
-                <div className="addpr-skill">
-                    <h4>Your Skill</h4>
-                    <br></br>
-                    <div>
-                        <span>
-                            I'll implement React multi selection chips by react-select API.
-                        </span>
+                    <div className="addpr-skill">
+                        <h4>Your Skill</h4>
+                        <br></br>
+                        <div>
+                            <span>
+                                I'll implement React multi selection chips by react-select API.
+                            </span>
+                        </div>
                     </div>
-                </div>
+                    <div className="addpr-skill">
+                        <h4>Your Skill</h4>
+                        <br></br>
+                        <div>
+                            <span>
+                                I'll implement React multi selection chips by react-select API.
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </form>
         </section>
