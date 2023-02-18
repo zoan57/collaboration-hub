@@ -13,7 +13,7 @@ const AI=()=>{
     })*/
     return(
         <div className="ai">
-            <img src="/images/logo-sm.png" className="logo-ai-move" id="ai-img"></img>
+            <img src="/images/logo-sm.svg" className="logo-ai-move logo-lg" id="ai-img"></img>
             <span>I'll be here soon...</span>
         </div>
     )

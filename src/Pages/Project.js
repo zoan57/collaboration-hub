@@ -11,7 +11,7 @@ const Project=()=>{
                 <section className="project-main">
                     <div className="project-main-to-add">
                         <span>Hey, let's get that new project added!</span>
-                        <Link to="/add-new-project"><ButtonAdd text="Add Project" id="btn-project-add"></ButtonAdd></Link>
+                        <Link to="/add-new-project"><button text="Post" className="btn btn-project-add">POST</button></Link>
                     </div>
                     <div className="project-main-list scrollable">
                         <div>

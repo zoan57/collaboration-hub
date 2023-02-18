@@ -5,9 +5,10 @@ import LandingID from "../components/Landing-id";
 import React from "react";
 
 function Landing(){
+
     return (
         <div>
-            <main className="landing-main">
+            <main className="landing-main" id="scrollColor">
                 <LandingID/>
             </main>
             <LandingBgTxt/>

@@ -1,5 +1,9 @@
 const path = require("path");
+const { webpack,ProvidePlugin } = require("webpack");
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
+  
     mode: "development",
     entry: "./src/index.js",
     output: {
@@ -7,6 +11,9 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         publicPath:"/"
     },
+    plugins:[
+      new Dotenv(),
+    ],
     devServer: {
         static: "./dist",
         allowedHosts: ['all'],

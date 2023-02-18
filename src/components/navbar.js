@@ -11,14 +11,14 @@ const Navbar=()=>{
     const [isToggle,setIsToggle]=useState(true);
     const toggle= (e)=>{
         const dropdown=document.getElementById("menu-dropdown");
-        dropdown.classList.toggle("dropdown-display");
+        dropdown.classList.toggle("hide");
         window.addEventListener("click", handleOutsideClick);
     }
     const handleOutsideClick = (e) => {
         const dropdown=document.getElementById("menu-dropdown");
         const navMenu=document.getElementById("nav-menu");
         if (!navMenu.contains(e.target)) {
-          dropdown.classList.toggle("dropdown-display");
+          dropdown.classList.toggle("hide");
           window.removeEventListener("click", handleOutsideClick);
         }
       };
@@ -28,7 +28,7 @@ const Navbar=()=>{
         }else{
             setIsLoggedIn(true);
         };
-    })
+    },[user])
     return(
         <header className="header">
             <div>
@@ -58,7 +58,7 @@ const Navbar=()=>{
                     <div className="nav-login">
                         <Link to="/ai">
                             <div className="nav-btn nav-display">
-                                <img src="/images/logo-sm.png" className="nav-logo-btn"></img>
+                                <img src="/images/logo-sm.svg" className="nav-logo-btn"></img>
                                 <span>Chat with AI</span>
                             </div>
                         </Link>
@@ -79,7 +79,7 @@ const Navbar=()=>{
                         <div class="bar2"></div>
                         <div class="bar3"></div>
                     </div>
-                    <div class="menu-dropdown dropdown-display" id="menu-dropdown">
+                    <div class="menu-dropdown hide" id="menu-dropdown">
                         <ul>
                             <Link to="profile"><li>Profile</li></Link>
                             <Link to="AI"><li>Chat with AI</li></Link>
