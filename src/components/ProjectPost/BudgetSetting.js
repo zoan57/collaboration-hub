@@ -1,14 +1,17 @@
-import { doc } from "prettier";
 import React, { useState } from "react";
+import usePostFormContext from "../../hook/usePostFormContext";
 
 const BudgetSetting = () => {
-  const [budgetValue, setBudgetValue] = useState("1,000");
+  const [budgetValue, setBudgetValue] = useState("1000");
   const [budgetCheck, setBudgetCheck] = useState(true);
+
+  const { data, handleChange } = usePostFormContext();
+
   const handleBudgetCheckChange = (e) => {
-    if(e.target.checked){
-      setBudgetCheck(false)
-    }else{
-      setBudgetCheck(true)
+    if (e.target.checked) {
+      setBudgetCheck(false);
+    } else {
+      setBudgetCheck(true);
     }
   };
   function handleBudgetChange(e) {
@@ -31,8 +34,12 @@ const BudgetSetting = () => {
             <input
               type="checkbox"
               name="budgetSettingCheck"
+              value={data.budgetSettingCheck}
               id="budgetSettingCheck"
-              onChange={handleBudgetCheckChange}
+              onChange={(e) => {
+                handleBudgetCheckChange(e);
+                handleChange(e);
+              }}
             ></input>
             <span class="btn-check-slider"></span>
           </label>
@@ -45,6 +52,7 @@ const BudgetSetting = () => {
           maxLength="8"
           className={`budgetSetting-budgetinput ${budgetCheck && "hide"}`}
           onChange={handleBudgetChange}
+          onBlur={handleChange}
         ></input>
       </div>
     </section>

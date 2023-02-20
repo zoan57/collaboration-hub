@@ -10,23 +10,21 @@ import Profile from "./Pages/Profile";
 import AddProject from "./Pages/AddProject";
 import AI from "./Pages/AI";
 
-
-
-const App=()=>{
-    return(
-        <BrowserRouter basename="/">
-            <Navbar/>
-            <Routes>
-                <Route path="/" element={<Landing/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/project" element={<Project/>}/>
-                <Route path="/profile" element={<Profile/>}/>
-                <Route path="/add-new-project" element={<AddProject/>}/>
-                <Route path="/AI" element={<AI/>}/>
-            </Routes>
-        </BrowserRouter>
-    )
+const App = () => {
+  return (
+    <BrowserRouter basename="/">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/project" element={<Project />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/add-new-project" element={<AddProject />} />
+        <Route path="/AI" element={<AI />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

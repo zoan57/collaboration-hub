@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import usePostFormContext from "../hook/usePostFormContext";
 
 const DropdownIcon = () => {
   return (
@@ -16,11 +17,17 @@ const CloseIcon = () => {
 };
 
 const Dropdown = (props) => {
+  const { data, setData } = usePostFormContext();
   const placeholder = props.placeholder;
   const options = props.options;
+  const name = props.name;
+  const value = props.value;
+  const onChange = props.onChange;
   const isMulti = props.isMulti;
+  const dataValueName = props.dataValueName;
   const classNameOfListOption = props.classNameOfListOption;
   const classNameOfList = props.classNameOfList;
+
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
   const toDisplay = () => {
@@ -44,16 +51,18 @@ const Dropdown = (props) => {
         </div>
       );
     }
-    return selectedValue.label;
   };
   const removeOption = (option) => {
     return selectedValue.filter((o) => o.value !== option.value);
   };
+
   const onTagRemove = (e, option) => {
     e.stopPropagation();
     setSelectedValue(removeOption(option));
   };
-  const onItemClick = (option) => {
+
+  // For Basic Description Location Dropdown
+  const onLocationItemClick = (option) => {
     let newValue;
     if (isMulti) {
       if (selectedValue.findIndex((o) => o.value === option.value) >= 0) {
@@ -64,7 +73,36 @@ const Dropdown = (props) => {
     } else {
       newValue = option;
     }
+    //Set for Output Render
     setSelectedValue(newValue);
+    // Set for Submit data
+    const newDataValue = newValue.map((value) => value.value);
+    setData((prevData) => ({
+      ...prevData,
+      basicDescriLocation: newDataValue,
+    }));
+  };
+
+  // For Skill Needed Skills Dropdown
+  const onSkillItemClick = (option) => {
+    let newValue;
+    if (isMulti) {
+      if (selectedValue.findIndex((o) => o.value === option.value) >= 0) {
+        newValue = removeOption(option);
+      } else {
+        newValue = [...selectedValue, option];
+      }
+    } else {
+      newValue = option;
+    }
+    //Set for Output Render
+    setSelectedValue(newValue);
+    // Set for Submit data
+    const newDataValue = newValue.map((value) => value.value);
+    setData((prevData) => ({
+      ...prevData,
+      skillNeededSkills: newDataValue,
+    }));
   };
 
   useEffect(() => {
@@ -80,12 +118,16 @@ const Dropdown = (props) => {
     e.stopPropagation();
     setShowMenu(!showMenu);
   };
+
   return (
     <div className="basicDescri-location">
       <div
         className="location-input"
         id="location-input"
         onClick={handleShowMenuChange}
+        value={value}
+        name={name}
+        onChange={onChange}
       >
         <div>{toDisplay()}</div>
         <div className="dropdown-icon">
@@ -98,7 +140,12 @@ const Dropdown = (props) => {
             <div
               key={option.value}
               onClick={() => {
-                onItemClick(option);
+                if (dataValueName === "basicDescriLocation") {
+                  onLocationItemClick(option);
+                }
+                if (dataValueName === "skillNeededSkills") {
+                  onSkillItemClick(option);
+                }
               }}
               className={classNameOfListOption}
             >

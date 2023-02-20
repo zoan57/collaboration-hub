@@ -65,11 +65,13 @@ a {
     width: 8rem;
     height: auto;
 }
-.logo-lg{
+
+.logo-lg {
     width: 10rem;
     height: auto;
 }
-.hide{
+
+.hide {
     display: none;
 }
 
@@ -152,6 +154,7 @@ input:focus {
 .profile,
 .ai {
     margin-top: 80px;
+    width: 100vw;
 }
 
 /*------*\
@@ -580,15 +583,54 @@ input[type="checkbox"] {
 /*------------*\
    ADD PROJECT
 \*------------*/
-#addpr-submit-btn {
-    position: fixed;
-    right: 0;
-    bottom: 0px;
-    color: white;
+.addpr-btn-list {
+    margin: 30px 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addpr-btn {
+    margin: 0px 10px 0 10px;
+    width: 100px;
+    height: 50px;
     border-radius: 50px;
-    background-color: #ff0000;
+    border: solid 1px #656D51;
+    font-size: 24px;
+    font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #e2ff5e;
+
+}
+.addpr-btn:hover{
+    transform: translateY(1px);
+    transition: 1s ease-out;
+}
+
+.addpr-prev-btn, .addpr-next-btn, .addpr-submit-btn {
+    position: fixed;
+    top: 90px;
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+    background-color: #e2ff5e;
     margin: 10px;
 }
+
+.addpr-prev-btn:hover, .addpr-next-btn:hover {
+    background-color: white;
+}
+
+.addpr-prev-btn {
+    right: 120px;
+}
+
+.addpr-next-btn {
+    right: 10px;
+}
+
 
 .addpr-form {
     display: flex;
@@ -611,13 +653,14 @@ input[type="checkbox"] {
     align-items: center;
 }
 
+
 .addpr-form.scrollable {
     height: 100vh -80px;
 }
 
 .addpr-card {
     justify-content: center;
-    margin: 30px 20px;
+    margin: 0px 20px;
     width: 700px;
     min-height: 400px;
     border: #333 solid 1px;
@@ -657,6 +700,7 @@ input[type="checkbox"] {
     justify-items: center;
     align-items: center;
 }
+
 /* Location */
 .basicDescri-location {
     position: relative;
@@ -668,17 +712,19 @@ input[type="checkbox"] {
     font-size: 24px;
     color: #656D51;
 }
-.location-input{
+
+.location-input {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 30px;
+    padding: 20px 30px;
     width: 100%;
     min-height: 50px;
     border-radius: 300px;
     border: 0.5px solid;
 }
-.location-list{
+
+.location-list {
     position: absolute;
     width: 100%;
     margin-top: 60px;
@@ -689,25 +735,30 @@ input[type="checkbox"] {
     z-index: 100;
     background-color: white;
 }
-.location-list-option{
+
+.location-list-option {
     border-bottom: 0.5px solid;
 }
-.location-list-option:hover{
+
+.location-list-option:hover {
     background-color: #eee;
 }
-.dropdown-icon{
+
+.dropdown-icon {
     position: absolute;
     right: 10px;
 }
+
 /*Selected items*/
 .dropdown-tags {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     font-size: 20px;
-    color:#333;
+    color: #333;
     gap: 5px;
 }
+
 .dropdown-tag-item {
     background-color: #e2ff5e;
     padding: 2px 10px;
@@ -715,6 +766,7 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
 }
+
 .dropdown-tag-close {
     display: flex;
     align-items: center;
@@ -745,15 +797,17 @@ input[type="checkbox"] {
 
 /* --Budget Setting-- */
 /* Switch button*/
-.budgetSetting, .categoryChoice {
+.budgetSetting,.skillNeeded {
     display: flex;
+    flex-wrap: wrap;
+    min-height: 500px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .budgetSettingCheck {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -827,16 +881,26 @@ input:checked+.btn-check-slider:before {
 }
 
 /* --Category Choice-- */
+.categoryChoice {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+}
 /* --Skills Needed-- */
-.skillNeeded{
+.skillNeeded {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.skillNeeded h4{
+
+.skillNeeded h4 {
     margin-bottom: 10%;
 }
-.skill-needed-list{
+
+.skill-needed-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -846,21 +910,23 @@ input:checked+.btn-check-slider:before {
     padding: 10px;
     border: 0.5px solid;
 }
-.skill-needed-list-option{
+
+.skill-needed-list-option {
     width: 120px;
     margin: 10px;
     padding: 5px 10px;
     border-radius: 100px;
     border: solid 0.5px;
 }
-.skill-needed-list-option:hover{
+
+.skill-needed-list-option:hover {
     background-color: #e2ff5e;
 }
 
 /* -- Category Choice -- */
 /* Multi Selection Chips*/
 
-.multi-selection-chips{
+.multi-selection-chips {
     display: flex;
     position: relative;
     flex-wrap: wrap;
@@ -868,20 +934,28 @@ input:checked+.btn-check-slider:before {
     align-items: center;
     margin: 30px 20%;
 }
-.multi-chip{
+
+.multi-chip {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 30%;
-    min-height: 40px;
+    min-height: 45px;
     margin: 10px;
     padding: 5px 15px;
+    font-size: 20px;
     border: 0.5px solid;
     border-radius: 50px;
 }
-.multi-chip:hover{
+
+.multi-chip:hover {
     background-color: #e2ff5e;
 }
+
+.multi-select-icon {
+    margin: 0 10px 0 0;
+}
+
 /*---------*\
    PROFILE
 \*---------*/
@@ -982,13 +1056,20 @@ input:checked+.btn-check-slider:before {
         width: 240px;
         height: auto;
     }
+
     /* ADD PROJECT */
     .addpr-form {
         flex-direction: column;
     }
-    .addpr-card-left{
+
+    .addpr-card {
+        margin: 50px 0px;
+    }
+
+    .addpr-card-left {
         width: 100%;
     }
+
     /*PROJECT*/
     .project-main-list {
         grid-template-columns: 1fr 1fr;
@@ -1044,6 +1125,16 @@ input:checked+.btn-check-slider:before {
     .project-main-list {
         grid-template-columns: 1fr;
     }
+
+    /*ADD PROJECT*/
+    .budgetSettingCheck {
+        flex-direction: column;
+        margin: 10px 30px;
+    }
+
+    .addpr-card {
+        width: 500px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1085,12 +1176,11 @@ input:checked+.btn-check-slider:before {
     /* ADD PROJECT */
     .addpr-card {
         width: 300px;
+        margin: 30px 0;
     }
 
-    #addpr-submit-btn {
-        right: default;
-        bottom: 0;
-        margin-bottom: 10px;
+    .basicDescri-project-name {
+        font-size: 20px;
     }
 
     /* PROFILE */

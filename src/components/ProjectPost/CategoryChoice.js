@@ -26,7 +26,12 @@ const CategoryChoice = () => {
       <div className="categoryChoice">
         <h4>What categories are you working on?</h4>
       </div>
-      <MultiSelectionChip options={options} classNameOfList="multi-chip"/>
+      <MultiSelectionChip
+        options={options}
+        dataValueName="categoryChoices"
+        classNameOfList="multi-chip"
+        classNameOfSelectedIcon="multi-select-icon"
+      />
     </section>
   );
 };

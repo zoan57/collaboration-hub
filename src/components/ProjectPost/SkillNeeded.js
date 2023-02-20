@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from "../Dropdown";
 
-export const SkillNeeded = () => {
+const SkillNeeded = () => {
   const options = [
     { value: "html", label: "html" },
     { value: "css", label: "CSS" },
@@ -20,6 +20,7 @@ export const SkillNeeded = () => {
         <Dropdown
           isMulti
           options={options}
+          dataValueName="skillNeededSkills"
           placeholder="The skills you need"
           classNameOfList="skill-needed-list"
           classNameOfListOption="skill-needed-list-option"
@@ -28,3 +29,5 @@ export const SkillNeeded = () => {
     </section>
   );
 };
+
+export default SkillNeeded;

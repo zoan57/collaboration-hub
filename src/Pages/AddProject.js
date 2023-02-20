@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import BasicDescription from "../components/ProjectPost/BasicDescription";
-import BudgetSetting from "../components/ProjectPost/BudgetSetting";
-import { SkillNeeded } from "../components/ProjectPost/SkillNeeded";
-import CategoryChoice from "../components/ProjectPost/CategoryChoice";
-import ButtonAdd from "../components/button-add";
+import React from "react";
+import AddProjectForm from "../components/ProjectPost/AddProjectForm";
+import { PostFormProvider } from "../context/PostFormContext";
+
 const AddProject = () => {
   return (
     <>
-      <BasicDescription />
-      <BudgetSetting/>
-      <SkillNeeded />
-      <CategoryChoice/>
-      <ButtonAdd text="Submit" id="addpr-submit-btn" />
+      <PostFormProvider>
+        <AddProjectForm />
+      </PostFormProvider>
     </>
   );
 };

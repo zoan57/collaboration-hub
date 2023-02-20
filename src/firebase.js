@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -45,13 +46,15 @@ const logInWithEmailAndPassword = async (email, password) => {
 const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(auth.currentUser, { displayName: name });
     const user = res.user;
-    const docRef = doc(db, "Users", user.uid);
+    const docRef = doc(db, "Users", Date.now() + "-"+ user.displayName);
     const payload = {
       uid: user.uid,
       name: name,
-      authProvider: "local",
+      authProvider: "firebase",
       email: email,
+      enrollTime: new Date(),
     };
     await setDoc(docRef, payload), { merge: true };
     console.log(payload);
