@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import usePostFormContext from "../../hook/usePostFormContext";
 import AddProjectFormInput from "./AddProjectFormInput";
@@ -8,6 +8,7 @@ import { addDoc, setDoc, updateDoc, doc } from "firebase/firestore";
 const AddProjectForm = () => {
   const {
     data,
+    setData,
     page,
     setPage,
     prevHide,
@@ -18,23 +19,39 @@ const AddProjectForm = () => {
     disablePrev,
   } = usePostFormContext();
   const [user, loading, error] = useAuthState(auth);
+  const [submitTime, setSubmitTime] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (user) {
       console.log("Submitting form...");
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, "0");
+      const dd = String(now.getDate()).padStart(2, "0");
+      const submitDate = `${yyyy}-${mm}-${dd}`;
+      const submitTime = new Date().getTime();
       if (user.displayName !== null) {
-        var projectUid = user.displayName +"-"+ Date.now();
+        const username = user.displayName.toLowerCase().replace(/\s+/g, "-");
+        var projectId = username + "-" + submitTime;
       } else {
-        var projectUid = user.uid +"-"+ Date.now();
+        var projectId = user.uid + "-" + submitTime;
       }
-      const docRef = doc(db, "Projects", projectUid);
-      await setDoc(docRef, data), { merge: true };
+      const submitData = {
+        ...data,
+        projectId: projectId,
+        submitTime: submitDate,
+        lastFetchedTimeCount: submitTime,
+        username:user.displayName
+      };
+      const docRef = doc(db, "Projects", projectId);
+      await setDoc(docRef,submitData), { merge: true };
       console.log(`${user.displayName} Form submitted!`);
     }
     navigate("/login");
   };
+
   const handlePrev = () => {
     setPage((prev) => prev - 1);
   };

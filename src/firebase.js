@@ -60,7 +60,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     console.log(payload);
   } catch (err) {
     console.log(err);
-    alert(err.message);
+    alert("Email has been used, please enter a different email or log in.");
   }
 };
 

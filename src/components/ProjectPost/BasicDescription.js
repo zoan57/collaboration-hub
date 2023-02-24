@@ -6,15 +6,15 @@ import ButtonAdd from "../button-add";
 const BasicDescription = () => {
   const { data, handleChange } = usePostFormContext();
   const options = [
-    { value: "taipei", label: "Taipei" },
-    { value: "ny", label: "New York" },
-    { value: "london", label: "London" },
-    { value: "berlin", label: "Berlin" },
-    { value: "sydney", label: "Sydney" },
-    { value: "tokyo", label: "Tokyo" },
-    { value: "seoul", label: "Seoul" },
-    { value: "remote", label: "Remote" },
-    { value: "other", label: "Other" },
+    { value: "Taipei", label: "Taipei" },
+    { value: "New York", label: "New York" },
+    { value: "London", label: "London" },
+    { value: "Berlin", label: "Berlin" },
+    { value: "Sydney", label: "Sydney" },
+    { value: "Tokyo", label: "Tokyo" },
+    { value: "Seoul", label: "Seoul" },
+    { value: "Remote", label: "Remote" },
+    { value: "Other", label: "Other" },
   ];
   return (
     <section className="addproject">

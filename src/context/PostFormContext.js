@@ -34,7 +34,11 @@ export const PostFormProvider = ({ children }) => {
     console.log(data);
   };
 
-  const { budgetSettingCheck,budgetSettingBudgetInput, ...requiredInputs } = data;
+  const {
+    budgetSettingCheck,
+    budgetSettingBudgetInput,
+    ...requiredInputs
+  } = data;
   const canSubmit =
     [...Object.values(requiredInputs)].every(Boolean) &&
     page === Object.keys(title).length - 1;
