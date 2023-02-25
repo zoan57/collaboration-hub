@@ -43,7 +43,8 @@ const AddProjectForm = () => {
         projectId: projectId,
         submitTime: submitDate,
         lastFetchedTimeCount: submitTime,
-        username:user.displayName
+        username:user.displayName,
+        uid:user.uid
       };
       const docRef = doc(db, "Projects", projectId);
       await setDoc(docRef,submitData), { merge: true };
