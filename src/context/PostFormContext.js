@@ -13,12 +13,16 @@ export const PostFormProvider = ({ children }) => {
     budgetSettingCheck: false,
     budgetSettingBudgetInput: "",
     categoryChoices: [],
+    contactName: "",
+    contactEmail: "",
+    contactMobile: "",
   });
   const title = {
     0: "Basic Description",
     1: "Budget Setting",
     2: "Skill Needed",
     3: "Category Choices",
+    4: "Contact",
   };
   const handleChange = (e) => {
     const type = e.target.type;
@@ -37,6 +41,7 @@ export const PostFormProvider = ({ children }) => {
   const {
     budgetSettingCheck,
     budgetSettingBudgetInput,
+    contactMobile,
     ...requiredInputs
   } = data;
   const canSubmit =

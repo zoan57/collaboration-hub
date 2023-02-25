@@ -100,7 +100,6 @@ const Project = () => {
               if (data) {
                 newProjects.push(data);
                 console.log(`Added changes`);
-                console.log(lastFetched);
               }
               break;
             case "modified":

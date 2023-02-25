@@ -6,8 +6,8 @@ import { db } from "../firebase";
 const ProjectPage = () => {
   const [projectData, setProjectData] = useState([]);
   const { projectId } = useParams();
-  const [basicDescriLocation,setBasicDescriLocation]=useState("");
-  const [skillNeededSkills,setSkillNeededSkills] = useState("")
+  const [basicDescriLocation, setBasicDescriLocation] = useState("");
+  const [skillNeededSkills, setSkillNeededSkills] = useState("");
 
   let cachedProjects = JSON.parse(localStorage.getItem("projects"));
   const getYourProject = async () => {
@@ -16,8 +16,8 @@ const ProjectPage = () => {
     if (yourProjectDoc.exists()) {
       const yourProjectData = yourProjectDoc.data();
       setProjectData(yourProjectData);
-      setBasicDescriLocation(yourProject.basicDescriLocation.join(", "))
-      setSkillNeededSkills(yourProject.skillNeededSkills.join(", "))
+      setBasicDescriLocation(yourProject.basicDescriLocation.join(", "));
+      setSkillNeededSkills(yourProject.skillNeededSkills.join(", "));
     } else {
       setProjectData("No such project!");
     }
@@ -29,8 +29,8 @@ const ProjectPage = () => {
   useEffect(() => {
     if (yourProject) {
       setProjectData(yourProject);
-      setBasicDescriLocation(yourProject.basicDescriLocation.join(", "))
-      setSkillNeededSkills(yourProject.skillNeededSkills.join(", "))
+      setBasicDescriLocation(yourProject.basicDescriLocation.join(", "));
+      setSkillNeededSkills(yourProject.skillNeededSkills.join(", "));
     } else {
       getYourProject();
     }
@@ -60,15 +60,21 @@ const ProjectPage = () => {
 
         <div className="projectIntro">
           <div className="yourTeamIntro">
-            <h4>{projectData.username}</h4>
+            <h4>{projectData.contactName}</h4>
             <div className="yourTeamIntroDetail">
               {projectData.basicDescriTeamIntro}
             </div>
+            <div className="yourContactInfo">
+              <span>{projectData.contactEmail}</span>
+              <br></br>
+              <span>{projectData.concatMobile}</span>
+            </div>
             <div className="yourLocation">
-            <span className="underline-controller">{basicDescriLocation}</span>
+              <span className="underline-controller">
+                {basicDescriLocation}
+              </span>
+            </div>
           </div>
-          </div>
-          
         </div>
       </div>
       <div className="yourWantingSkills">

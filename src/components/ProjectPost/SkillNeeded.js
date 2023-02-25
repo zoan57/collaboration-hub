@@ -3,15 +3,19 @@ import Dropdown from "../Dropdown";
 
 const SkillNeeded = () => {
   const options = [
-    { value: "html", label: "html" },
-    { value: "css", label: "CSS" },
-    { value: "react", label: "React" },
-    { value: "vue", label: "Vue" },
-    { value: "angular", label: "Angular" },
-    { value: "tailwind", label: "Tailwind" },
-    { value: "rwd", label: "RWD" },
-    { value: "python", label: "Python" },
-    { value: "other", label: "Other" },
+    { value: "HTML", label: "html" },
+    { value: "CSS", label: "CSS" },
+    { value: "React", label: "React" },
+    { value: "Vue", label: "Vue" },
+    { value: "Angular", label: "Angular" },
+    { value: "Tailwind", label: "Tailwind" },
+    { value: "RWD", label: "RWD" },
+    { value: "Python", label: "Python" },
+    { value: "Illustrator", label: "Illustrator" },
+    { value: "Photoshop", label: "Photoshop" },
+    { value: "Figma", label: "Figma" },
+    { value: "ADOBE XD", label: "ADOBE XD" },
+    { value: "Other", label: "Other" },
   ];
   return (
     <section className="addproject">
