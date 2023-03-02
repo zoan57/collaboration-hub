@@ -9,19 +9,19 @@ import {
   where,
   orderBy,
 } from "firebase/firestore";
+import TruncateText from "../components/TruncateText";
 
 const Project = () => {
   //If projects are not sorted
   const [allowAllProjects, setAllowAllProjects] = useState(true);
+  const [allowLatestProjects, setAllowLatestProjects] = useState(false);
   const [projectData, setProjectData] = useState([]); //all projects
-  const [interestingProjectSelection, setInterestingProjectSelection] =
-    useState([]);
-  const [matchedProjects, setMatchedProjects] = useState([]);
+
   const navigate = useNavigate();
 
   //Filter projects in one week
   const latestProjectsFilter = projectData.filter((data) => {
-    if (Date.now() - data.lastFetchedTimeCount < 12 * 60 * 60 * 1000) {
+    if (Date.now() - data.lastFetchedTimeCount < 7 * 24 * 60 * 60 * 1000) {
       return true;
     }
     return false;
@@ -29,22 +29,10 @@ const Project = () => {
 
   const handleLatestProjects = () => {
     setAllowAllProjects(false);
+    setAllowLatestProjects(true);
+    console.log(latestProjectsFilter);
   };
 
-  //let the brief introduction cut short with "..."
-  function TruncateText(props) {
-    const maxLength = props.maxLength;
-    let truncatedText = props.text;
-
-    if (truncatedText.length > maxLength) {
-      // find the last space in the truncated text
-      const lastSpaceIndex = truncatedText.lastIndexOf(" ", maxLength - 3);
-      // truncate the text at the last space and add "..."
-      truncatedText = truncatedText.substring(0, lastSpaceIndex) + "...";
-    }
-
-    return <div>{truncatedText}</div>;
-  }
   //navigate to certain project page
   const handleProjectClick = (projectId) => {
     // Construct the URL for the project page
@@ -53,23 +41,23 @@ const Project = () => {
     navigate(url);
   };
 
-  //Fetch data from firestore, if no cache data
-  async function getProjects() {
-    const querySnapshot = await getDocs(collection(db, "Projects"));
-    const projects = [];
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      projects.push(data);
-    });
-    setProjectData(projects);
-    localStorage.setItem("projects", JSON.stringify(projects));
-    localStorage.setItem("projectsLastFetched", new Date().getTime());
-    let lastFetched = parseInt(localStorage.getItem("projectsLastFetched"));
-    console.log(lastFetched);
-  }
-
   useEffect(() => {
-    async function fetchProjects() {
+    //Fetch data from firestore, if no cache data
+    async function getProjects() {
+      const querySnapshot = await getDocs(collection(db, "Projects"));
+      const projects = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        projects.push(data);
+      });
+      setProjectData(projects);
+      localStorage.setItem("projects", JSON.stringify(projects));
+      localStorage.setItem("projectsLastFetched", new Date().getTime());
+      let lastFetched = parseInt(localStorage.getItem("projectsLastFetched"));
+      console.log(projects);
+    }
+    getProjects();
+    /*async function fetchProjects() {
       // Check if the query results are already saved in localStorage
       let cachedProjects = JSON.parse(localStorage.getItem("projects"));
       let lastFetched = parseInt(localStorage.getItem("projectsLastFetched"));
@@ -81,6 +69,7 @@ const Project = () => {
         await getProjects();
         console.log("fetched data");
       }
+      
       // Listen for real-time updates to the Projects collection
       const projectCollection = collection(db, "Projects");
       const q = query(
@@ -144,7 +133,7 @@ const Project = () => {
       // Clean up the subscription when the component unmounts
       return () => unsubscribe();
     }
-    fetchProjects();
+    fetchProjects();*/
   }, []);
 
   return (
@@ -206,7 +195,7 @@ const Project = () => {
                     </div>
                   </div>
                 ))}
-              {latestProjectsFilter &&
+              {allowLatestProjects &&
                 latestProjectsFilter.map((project, index) => (
                   <div
                     className="pr-lists"

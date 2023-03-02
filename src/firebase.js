@@ -48,7 +48,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, { displayName: name });
     const user = res.user;
-    const docRef = doc(db, "Users", Date.now() + "-"+ user.displayName);
+    const docRef = doc(db, "Users", user.uid);
     const payload = {
       uid: user.uid,
       name: name,
@@ -57,7 +57,6 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       enrollTime: new Date(),
     };
     await setDoc(docRef, payload), { merge: true };
-    console.log(payload);
   } catch (err) {
     console.log(err);
     alert("Email has been used, please enter a different email or log in.");

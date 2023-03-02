@@ -71,6 +71,7 @@ const Navbar=()=>{
                         <Link to="/project">
                             <button className="btn btn-project">Project</button>
                         </Link>
+                        
                     </div>
                 )}
                 <div>
@@ -85,6 +86,8 @@ const Navbar=()=>{
                             <Link to="AI"><li>Chat with AI</li></Link>
                             <Link to="add-new-project"><li>Add New Project</li></Link>
                             <Link to="project"><li>Project</li></Link>
+                            <Link to="Message"><li>Message</li></Link>
+
                         </ul>
                     </div>
                 </div>

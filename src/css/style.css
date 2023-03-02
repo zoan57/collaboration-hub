@@ -91,7 +91,9 @@ a {
     text-align: center;
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
 }
-
+.cursor-pointer{
+    cursor: pointer;
+}
 .btn:hover,
 .pr-lists:hover, .pr-recmd:hover {
     box-shadow: none;
@@ -732,7 +734,6 @@ input[type="checkbox"] {
 .yourProjectDescription {
     color: #333;
     min-height: 150px;
-    height: 300px;
     margin: 10px;
     padding: 10px;
     text-align: justify;
@@ -798,8 +799,13 @@ input[type="checkbox"] {
 }
 
 .yourContactInfo {
-    text-align: start;
-    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 0 10px;
+}
+.btn-chatbox-sender{
+    all: unset;
+    cursor: pointer;
 }
 
 /*------------*\
