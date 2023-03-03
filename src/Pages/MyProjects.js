@@ -73,7 +73,9 @@ const MyProjects = () => {
                     </Link>
                   </span>
                 </div>
-                <button className="btn">Edit</button>
+                <Link to={`/project/${project.id}/edit`}>
+                  <button className="btn">Edit</button>
+                </Link>
               </div>
               <div className="mypr-category">
                 <div>
@@ -89,9 +91,13 @@ const MyProjects = () => {
                   <ToolIcon width="1rem" height="1rem" />
                   <h5>Required Skills</h5>
                 </div>
-                {project.skillNeededSkills ? (project.skillNeededSkills.map((skill) => {
-                  return <span>{skill}</span>;
-                })):(<span>No requirements</span>)}
+                {project.skillNeededSkills ? (
+                  project.skillNeededSkills.map((skill) => {
+                    return <span>{skill}</span>;
+                  })
+                ) : (
+                  <span>No requirements</span>
+                )}
               </div>
             </div>
           ))}

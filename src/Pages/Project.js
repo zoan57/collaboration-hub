@@ -62,7 +62,6 @@ const Project = () => {
     localStorage.setItem("projects", JSON.stringify(projects));
     localStorage.setItem("projectsLastFetched", new Date().getTime());
     let lastFetched = parseInt(localStorage.getItem("projectsLastFetched"));
-    console.log(projects);
   }
   useEffect(() => {
     getProjects();

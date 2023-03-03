@@ -66,7 +66,7 @@ export const PostFormProvider = ({ children }) => {
 
   const disableNext =
     page === Object.keys(title).length - 1 ||
-    (page === 0 && !canNextPage1)||
+    (page === 0 && !canNextPage1) ||
     (page === 2 && !canNextPage3) ||
     (page === 3 && !canNextPage4);
 

@@ -49,7 +49,6 @@ const AddProjectForm = () => {
       const docRef = doc(db, "Projects", projectId);
       await setDoc(docRef, submitData), { merge: true };
       console.log(`${user.displayName} Form submitted!`);
-      console.log(submitData);
     }
     navigate("/login");
   };

@@ -1,28 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
-const Edit = ({ editing, setEditing, userInfo }) => {
+const Edit = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
-  const handleSave = () => {
-    setEditing(false);
-  };
 
   return (
-    <form className="profile">
+    <section className="profile">
       <div className="profile-left">
-        <div>
-          <h4 className="dec-txt">{userInfo.name}</h4>
-          <button
-            className=" save"
-            type="button"
-            onClick={handleSave}
-          >
-            Save
-          </button>
-        </div>
+        <h4 className="dec-txt">
+          Coolie Bot<br></br>苦力小助手
+        </h4>
         <div className="profile-left-list">
           <p contentEditable="true">Your previous projects</p>
         </div>
@@ -44,7 +34,7 @@ const Edit = ({ editing, setEditing, userInfo }) => {
           <p contentEditable="true">Describe the projects you like here.</p>
         </div>
       </div>
-    </form>
+    </section>
   );
 };
 

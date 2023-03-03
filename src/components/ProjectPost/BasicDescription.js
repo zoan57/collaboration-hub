@@ -52,6 +52,7 @@ const BasicDescription = () => {
             options={options}
             dataValueName="basicDescriLocation"
             isMulti
+            classNameOfDiv="basicDescri-location"
             classNameOfList="location-list"
             classNameOfListOption="location-list-option"
           />

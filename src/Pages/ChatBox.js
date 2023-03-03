@@ -17,6 +17,7 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 import TruncateText from "../components/TruncateText";
+import { FormatLastTime } from "../components/FormatLastTime";
 
 const SubmitIcon = () => {
   return (
@@ -73,7 +74,6 @@ const ChatBox = () => {
     const trimmedMessage = newMessage.trim();
     if (trimmedMessage) {
       // Add new message in Firestore
-      const receiverID = chats[0].users.find((user) => user !== currentUser);
       const msgRef = doc(db, "Message", chatID);
       const chatsRef = doc(db, "ChatBox", chatID);
       const msgDoc = await getDoc(msgRef);
@@ -151,7 +151,9 @@ const ChatBox = () => {
                 key={index}
                 onClick={() => {
                   handleOnChatClick(chat);
-                  setReceiverName(chat.usernames.find((username) => username !== currentUser));
+                  setReceiverName(
+                    chat.usernames.find((username) => username !== currentUser)
+                  );
                 }}
               >
                 <h5>
@@ -175,9 +177,12 @@ const ChatBox = () => {
                   }`}
                   key={index}
                 >
-                  <div>
+                  <div className="msg-txt">
                     <span>{msg.messageText}</span>
                   </div>
+                  <time>
+                    <FormatLastTime date={msg.sendAt} />
+                  </time>
                 </div>
               ))}
             <div ref={bottomListRef}></div>

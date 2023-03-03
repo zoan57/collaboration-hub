@@ -57,7 +57,6 @@ const ProjectPage = () => {
       const docSnap = await getDoc(docRef);
       const userRef = doc(db, "Users", currentUser);
       const projectUserRef = doc(db, "Users", projectUser);
-      const q = query(collection(db, "Users"), where("uid", "==", currentUser));
       if (docSnap.exists()) {
         // Document exists
         navigate("/message");

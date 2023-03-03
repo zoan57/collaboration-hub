@@ -27,6 +27,7 @@ const Dropdown = (props) => {
   const dataValueName = props.dataValueName;
   const classNameOfListOption = props.classNameOfListOption;
   const classNameOfList = props.classNameOfList;
+  const classNameOfDiv = props.classNameOfDiv;
 
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
@@ -120,7 +121,7 @@ const Dropdown = (props) => {
   };
 
   return (
-    <div className="basicDescri-location">
+    <div className={classNameOfDiv}>
       <div
         className="location-input"
         id="location-input"

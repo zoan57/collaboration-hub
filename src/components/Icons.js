@@ -1,6 +1,7 @@
 import React from "react";
 
-export const HeartIcon = () => {
+export const HeartIcon = (props) => {
+  const classNameOfSelectedIcon = props.classNameOfSelectedIcon;
   return (
     <svg
       name="hearIcon"
