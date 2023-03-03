@@ -41,6 +41,7 @@ const ChatBox = () => {
   const [showMessages, setShowMessages] = useState(false);
   const [user, loading, error] = useAuthState(auth);
   const [currentUser, setCurrentUser] = useState("");
+  const [receiverName, setReceiverName] = useState("");
   const [chats, setChats] = useState([]);
   const [chatID, setChatID] = useState("");
   const [messages, setMessages] = useState([]);
@@ -66,15 +67,13 @@ const ChatBox = () => {
   const handleOnChange = (e) => {
     setNewMessage(e.target.value);
   };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const trimmedMessage = newMessage.trim();
     if (trimmedMessage) {
       // Add new message in Firestore
       const receiverID = chats[0].users.find((user) => user !== currentUser);
-      const receiverName = chats[0].usernames.find(
-        (username) => username !== currentUser
-      );
       const msgRef = doc(db, "Message", chatID);
       const chatsRef = doc(db, "ChatBox", chatID);
       const msgDoc = await getDoc(msgRef);
@@ -144,13 +143,16 @@ const ChatBox = () => {
         <div className="chatbox-list">
           {chats
             ?.sort((first, second) =>
-              first?.lastAt?.seconds <= second?.lastAt?.seconds ? 1 : -1
+              first?.lastAt <= second?.lastAt ? 1 : -1
             )
             .map((chat, index) => (
               <div
                 className="chatbox"
                 key={index}
-                onClick={() => handleOnChatClick(chat)}
+                onClick={() => {
+                  handleOnChatClick(chat);
+                  setReceiverName(chat.usernames.find((username) => username !== currentUser));
+                }}
               >
                 <h5>
                   {chat.usernames.find((username) => username !== currentUser)}
@@ -163,6 +165,7 @@ const ChatBox = () => {
             ))}
         </div>
         <div className="message-list">
+          <div className="msg-receiverName">{receiverName}</div>
           <div className="messages">
             {showMessages &&
               messages.map((msg, index) => (

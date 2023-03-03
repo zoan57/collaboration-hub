@@ -43,12 +43,13 @@ const AddProjectForm = () => {
         projectId: projectId,
         submitTime: submitDate,
         lastFetchedTimeCount: submitTime,
-        username:user.displayName,
-        uid:user.uid
+        username: user.displayName,
+        uid: user.uid,
       };
       const docRef = doc(db, "Projects", projectId);
-      await setDoc(docRef,submitData), { merge: true };
+      await setDoc(docRef, submitData), { merge: true };
       console.log(`${user.displayName} Form submitted!`);
+      console.log(submitData);
     }
     navigate("/login");
   };

@@ -41,21 +41,30 @@ const Project = () => {
     navigate(url);
   };
 
+  //Fetch data from firestore, if no cache data
+  async function getProjects() {
+    const projectsRef = collection(db, "Projects");
+    const q = query(
+      projectsRef,
+      // where("skillNeededSkills", "array-contains-any", [
+      //   "Other",
+      //   "other",
+      //   "python",
+      // ])
+    );
+    const querySnapshot = await getDocs(q);
+    const projects = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      projects.push(data);
+    });
+    setProjectData(projects);
+    localStorage.setItem("projects", JSON.stringify(projects));
+    localStorage.setItem("projectsLastFetched", new Date().getTime());
+    let lastFetched = parseInt(localStorage.getItem("projectsLastFetched"));
+    console.log(projects);
+  }
   useEffect(() => {
-    //Fetch data from firestore, if no cache data
-    async function getProjects() {
-      const querySnapshot = await getDocs(collection(db, "Projects"));
-      const projects = [];
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        projects.push(data);
-      });
-      setProjectData(projects);
-      localStorage.setItem("projects", JSON.stringify(projects));
-      localStorage.setItem("projectsLastFetched", new Date().getTime());
-      let lastFetched = parseInt(localStorage.getItem("projectsLastFetched"));
-      console.log(projects);
-    }
     getProjects();
     /*async function fetchProjects() {
       // Check if the query results are already saved in localStorage
@@ -150,7 +159,7 @@ const Project = () => {
           </div>
           <div className="pr-main-list">
             <div className="project-recmd-grid">
-              <div className="pr-recmd">
+              <div className="pr-recmd" onClick={() => getProjects()}>
                 <h4>All Your Matches</h4>
               </div>
               <div
@@ -167,34 +176,38 @@ const Project = () => {
             </div>
             <div className="project-main-grid">
               {allowAllProjects &&
-                projectData.map((project, index) => (
-                  <div
-                    className="pr-lists"
-                    key={index}
-                    onClick={() => handleProjectClick(project.projectId)}
-                  >
-                    <div className="pr-card-inner">
-                      <div className="pr-card-front">
-                        <h4 className="pr-title">
-                          {project.basicDescriProjectName}
-                        </h4>
-                        <span className="pr-team">{project.username}</span>
-                        <br></br>
-                        <span className="pr-publish-time">
-                          {project.submitTime}
-                        </span>
-                      </div>
-                      <div className="pr-card-back">
-                        <p className="pr-description">
-                          <TruncateText
-                            maxLength={200}
-                            text={project.basicDescriProjectDescription}
-                          />
-                        </p>
+                projectData
+                  .sort((first, second) =>
+                    first.lastFetchedTimeCount <= second.lastFetchedTimeCount ? 1 : -1
+                  )
+                  .map((project, index) => (
+                    <div
+                      className="pr-lists"
+                      key={index}
+                      onClick={() => handleProjectClick(project.projectId)}
+                    >
+                      <div className="pr-card-inner">
+                        <div className="pr-card-front">
+                          <h4 className="pr-title">
+                            {project.basicDescriProjectName}
+                          </h4>
+                          <span className="pr-team">{project.username}</span>
+                          <br></br>
+                          <span className="pr-publish-time">
+                            {project.submitTime}
+                          </span>
+                        </div>
+                        <div className="pr-card-back">
+                          <p className="pr-description">
+                            <TruncateText
+                              maxLength={200}
+                              text={project.basicDescriProjectDescription}
+                            />
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               {allowLatestProjects &&
                 latestProjectsFilter.map((project, index) => (
                   <div

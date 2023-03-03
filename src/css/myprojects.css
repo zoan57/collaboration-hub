@@ -1,0 +1,74 @@
+.myprojects {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myproject {
+    position: relative;
+    width: 80%;
+    min-height: 120px;
+    padding: 20px;
+    margin: 10px;
+    height: auto;
+    border: solid 1px;
+    border-radius: 10px;
+    text-align: start;
+}
+.mypr-top{
+    display: flex;
+    justify-content: space-between;
+}
+.mypr-top button{
+    height: 40px;
+}
+
+.mypr-link{
+    display: inline-flex;
+}
+
+.mypr-link:hover{
+    text-decoration: underline;
+}
+
+.mypr-category div,.mypr-skills div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.mypr-category h5,.mypr-skills h5{
+    display: inline;
+    margin-left: 5px;
+}
+.mypr-category span,.mypr-skills span {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 60px;
+    min-height: 20px;
+    border-radius: 100px;
+    padding: 5px 10px;
+    margin: 0 0 10px 10px;
+    background-color: #cfed07;
+}
+
+@media screen and (max-width: 700px) {
+
+    /* My Projects*/
+    .mypr-top {
+        flex-direction: column-reverse;
+    }
+    .mypr-top button{
+        width: 60px;
+        height: 30px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .myproject{
+        width: 90%;
+    }
+}

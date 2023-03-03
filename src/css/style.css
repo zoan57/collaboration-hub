@@ -82,7 +82,7 @@ a {
     align-items: center;
     width: 100px;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: none;
     font-size: 24px;
     font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
@@ -91,9 +91,11 @@ a {
     text-align: center;
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer;
 }
+
 .btn:hover,
 .pr-lists:hover, .pr-recmd:hover {
     box-shadow: none;
@@ -127,7 +129,7 @@ a {
 }
 
 #btn-sp-color:active {
-    background-color: #cfed07;
+    background-color: #cfed07 ;
 
 }
 
@@ -157,7 +159,6 @@ input:focus {
 .project,
 .login,
 .register,
-.profile,
 .ai {
     margin-top: 80px;
     width: 100vw;
@@ -713,7 +714,7 @@ input[type="checkbox"] {
 }
 
 .projectCard {
-    justify-content: center;
+    position: relative;
     margin: 0px 20px;
     padding: 0 10px;
     width: 700px;
@@ -733,6 +734,7 @@ input[type="checkbox"] {
 
 .yourProjectDescription {
     color: #333;
+    
     min-height: 150px;
     margin: 10px;
     padding: 10px;
@@ -772,6 +774,9 @@ input[type="checkbox"] {
 .yourTeamIntro h4 {
     margin-top: 10px;
 }
+.yourTeamIntro h4:hover{
+    text-decoration: underline;
+}
 
 .yourTeamIntroDetail {
     margin-top: 20px;
@@ -781,21 +786,48 @@ input[type="checkbox"] {
     padding: 10px 20px;
 }
 
+.yourCategoryChoices {
+    padding: 10px;
+    border: solid 1px;
+    margin-top: 20px;
+}
+
+.yourCategoryChoicesTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yourCategoryChoices h4 {
+    font-weight: 600;
+}
+
 .yourWantingSkills {
     margin-top: 50px;
+    border: 1px solid;
+    padding: 10px;
+}
+
+.yourWantingSkillsTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yourWantingSkillsTitle h4 {
+    margin-left: 5px;
+    font-weight: 600;
 }
 
 .yourWantingSkill {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     margin-top: 20px;
     text-align: center;
     font-size: 20px;
     min-height: 60px;
-    border: solid 0.5px;
-    border-radius: 150px;
 }
 
 .yourContactInfo {
@@ -803,10 +835,12 @@ input[type="checkbox"] {
     justify-content: space-between;
     padding: 0 30px 0 10px;
 }
-.btn-chatbox-sender{
+
+.btn-chatbox-sender {
     all: unset;
     cursor: pointer;
 }
+
 
 /*------------*\
    ADD PROJECT
@@ -1216,68 +1250,6 @@ input:checked+.btn-check-slider:before {
     margin: 0 10px 0 0;
 }
 
-/*---------*\
-   PROFILE
-\*---------*/
-.profile {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.profile-left h4 {
-    margin: 20px;
-    font-size: 64px;
-    text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.5);
-}
-
-.profile-left-list {
-    width: 340px;
-    min-height: 600px;
-    padding: 50px 20px;
-    background-color: #F6F6F6;
-}
-
-.profile-left,
-.profile-middle,
-.profile-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-}
-
-.profile-middle-intro,
-.profile-middle-pr-description {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    width: 350px;
-    min-height: 250px;
-    border: 1px dashed;
-    font-weight: 300;
-    font-size: 20px;
-}
-
-.profile-bg-gradient {
-    background: #E4FF3F;
-    background: radial-gradient(circle, #E4FF3F -2%, rgba(148, 187, 233, 0) 30%);
-}
-
-.profile-right-skill,
-.profile-right-interest {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    width: 200px;
-    min-height: 250px;
-    border: 1px dashed;
-    font-weight: 300;
-    font-size: 20px;
-}
 
 @media screen and (max-width: 1000px) {
 
@@ -1402,11 +1374,6 @@ input:checked+.btn-check-slider:before {
         margin: 0;
     }
 
-    /* PROFILE */
-    .profile {
-        flex-direction: column;
-    }
-
     /*PROJECT*/
     .project-main-grid {
         grid-template-columns: 1fr 1fr;
@@ -1498,13 +1465,8 @@ input:checked+.btn-check-slider:before {
         font-weight: 500;
     }
 
-    /* PROFILE */
-    .profile-middle-intro,
-    .profile-middle-pr-description {
-        width: 340px;
-    }
     /* YOUR PROJECT */
-    .yourWantingSkills{
+    .yourWantingSkills {
         margin: 0px 10px 20px 10px;
     }
 }

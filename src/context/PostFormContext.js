@@ -59,11 +59,16 @@ export const PostFormProvider = ({ children }) => {
     .filter((key) => key.startsWith("skill"))
     .map((key) => data[key])
     .every(Boolean);
+  const canNextPage4 = Object.keys(data)
+    .filter((key) => key.startsWith("category"))
+    .map((key) => data[key])
+    .every(Boolean);
 
   const disableNext =
     page === Object.keys(title).length - 1 ||
-    (page === 0 && !canNextPage1) ||
-    (page === 2 && !canNextPage3);
+    (page === 0 && !canNextPage1)||
+    (page === 2 && !canNextPage3) ||
+    (page === 3 && !canNextPage4);
 
   const prevHide = page === 0 && "hide";
 

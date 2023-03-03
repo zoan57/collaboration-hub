@@ -1,0 +1,131 @@
+.save,.edit{
+    position: relative;
+    color: #054231;
+    letter-spacing: 1px;
+    margin: 20px;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    transition: 0.5s;
+    border-radius: 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    background: #64d488;
+  }
+  .save{
+    font-weight: 600;
+    left: -20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 20px;
+    box-shadow: 20px 0px 40px 0px  #63d3a6;
+  }
+  .edit{
+    font-weight: 600;
+    left: 0px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100px;
+    color: white;
+  }
+
+  .save:hover,.edit:hover{
+    left: 0;
+    color: #fff;
+    width: 180px;
+    box-shadow: 0px 0px 20px 0px  #63d3a6;
+  }
+  .save:focus{
+    outline: none;
+  }
+
+
+/*---------*\
+   PROFILE
+\*---------*/
+
+
+
+.profile {
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-middle h4 {
+    margin: 20px;
+    font-size: 64px;
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.profile-left-list {
+    width: 340px;
+    min-height: 600px;
+    padding: 50px 20px;
+    background-color: #F6F6F6;
+}
+
+.profile-left,
+.profile-middle,
+.profile-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.profile-middle-intro,
+.profile-middle-pr-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 350px;
+    min-height: 250px;
+    border: 1px dashed;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.profile-bg-gradient {
+    background: #E4FF3F;
+    background: radial-gradient(circle, #E4FF3F -2%, rgba(148, 187, 233, 0) 30%);
+}
+
+.profile-right-skill,
+.profile-right-interest {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 200px;
+    min-height: 250px;
+    border: 1px dashed;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+/*---------*\
+   EDIT
+\*---------*/
+
+
+@media screen and (max-width: 700px) {
+
+    /* PROFILE */
+    .profile {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    /* PROFILE */
+    .profile-middle-intro,
+    .profile-middle-pr-description {
+        width: 340px;
+    }
+}

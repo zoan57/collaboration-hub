@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   collection,
   doc,
@@ -12,29 +12,19 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { auth, logInWithEmailAndPassword } from "../firebase";
+import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-const ChatTextIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="48"
-      height="48"
-      fill="#333"
-      class="bi bi-chat-right-dots-fill "
-      viewBox="0 0 16 16"
-    >
-      {" "}
-      <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />{" "}
-    </svg>
-  );
-};
+import { ChatTextIcon } from "../components/Icons";
+import { ToolIcon } from "../components/Icons";
+import { CategoryIcon } from "../components/Icons";
+
 const ProjectPage = () => {
   const [projectData, setProjectData] = useState([]);
   const [user, loading, error] = useAuthState(auth);
   const { projectId } = useParams();
   const [basicDescriLocation, setBasicDescriLocation] = useState("");
   const [skillNeededSkills, setSkillNeededSkills] = useState("");
+  const [categoryChoices, setCategoryChoices] = useState("");
   const navigate = useNavigate();
 
   const getYourProject = async () => {
@@ -45,6 +35,7 @@ const ProjectPage = () => {
       setProjectData(yourProjectData);
       setBasicDescriLocation(yourProjectData.basicDescriLocation.join(", "));
       setSkillNeededSkills(yourProjectData.skillNeededSkills.join(", "));
+      setCategoryChoices(yourProjectData.categoryChoices.join(", "));
     } else {
       setProjectData("No such project!");
     }
@@ -116,11 +107,22 @@ const ProjectPage = () => {
           >
             {projectData.basicDescriProjectDescription}
           </div>
+          <span>{projectData.submitTime}</span>
+          <br />
+          {projectData.budgetSettingCheck ? (
+            projectData.budgetSettingBudgetInput ? (
+              <span>Budget:{projectData.budgetSettingBudgetInput}</span>
+            ) : (
+              <span>Budget:$1,000</span>
+            )
+          ) : null}
         </div>
 
         <div className="projectIntro">
           <div className="yourTeamIntro">
-            <h4>{projectData.contactName}</h4>
+            <Link to={`/profile/${projectData.uid}`}>
+              <h4>{projectData.username}</h4>
+            </Link>
             <div className="yourTeamIntroDetail">
               {projectData.basicDescriTeamIntro}
             </div>
@@ -146,13 +148,27 @@ const ProjectPage = () => {
           </div>
         </div>
       </div>
-
-      <div className="yourWantingSkills">
-        <h4>Looking for a Collaboration with These Skills</h4>
-        <div className="yourWantingSkill">
-          <div className="yourWantingItem">{skillNeededSkills}</div>
+      {skillNeededSkills && (
+        <div className="yourWantingSkills">
+          <div className="yourWantingSkillsTitle">
+            <ToolIcon height="3rem" width="3rem" />
+            <h4>Looking for These Skills</h4>
+          </div>
+          <div className="yourWantingSkill">
+            <div className="yourWantingItem">{skillNeededSkills}</div>
+          </div>
         </div>
-      </div>
+      )}
+      {categoryChoices && (
+        <div className="yourCategoryChoices">
+          <div className="yourCategoryChoicesTitle">
+            <CategoryIcon width="3rem" height="3rem" />
+            <h4>Category</h4>
+          </div>
+          <br />
+          <div className="yourWantingItem">{categoryChoices}</div>
+        </div>
+      )}
     </section>
   );
 };
