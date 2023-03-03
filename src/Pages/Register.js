@@ -22,7 +22,7 @@ const Register=()=>{
           // maybe trigger a loading screen
           return;
         }
-        if (user) navigate("/project");
+        if (user) navigate("/projects");
       }, [user, loading]);
     const register = (e) => {
         if (!name) alert("Please enter name");
