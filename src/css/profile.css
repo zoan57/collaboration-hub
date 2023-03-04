@@ -1,4 +1,4 @@
-.save,.edit{
+.save, .edit {
     position: relative;
     color: #054231;
     letter-spacing: 1px;
@@ -12,33 +12,36 @@
     border-radius: 25px;
     border: none;
     background: #64d488;
-  }
-  .save{
+}
+
+.save {
     font-weight: 600;
     left: -20px;
     text-transform: uppercase;
     letter-spacing: 1px;
     width: 20px;
-    box-shadow: 20px 0px 40px 0px  #63d3a6;
-  }
-  .edit{
+    box-shadow: 20px 0px 40px 0px #63d3a6;
+}
+
+.edit {
     font-weight: 600;
     left: 0px;
     text-transform: uppercase;
     letter-spacing: 1px;
     width: 100px;
     color: white;
-  }
+}
 
-  .save:hover,.edit:hover{
+.save:hover, .edit:hover {
     left: 0;
     color: #fff;
     width: 180px;
-    box-shadow: 0px 0px 20px 0px  #63d3a6;
-  }
-  .save:focus{
+    box-shadow: 0px 0px 20px 0px #63d3a6;
+}
+
+.save:focus {
     outline: none;
-  }
+}
 
 
 /*---------*\
@@ -60,11 +63,10 @@
     text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
-.profile-left-list {
+.profile-project-list {
     width: 340px;
     min-height: 600px;
-    padding: 50px 20px;
-    background-color: #F6F6F6;
+    padding: 10px 20px;
 }
 
 .profile-left,
@@ -108,9 +110,60 @@
     font-size: 20px;
 }
 
+.profile-project{
+    background-color: #fbffe3;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.profile-project h5{
+    display: inline;
+    font-size: 1.2rem;
+}
+.profile-project ul{
+    all: unset;
+}
+.profile-project ul li {
+    all: unset;
+    display: inline-block;
+    min-width: 3rem;
+    margin:5px 10px;
+}
+.profile-project .skill{
+    background-color: #E4FF3F;
+}
+.profile-project .category{
+    background-color: #fdc55e;
+
+}
 /*---------*\
    EDIT
 \*---------*/
+.edit-input {
+    width: 240px;
+    display: inline;
+}
+
+.profile-edit-ig, .profile-edit-fb, .profile-edit-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.profile-edit-ig svg, .profile-edit-fb svg, .profile-edit-link svg {
+    margin-right: 5px;
+}
+
+#profile-edit-intro {
+    padding: 20px;
+
+}
+
+#profile-edit-intro::placeholder {
+    display: flex;
+    align-items: center;
+}
 
 
 @media screen and (max-width: 700px) {

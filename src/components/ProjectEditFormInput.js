@@ -129,13 +129,15 @@ export const ProjectEditFormInput = () => {
           <span>
             Budget:
             <input
-              placeholder={currentData.budgetSettingBudgetInput || "Set up your budget"}
+              placeholder={
+                currentData.budgetSettingBudgetInput || "Set up your budget"
+              }
               name="budgetSettingBudgetInput"
               value={data.budgetSettingBudgetInput}
               onChange={handleChange}
             />
           </span>
-          <br/>
+          <br />
           <i>Leave the budget empty if you don't have one.</i>
           <br />
         </div>
@@ -145,23 +147,29 @@ export const ProjectEditFormInput = () => {
             <h4>{currentData.username}</h4>
             <textarea
               className="yourTeamIntroDetail"
-              placeholder={currentData.basicDescriTeamIntro || "Let us know more about you or your team!"}
+              placeholder={
+                currentData.basicDescriTeamIntro ||
+                "Let us know more about you or your team!"
+              }
               name="basicDescriTeamIntro"
               value={data.basicDescriTeamIntro}
               onChange={handleChange}
             ></textarea>
             <div className="yourContactInfo">
-              <div>
+              <div className="project-edit-contact">
                 <input
-                  contentEditable="true"
+                  className="inputbar-long project-edit-contact-input dec-txt"
                   name="contactEmail"
-                  value=""
+                  value={data.contactEmail}
                   onChange={handleChange}
-                  placeholder={currentData.contactEmail || "collaborationhub2023@collab.org"}
+                  placeholder={
+                    currentData.contactEmail ||
+                    "collaborationhub2023@collab.org"
+                  }
                 />
                 <br />
                 <input
-                  contentEditable="true"
+                  className="inputbar-long project-edit-contact-input dec-txt"
                   name="contactMobile"
                   value={data.contactMobile}
                   onChange={handleChange}

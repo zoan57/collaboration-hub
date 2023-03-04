@@ -35,7 +35,6 @@ export const PostFormProvider = ({ children }) => {
       ...prevData,
       [name]: value,
     }));
-    console.log(data);
   };
 
   const {

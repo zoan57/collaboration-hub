@@ -1,0 +1,74 @@
+/*--*\ 
+  AI
+\*--*/
+.ai {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ai-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-title span {
+    font-size: 1.2rem;
+}
+
+.logo-ai-move {
+    position: relative;
+    animation: flipflop 1s infinite;
+}
+
+.ai-inputbar {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.ai-inputbar input {
+    width: 75%;
+    font-size: 0.9rem;
+}
+
+.ai-inputbar svg {
+    margin-left: 10px;
+}
+
+.ai-send-btn {
+    all: unset;
+    cursor: pointer;
+}
+.ai-reply-bar{
+    width: 60%;
+    min-height: 300px;
+}
+
+@keyframes flipflop {
+    0% {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    50% {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    51% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+
+    100% {
+
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}

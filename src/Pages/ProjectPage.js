@@ -96,7 +96,7 @@ const ProjectPage = () => {
             className="yourProjectName"
             maxLength="40"
           >
-            {projectData.basicDescriProjectName}
+            {projectData.basicDescriProjectName || "Unknown"}
           </div>
           <div
             maxLength="600"
@@ -104,9 +104,10 @@ const ProjectPage = () => {
             name="basicDescriProjectDescription"
             className="yourProjectDescription"
           >
-            {projectData.basicDescriProjectDescription}
+            {projectData.basicDescriProjectDescription ||
+              "This section does not contain any message."}
           </div>
-          <span>{projectData.submitTime}</span>
+          <span>{projectData.submitTime || "unknown"}</span>
           <br />
           {projectData.budgetSettingCheck ? (
             projectData.budgetSettingBudgetInput ? (
@@ -115,21 +116,50 @@ const ProjectPage = () => {
               <span>Budget:$1,000</span>
             )
           ) : null}
+          <br />
+          <br />
+          <br />
+          <h4>
+            Posted by:
+            <b>
+              <Link to={`/profile/${projectData.uid}`}>
+                {projectData.username}
+              </Link>
+            </b>
+          </h4>
         </div>
 
         <div className="projectIntro">
           <div className="yourTeamIntro">
-            <Link to={`/profile/${projectData.uid}`}>
-              <h4>{projectData.username}</h4>
-            </Link>
+            {user ? (
+              <h4>
+                {projectData.contactName || (
+                  <Link to={`/profile/${projectData.uid}`}>
+                    {projectData.username}
+                  </Link>
+                )}
+              </h4>
+            ) : (
+              <h4>****</h4>
+            )}
+
             <div className="yourTeamIntroDetail">
-              {projectData.basicDescriTeamIntro}
+              {projectData.basicDescriTeamIntro ||
+                "This section does not contain any message."}
             </div>
             <div className="yourContactInfo">
               <div>
-                <span>{projectData.contactEmail}</span>
+                {user ? (
+                  <span>
+                    {projectData.contactEmail || "No contact email provided."}
+                  </span>
+                ) : (
+                  <span>******@****.***</span>
+                )}
                 <br></br>
+                {user?(
                 <span>{projectData.contactMobile}</span>
+                ):(<span>+**********</span>)}
               </div>
               <button
                 type="button"
@@ -141,7 +171,7 @@ const ProjectPage = () => {
             </div>
             <div className="yourLocation">
               <span className="underline-controller">
-                {basicDescriLocation}
+                {basicDescriLocation || "Location not provided."}
               </span>
             </div>
           </div>

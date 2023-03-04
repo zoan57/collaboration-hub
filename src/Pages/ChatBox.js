@@ -8,8 +8,6 @@ import {
   getDoc,
   getDocs,
   updateDoc,
-  setDoc,
-  serverTimestamp,
   collection,
   query,
   where,
@@ -42,6 +40,7 @@ const ChatBox = () => {
   const [showMessages, setShowMessages] = useState(false);
   const [user, loading, error] = useAuthState(auth);
   const [currentUser, setCurrentUser] = useState("");
+  const [receiverID, setReceiverID] = useState("");
   const [receiverName, setReceiverName] = useState("");
   const [chats, setChats] = useState([]);
   const [chatID, setChatID] = useState("");
@@ -154,6 +153,9 @@ const ChatBox = () => {
                   setReceiverName(
                     chat.usernames.find((username) => username !== currentUser)
                   );
+                  setReceiverID(
+                    chat.users.find((user) => user !== currentUser)
+                  );
                 }}
               >
                 <h5>
@@ -167,7 +169,9 @@ const ChatBox = () => {
             ))}
         </div>
         <div className="message-list">
-          <div className="msg-receiverName">{receiverName}</div>
+          <Link to={`/profile/${receiverID}`}>
+            <div className="msg-receiverName">{receiverName}</div>
+          </Link>
           <div className="messages">
             {showMessages &&
               messages.map((msg, index) => (

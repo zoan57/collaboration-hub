@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./css/style.css";
 import "./css/chatBox.css";
+import "./css/ai.css"
 import "./css/profile.css";
 import "./css/myprojects.css";
 import "./css/projectEdit.css";

@@ -81,6 +81,7 @@
 
 .msg-receiver {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: start;
     align-content: start;

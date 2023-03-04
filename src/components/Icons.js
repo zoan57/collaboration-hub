@@ -32,7 +32,7 @@ export const ChatTextIcon = () => {
       class="bi bi-chat-right-dots-fill "
       viewBox="0 0 16 16"
     >
-      <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />{" "}
+      <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
     </svg>
   );
 };
@@ -59,7 +59,7 @@ export const ToolIcon = (props) => {
         stroke-linejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
-        <path d="M285.857,52.128l-42.557,42.557c-3.887,3.887-10.184,3.887-14.072,0l-33.914-33.914c-3.887-3.887-3.887-10.186,0-14.071 l42.557-42.556c-26.965-9.211-58.012-3.066-79.518,18.441c-22.459,22.457-28.162,55.313-17.129,83.063l-45.361,45.359 c-25.279-9.078-54.639-3.505-74.889,16.747c-27.967,27.966-27.965,73.308,0,101.271c27.961,27.964,73.303,27.966,101.27,0 c20.252-20.253,25.826-49.614,16.748-74.893l45.359-45.359c27.75,11.032,60.607,5.33,83.065-17.127 C288.922,110.141,295.068,79.095,285.857,52.128z M99.793,246.573L61.291,256.89l-28.182-28.181l10.318-38.501l38.5-10.318 l28.184,28.182L99.793,246.573z"></path>{" "}
+        <path d="M285.857,52.128l-42.557,42.557c-3.887,3.887-10.184,3.887-14.072,0l-33.914-33.914c-3.887-3.887-3.887-10.186,0-14.071 l42.557-42.556c-26.965-9.211-58.012-3.066-79.518,18.441c-22.459,22.457-28.162,55.313-17.129,83.063l-45.361,45.359 c-25.279-9.078-54.639-3.505-74.889,16.747c-27.967,27.966-27.965,73.308,0,101.271c27.961,27.964,73.303,27.966,101.27,0 c20.252-20.253,25.826-49.614,16.748-74.893l45.359-45.359c27.75,11.032,60.607,5.33,83.065-17.127 C288.922,110.141,295.068,79.095,285.857,52.128z M99.793,246.573L61.291,256.89l-28.182-28.181l10.318-38.501l38.5-10.318 l28.184,28.182L99.793,246.573z"></path>
       </g>
     </svg>
   );
@@ -124,11 +124,11 @@ export const LinkIcon = (props) => {
         stroke-linejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
-        {" "}
+        
         <path
           d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM8.65 14.77C8.54 15.07 8.25 15.26 7.95 15.26C7.86 15.26 7.78 15.25 7.69 15.21C6.88 14.91 6.2 14.32 5.77 13.55C4.77 11.75 5.39 9.4 7.14 8.31L9.48 6.86C10.34 6.33 11.35 6.17 12.31 6.42C13.27 6.67 14.08 7.3 14.57 8.18C15.57 9.98 14.95 12.33 13.2 13.42L12.94 13.61C12.6 13.85 12.13 13.77 11.89 13.44C11.65 13.1 11.73 12.63 12.06 12.39L12.37 12.17C13.49 11.47 13.87 10.02 13.26 8.91C12.97 8.39 12.5 8.02 11.94 7.87C11.38 7.72 10.79 7.81 10.28 8.13L7.92 9.59C6.84 10.26 6.46 11.71 7.07 12.83C7.32 13.28 7.72 13.63 8.2 13.81C8.59 13.95 8.79 14.38 8.65 14.77ZM16.92 15.65L14.58 17.1C13.99 17.47 13.33 17.65 12.66 17.65C12.36 17.65 12.05 17.61 11.75 17.53C10.79 17.28 9.98 16.65 9.5 15.77C8.5 13.97 9.12 11.62 10.87 10.53L11.13 10.34C11.47 10.1 11.94 10.18 12.18 10.51C12.42 10.85 12.34 11.32 12.01 11.56L11.7 11.78C10.58 12.48 10.2 13.93 10.81 15.04C11.1 15.56 11.57 15.93 12.13 16.08C12.69 16.23 13.28 16.14 13.79 15.82L16.13 14.37C17.21 13.7 17.59 12.25 16.98 11.13C16.73 10.68 16.33 10.33 15.85 10.15C15.46 10.01 15.26 9.58 15.41 9.19C15.55 8.8 15.99 8.6 16.37 8.75C17.18 9.05 17.86 9.64 18.29 10.41C19.28 12.21 18.67 14.56 16.92 15.65Z"
           fill="#a9e504"
-        ></path>{" "}
+        ></path>
       </g>
     </svg>
   );
@@ -137,6 +137,7 @@ export const LinkIcon = (props) => {
 export const InstagramIcon = (props) => {
   const width = props.width;
   const height = props.heightl;
+  const className = props.className;
   return (
     <svg
       viewBox="0 0 32 32"
@@ -144,6 +145,7 @@ export const InstagramIcon = (props) => {
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      className={className}
     >
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g
@@ -152,7 +154,7 @@ export const InstagramIcon = (props) => {
         stroke-linejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
-        {" "}
+        
         <rect
           x="2"
           y="2"
@@ -160,7 +162,7 @@ export const InstagramIcon = (props) => {
           height="28"
           rx="6"
           fill="url(#paint0_radial_87_7153)"
-        ></rect>{" "}
+        ></rect>
         <rect
           x="2"
           y="2"
@@ -168,7 +170,7 @@ export const InstagramIcon = (props) => {
           height="28"
           rx="6"
           fill="url(#paint1_radial_87_7153)"
-        ></rect>{" "}
+        ></rect>
         <rect
           x="2"
           y="2"
@@ -176,17 +178,17 @@ export const InstagramIcon = (props) => {
           height="28"
           rx="6"
           fill="url(#paint2_radial_87_7153)"
-        ></rect>{" "}
+        ></rect>
         <path
           d="M23 10.5C23 11.3284 22.3284 12 21.5 12C20.6716 12 20 11.3284 20 10.5C20 9.67157 20.6716 9 21.5 9C22.3284 9 23 9.67157 23 10.5Z"
           fill="white"
-        ></path>{" "}
+        ></path>
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
           d="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21ZM16 19C17.6569 19 19 17.6569 19 16C19 14.3431 17.6569 13 16 13C14.3431 13 13 14.3431 13 16C13 17.6569 14.3431 19 16 19Z"
           fill="white"
-        ></path>{" "}
+        ></path>
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -202,10 +204,10 @@ export const InstagramIcon = (props) => {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(12 23) rotate(-55.3758) scale(25.5196)"
           >
-            <stop stop-color="#B13589"></stop>{" "}
-            <stop offset="0.79309" stop-color="#C62F94"></stop>{" "}
-            <stop offset="1" stop-color="#8A3AC8"></stop>{" "}
-          </radialGradient>{" "}
+            <stop stop-color="#B13589"></stop>
+            <stop offset="0.79309" stop-color="#C62F94"></stop>
+            <stop offset="1" stop-color="#8A3AC8"></stop>
+          </radialGradient>
           <radialGradient
             id="paint1_radial_87_7153"
             cx="0"
@@ -214,12 +216,12 @@ export const InstagramIcon = (props) => {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(11 31) rotate(-65.1363) scale(22.5942)"
           >
-            {" "}
-            <stop stop-color="#E0E8B7"></stop>{" "}
-            <stop offset="0.444662" stop-color="#FB8A2E"></stop>{" "}
-            <stop offset="0.71474" stop-color="#E2425C"></stop>{" "}
-            <stop offset="1" stop-color="#E2425C" stop-opacity="0"></stop>{" "}
-          </radialGradient>{" "}
+            
+            <stop stop-color="#E0E8B7"></stop>
+            <stop offset="0.444662" stop-color="#FB8A2E"></stop>
+            <stop offset="0.71474" stop-color="#E2425C"></stop>
+            <stop offset="1" stop-color="#E2425C" stop-opacity="0"></stop>
+          </radialGradient>
           <radialGradient
             id="paint2_radial_87_7153"
             cx="0"
@@ -228,12 +230,12 @@ export const InstagramIcon = (props) => {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(0.500002 3) rotate(-8.1301) scale(38.8909 8.31836)"
           >
-            {" "}
-            <stop offset="0.156701" stop-color="#406ADC"></stop>{" "}
-            <stop offset="0.467799" stop-color="#6A45BE"></stop>{" "}
-            <stop offset="1" stop-color="#6A45BE" stop-opacity="0"></stop>{" "}
-          </radialGradient>{" "}
-        </defs>{" "}
+            
+            <stop offset="0.156701" stop-color="#406ADC"></stop>
+            <stop offset="0.467799" stop-color="#6A45BE"></stop>
+            <stop offset="1" stop-color="#6A45BE" stop-opacity="0"></stop>
+          </radialGradient>
+        </defs>
       </g>
     </svg>
   );
@@ -264,6 +266,42 @@ export const FacebookIcon = (props) => {
         <path
           fill="#ffffff"
           d="M10.725 10.023L11.035 8H9.094V6.687c0-.553.27-1.093 1.14-1.093h.883V3.87s-.801-.137-1.567-.137c-1.6 0-2.644.97-2.644 2.724V8H5.13v2.023h1.777v4.892a7.037 7.037 0 002.188 0v-4.892h1.63z"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
+export const SendIcon = (props) => {
+  const width = props.width;
+  const height = props.heightl;
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        
+        <path
+          opacity="0.15"
+          d="M20 4L3 11L10 14L13 21L20 4Z"
+          fill="#000000"
+        ></path>
+        <path
+          d="M20 4L3 11L10 14M20 4L13 21L10 14M20 4L10 14"
+          stroke="#000000"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         ></path>
       </g>
     </svg>

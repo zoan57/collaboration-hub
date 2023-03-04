@@ -5,8 +5,6 @@
 ---LOGIN
 ---PROJECT
 ---ADD PROJECT
----AI
-
 */
 
 /*---*\
@@ -336,13 +334,15 @@ LANDING PAGE
     font-size: 170px;
 }
 
+.logo-shift{
+    animation: shimmy 1.5s infinite;
+    animation-direction: alternate;
+}
 .logo {
     position: fixed;
     width: 10rem;
     right: 0;
     bottom: 0;
-    animation: shimmy 1.5s infinite;
-    animation-direction: alternate;
 }
 
 @keyframes shimmy {
@@ -488,44 +488,7 @@ input[type="checkbox"] {
     background-color: darkgray;
 }
 
-/*----*\
-   AI
-\*----*/
-.ai {
-    height: 500px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
 
-.logo-ai-move {
-    position: relative;
-    animation: flipflop 1s infinite;
-}
-
-@keyframes flipflop {
-    0% {
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-    }
-
-    50% {
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-    }
-
-    51% {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-    }
-
-    100% {
-
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-    }
-}
 
 /*--------*\
    PROJECT
@@ -723,6 +686,13 @@ input[type="checkbox"] {
     border-radius: 10px;
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
 }
+.projectCard h4 b:hover{
+text-decoration: underline;
+width: 10px;
+height: auto;
+border-radius: 100px;
+background-color: #e0ff13;
+}
 
 .yourProjectName {
     height: 50px;
@@ -774,8 +744,11 @@ input[type="checkbox"] {
 .yourTeamIntro h4 {
     margin-top: 10px;
 }
-.yourTeamIntro h4:hover{
+.yourTeamIntro a:hover{
     text-decoration: underline;
+    background-color: #e0ff13;
+    width: 10px;
+    border-radius: 100px;
 }
 
 .yourTeamIntroDetail {
