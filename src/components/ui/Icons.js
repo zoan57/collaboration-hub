@@ -23,12 +23,14 @@ export const HeartIcon = (props) => {
   );
 };
 
-export const ChatTextIcon = () => {
+export const ChatTextIcon = (props) => {
+  const width=props.width
+  const height=props.height
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="48"
-      height="48"
+      width={width}
+      height={height}
       fill="#333"
       class="bi bi-chat-right-dots-fill "
       viewBox="0 0 16 16"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { ToolIcon } from "./ui/Icons";
 import {
   doc,
   updateDoc,
+  onSnapshot,
   getDoc,
   getDocs,
   collection,
@@ -24,6 +25,7 @@ const Edit = ({
   editing,
   setEditing,
   userInfo,
+  setUserInfo,
   projectData,
   setProjectData,
 }) => {
@@ -55,36 +57,34 @@ const Edit = ({
       }));
     }
   };
+  useEffect(() => {
+    let unsub = onSnapshot(doc(db, "Users", userInfo.uid), (doc) => {
+      setUserInfo(doc.data());
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
 
   return (
     <form className="profile" onSubmit={handleSave}>
-      <section className="profile-left">
+      <section className="profile-middle">
         <div className="profile-left-list">
-          {projectData.map((doc) => (
-            <div className="profile-project">
-              <div>
-                <h5>{doc.basicDescriProjectName || "Unknown"}</h5>
-                <br />
-                <span>{doc.submitTime || "No date"}</span>
-                <br />
-                {doc.skillNeededSkills && (
-                  <ToolIcon width="1rem" height="1rem" />
-                )}
-                <ul>
-                  {doc.skillNeededSkills.map((skill) => {
-                    return <li className="skill">{skill}</li>;
-                  })}
-                </ul>
-                <br />
-                <CategoryIcon width="1rem" height="1rem" />
-                <ul>
-                  {doc.categoryChoices.map((cat) => {
-                    return <li className="category">{cat}</li>;
-                  })}
-                </ul>
-              </div>
-            </div>
-          ))}
+          <h4 className="profile-edit-title">
+            Let people know more about you!
+          </h4>
+          <textarea
+            className="profile-middle-intro profile-bg-gradient"
+            placeholder={"Introduce yourself here."}
+            id="profile-edit-intro"
+            name="introduction"
+            value={updateData.introduction}
+            onChange={handleChange}
+          ></textarea>
+          <h4 className="profile-edit-title">
+            Describe some projects you like!
+          </h4>
           <textarea
             className="profile-middle-pr-description"
             placeholder={"Describe the projects you like here."}
@@ -101,15 +101,16 @@ const Edit = ({
             Save
           </button>
         </div>
+        <img src="/images/logo-sm.png" className="logo-md"></img>
         <h4 className="dec-txt">{userInfo.name}</h4>
         <div className="profile-edit-ig">
           <InstagramIcon width="40px" height="40px" className="ig-icon" />
           <InputBarLong
-            className="edit-input"
             name="instagram"
             value={updateData.instagram}
             onChange={handleChange}
-            placeholder={"/collab_hub2023"}
+            placeholder="/collab_hub2023"
+            className="edit-input"
           />
         </div>
         <div className="profile-edit-fb">
@@ -132,27 +133,41 @@ const Edit = ({
             placeholder={"http://collaborationhub2023.web.app"}
           />
         </div>
-        <textarea
-          className="profile-middle-intro profile-bg-gradient"
-          placeholder={"Introduce yourself here."}
-          id="profile-edit-intro"
-          name="introduction"
-          value={updateData.introduction}
-          onChange={handleChange}
-        ></textarea>
       </div>
-      <div className="profile-right">
-        <img src="/images/logo-sm.png" className="logo-md"></img>
-        <div
-          className="profile-right-skill"
-          id="profile-edit-intro"
-          name="projectInterests"
-        ></div>
 
-        <div className="profile-right-interest">
-          <p contentEditable="true">Describe the projects you like here.</p>
-        </div>
-      </div>
+      <section className="profile-project-list">
+        <h4>Side projects</h4>
+        {projectData !== null ? (
+          projectData.map((doc) => (
+            <div className="profile-project">
+              <div>
+                <h5>{doc.basicDescriProjectName || "Unknown"}</h5>
+
+                <br />
+                <span>{doc.submitTime || "No date"}</span>
+                <br />
+                {doc.skillNeededSkills && (
+                  <ToolIcon width="10px" height="10px" />
+                )}
+                <ul>
+                  {doc.skillNeededSkills.map((skill) => {
+                    return <li className="skill">{skill}</li>;
+                  })}
+                </ul>
+                <br />
+                <CategoryIcon width="10px" height="10px" />
+                <ul>
+                  {doc.categoryChoices.map((cat) => {
+                    return <li className="category">{cat}</li>;
+                  })}
+                </ul>
+              </div>
+            </div>
+          ))
+        ) : (
+          <h5>No projects yet</h5>
+        )}
+      </section>
     </form>
   );
 };

@@ -30,7 +30,7 @@ const MyProjects = () => {
         const data = doc.data();
         projects.push({ id: doc.id, ...data });
       });
-      if (projects !== null) {
+      if (projects.length>0) {
         setMyprojects(projects);
       }
     }
@@ -63,7 +63,7 @@ const MyProjects = () => {
 
   return (
     currentUser &&
-    (myProjects === null ? (
+    (myProjects ? (
       <section className="myprojects">
         {myProjects &&
           myProjects.map((project) => (

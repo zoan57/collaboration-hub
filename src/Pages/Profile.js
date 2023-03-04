@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -8,25 +8,32 @@ import {
   doc,
   getDoc,
   getDocs,
+  updateDoc,
   collection,
   where,
   query,
   orderBy,
   limit,
+  arrayUnion,
+  arrayRemove,
+  onSnapshot,
 } from "firebase/firestore";
 import { LinkIcon } from "../components/ui/Icons";
 import { InstagramIcon } from "../components/ui/Icons";
 import { FacebookIcon } from "../components/ui/Icons";
 import { ToolIcon } from "../components/ui/Icons";
 import { CategoryIcon } from "../components/ui/Icons";
+import { ChatTextIcon } from "../components/ui/Icons";
 import { TruncateText } from "../components/TruncateText";
+import { hi } from "date-fns/locale";
 
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
   const [currentUser, setCurrentUser] = useState("");
   const [projectData, setProjectData] = useState(null);
   const [userInfo, setUserInfo] = useState([]);
-  const [editing, setEditing] = useState(false); //temporary
+  const [editing, setEditing] = useState(false);
+  const [subscribeAnimating, setSubscribeAnimating] = useState(false);
   const navigate = useNavigate();
   const profileUser = useParams().uid;
   const projectsRef = collection(db, "Projects");
@@ -36,6 +43,42 @@ const Profile = () => {
     orderBy("lastFetchedTimeCount", "desc"),
     limit(5)
   );
+
+  //To subscribe someone
+  const heartRef = useRef();
+  const handleSubscribeClick = async () => {
+    if (!subscribeAnimating && profileUser && profileUser !== currentUser) {
+      await updateDoc(doc(db, "Users", currentUser), {
+        yourFavorites: arrayUnion(profileUser),
+      });
+      setSubscribeAnimating(true);
+    } else if (
+      subscribeAnimating &&
+      profileUser &&
+      profileUser !== currentUser
+    ) {
+      await updateDoc(doc(db, "Users", currentUser), {
+        yourFavorites: arrayRemove(profileUser),
+      });
+      setSubscribeAnimating(false);
+    }
+  };
+  useEffect(() => {
+    if (currentUser) {
+      let unsub = onSnapshot(doc(db, "Users", currentUser), (doc) => {
+        if (doc.data()) {
+          const favorites = doc.data().yourFavorites;
+          const containsUserID = favorites.includes(profileUser);
+          if (containsUserID) {
+            setSubscribeAnimating(true);
+          }
+        }
+      });
+      return () => {
+        unsub();
+      };
+    }
+  }, [subscribeAnimating, currentUser]);
 
   // Get current user's previous projects
   const getProjects = async () => {
@@ -48,7 +91,7 @@ const Profile = () => {
         });
       }
     }
-    if (data !== null) {
+    if (data.length > 0) {
       setProjectData(data);
     }
   };
@@ -62,8 +105,6 @@ const Profile = () => {
     if (q.exists()) {
       const data = q.data();
       setUserInfo(data);
-    } else {
-      navigate("/projects");
     }
   };
 
@@ -90,14 +131,16 @@ const Profile = () => {
           setEditing={setEditing}
           setProjectData={setProjectData}
           userInfo={userInfo}
+          setUserInfo={setUserInfo}
         />
       ) : (
         <section className="profile">
-          <section className="profile-middle">
-            <div>
+          <section className="profile-left profile-info">
+            <div className="profile-avatar">
+              <img src="/images/logo-sm.png" className="logo-md"></img>
               <h4 className="dec-txt">{userInfo.name}</h4>
               {currentUser === profileUser && (
-                <button className="edit" onClick={() => setEditing(true)}>
+                <button className="edit" onClick={() => setEditing(!editing)}>
                   Edit
                 </button>
               )}
@@ -115,24 +158,55 @@ const Profile = () => {
               >
                 <InstagramIcon width="40px" height="40px" />
               </Link>
-              <Link to={`/${userInfo.otherLink}`} target="_blank">
+              <Link to={`${userInfo.otherLink}`} target="_blank">
                 <LinkIcon width="40px" height="40px" />
               </Link>
             </div>
-            <div className="profile-middle-intro profile-bg-gradient">
-              <p>{`${userInfo.introduction}` || "Introduce yourself here."}</p>
+            <div className="profile-dis-flexbox profile-msg">
+              <Link to="/message">
+                <ChatTextIcon width="30px" height="30px" />
+              </Link>
+              <span>Message</span>
             </div>
-            <div className="profile-middle-pr-description">
-              <p>Describe the projects you like here.</p>
+            <div className="profile-dis-flexbox">
+              <div
+                onClick={handleSubscribeClick}
+                ref={heartRef}
+                className={`HeartAnimation ${
+                  subscribeAnimating ? "heart-animate" : ""
+                }`}
+              ></div>
+              <span className="profile-heart-txt">Subscribe</span>
             </div>
           </section>
-          <section className="profile-project-list">
+          <div className="profile-middle">
+            <div className="profile-middle-intro profile-bg-gradient">
+              {userInfo.introduction ? (
+                <p>{userInfo.introduction.replace(/\n/g, "<br>")}</p>
+              ) : (
+                <p>"There is currently no introduction."</p>
+              )}
+            </div>
+            <div className="profile-right-interest profile-bg-gradient">
+              {userInfo.projectInterests ? (
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: userInfo.projectInterests.replace(/\n/g, "<br>"),
+                  }}
+                ></p>
+              ) : (
+                <p>"No project preference was added. "</p>
+              )}
+            </div>
+          </div>
+          <section className="profile-left">
             <h4>Side projects</h4>
-            {projectData ? (
+            {projectData !== null ? (
               projectData.map((doc) => (
                 <div className="profile-project">
                   <div>
                     <h5>{doc.basicDescriProjectName || "Unknown"}</h5>
+
                     <br />
                     <span>{doc.submitTime || "No date"}</span>
                     <br />
@@ -155,20 +229,9 @@ const Profile = () => {
                 </div>
               ))
             ) : (
-              <div>No project</div>
+              <h5>No projects yet</h5>
             )}
           </section>
-          <div className="profile-right">
-            <img src="/images/logo-sm.png" className="logo-md"></img>
-            <div className="profile-right-skill">
-              <p>Introduce yourself here.</p>
-            </div>
-            <div className="profile-right-interest">
-              <p>
-                {`${userInfo.projectInterests}` || "Introduce yourself here."}
-              </p>
-            </div>
-          </div>
         </section>
       )}
     </>

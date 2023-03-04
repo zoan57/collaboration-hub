@@ -127,7 +127,7 @@ a {
 }
 
 #btn-sp-color:active {
-    background-color: #cfed07 ;
+    background-color: #cfed07;
 
 }
 
@@ -151,6 +151,30 @@ input:focus {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 
 }
+.HeartAnimation {
+    padding-top: 2em;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/66955/web_heart_animation.png');
+      background-repeat: no-repeat;
+      background-size: 2900%;
+    background-position: left;
+      height: 80px;
+      width: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  
+  .heart-animate {
+    animation: heart-burst .8s steps(28) forwards;
+  }
+  
+  @keyframes heart-burst {
+      0% {
+          background-position: left
+      }
+      100% {
+          background-position: right
+      }
+  }
 
 /* Page Margin*/
 .addproject,
@@ -222,6 +246,9 @@ input:focus {
 .header-right nav {
     display: inline-flex;
 }
+.header-right a{
+    margin: 0 5px;
+}
 
 .menu {
     width: 55px;
@@ -258,9 +285,7 @@ input:focus {
     right: 0;
     max-width: 200px;
     min-width: 100px;
-    z-index: 10;
     background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.04);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
@@ -271,11 +296,12 @@ input:focus {
     list-style: none;
     padding: 0;
     margin: 0;
+    
 }
 
 .menu-dropdown li {
     font-size: 22px;
-    padding: 30px 50px;
+    padding: 20px 40px;
 }
 
 .menu-dropdown li:hover {
@@ -293,7 +319,9 @@ input:focus {
 .nav-login {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
+
 
 .btn-project {
     background-color: #DE5CFF;
@@ -334,10 +362,11 @@ LANDING PAGE
     font-size: 170px;
 }
 
-.logo-shift{
+.logo-shift {
     animation: shimmy 1.5s infinite;
     animation-direction: alternate;
 }
+
 .logo {
     position: fixed;
     width: 10rem;
@@ -547,7 +576,7 @@ input[type="checkbox"] {
 
 .project-main-to-add {
     margin: 0;
-    padding: 10px;
+    padding: 15px;
     width: 90%;
     position: fixed;
     backdrop-filter: blur(5px);
@@ -686,12 +715,13 @@ input[type="checkbox"] {
     border-radius: 10px;
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
 }
-.projectCard h4 b:hover{
-text-decoration: underline;
-width: 10px;
-height: auto;
-border-radius: 100px;
-background-color: #e0ff13;
+
+.projectCard h4 b:hover {
+    text-decoration: underline;
+    width: 10px;
+    height: auto;
+    border-radius: 100px;
+    background-color: #e0ff13;
 }
 
 .yourProjectName {
@@ -704,7 +734,7 @@ background-color: #e0ff13;
 
 .yourProjectDescription {
     color: #333;
-    
+
     min-height: 150px;
     margin: 10px;
     padding: 10px;
@@ -744,7 +774,8 @@ background-color: #e0ff13;
 .yourTeamIntro h4 {
     margin-top: 10px;
 }
-.yourTeamIntro a:hover{
+
+.yourTeamIntro a:hover {
     text-decoration: underline;
     background-color: #e0ff13;
     width: 10px;
@@ -1308,10 +1339,22 @@ input:checked+.btn-check-slider:before {
 }
 
 @media screen and (max-width: 700px) {
+    .addproject, .project, .login, .register, .ai{
+        margin-top: 100px;
+    }
+    .btn {
+        height: 40px;
+    }
 
     /*LANDING PAGE*/
-    .nav-logo {
-        display: none;
+    .header {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: space-around;
     }
 
     .nav-logo-sm {
@@ -1452,9 +1495,7 @@ input:checked+.btn-check-slider:before {
         top: 58px;
     }
 
-    .nav-display {
-        display: none;
-    }
+    
 
     .nav-logo {
         display: inline-block;

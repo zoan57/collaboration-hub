@@ -74,7 +74,6 @@ const ProjectPage = () => {
           await updateDoc(userRef, { chatBox: arrayUnion(chatID) });
           await updateDoc(projectUserRef, { chatBox: arrayUnion(chatID) });
         }
-        console.log("Hi");
         navigate("/message");
       }
     } else {
@@ -166,7 +165,7 @@ const ProjectPage = () => {
                 className="cursor-pointer btn-chatbox-sender"
                 onClick={handleChatBoxClick}
               >
-                <ChatTextIcon />
+                <ChatTextIcon width="30px" height="30px"/>
               </button>
             </div>
             <div className="yourLocation">
