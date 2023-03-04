@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import InputBarLong from "../components/InputBar-long";
-import ButtonLong from "../components/button-long";
+import InputBarLong from "../components/ui/InputBar-long";
+import ButtonLong from "../components/ui/button-long";
 import { auth, logInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";

@@ -5,8 +5,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import usePostFormContext from "../hook/usePostFormContext";
 import { doc, getDoc } from "firebase/firestore";
 import Dropdown from "./Dropdown";
-import { ToolIcon } from "./Icons";
-import { CategoryIcon } from "./Icons";
+import { ToolIcon } from "./ui/Icons";
+import { CategoryIcon } from "./ui/Icons";
 import MultiSelectionChip from "./MultiSelectionChip";
 
 export const ProjectEditFormInput = () => {

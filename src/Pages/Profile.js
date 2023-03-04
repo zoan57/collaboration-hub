@@ -14,17 +14,17 @@ import {
   orderBy,
   limit,
 } from "firebase/firestore";
-import { LinkIcon } from "../components/Icons";
-import { InstagramIcon } from "../components/Icons";
-import { FacebookIcon } from "../components/Icons";
-import { ToolIcon } from "../components/Icons";
-import { CategoryIcon } from "../components/Icons";
+import { LinkIcon } from "../components/ui/Icons";
+import { InstagramIcon } from "../components/ui/Icons";
+import { FacebookIcon } from "../components/ui/Icons";
+import { ToolIcon } from "../components/ui/Icons";
+import { CategoryIcon } from "../components/ui/Icons";
 import { TruncateText } from "../components/TruncateText";
 
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
   const [currentUser, setCurrentUser] = useState("");
-  const [projectData, setProjectData] = useState([]);
+  const [projectData, setProjectData] = useState(null);
   const [userInfo, setUserInfo] = useState([]);
   const [editing, setEditing] = useState(false); //temporary
   const navigate = useNavigate();
@@ -48,8 +48,9 @@ const Profile = () => {
         });
       }
     }
-    setProjectData(data);
-    console.log(data);
+    if (data !== null) {
+      setProjectData(data);
+    }
   };
   useEffect(() => {
     getProjects();
@@ -106,20 +107,20 @@ const Profile = () => {
                 to={`https://www.facebook.com${userInfo.facebook}`}
                 target="_blank"
               >
-                <FacebookIcon width="30px" height="30px" />
+                <FacebookIcon width="40px" height="40px" />
               </Link>
               <Link
                 to={`https://www.instagram.com${userInfo.instagram}`}
                 target="_blank"
               >
-                <InstagramIcon width="30px" height="30px" />
+                <InstagramIcon width="40px" height="40px" />
               </Link>
               <Link to={`/${userInfo.otherLink}`} target="_blank">
-                <LinkIcon width="30px" height="30px" />
+                <LinkIcon width="40px" height="40px" />
               </Link>
             </div>
             <div className="profile-middle-intro profile-bg-gradient">
-              <p>{`${userInfo.introduction}`||"Introduce yourself here."}</p>
+              <p>{`${userInfo.introduction}` || "Introduce yourself here."}</p>
             </div>
             <div className="profile-middle-pr-description">
               <p>Describe the projects you like here.</p>
@@ -127,31 +128,35 @@ const Profile = () => {
           </section>
           <section className="profile-project-list">
             <h4>Side projects</h4>
-            {projectData.map((doc) => (
-              <div className="profile-project">
-                <div>
-                  <h5>{doc.basicDescriProjectName || "Unknown"}</h5>
-                  <br />
-                  <span>{doc.submitTime || "No date"}</span>
-                  <br />
-                  {doc.skillNeededSkills && (
-                    <ToolIcon width="10px" height="10px" />
-                  )}
-                  <ul>
-                    {doc.skillNeededSkills.map((skill) => {
-                      return <li className="skill">{skill}</li>;
-                    })}
-                  </ul>
-                  <br />
-                  <CategoryIcon width="10px" height="10px" />
-                  <ul>
-                    {doc.categoryChoices.map((cat) => {
-                      return <li className="category">{cat}</li>;
-                    })}
-                  </ul>
+            {projectData ? (
+              projectData.map((doc) => (
+                <div className="profile-project">
+                  <div>
+                    <h5>{doc.basicDescriProjectName || "Unknown"}</h5>
+                    <br />
+                    <span>{doc.submitTime || "No date"}</span>
+                    <br />
+                    {doc.skillNeededSkills && (
+                      <ToolIcon width="10px" height="10px" />
+                    )}
+                    <ul>
+                      {doc.skillNeededSkills.map((skill) => {
+                        return <li className="skill">{skill}</li>;
+                      })}
+                    </ul>
+                    <br />
+                    <CategoryIcon width="10px" height="10px" />
+                    <ul>
+                      {doc.categoryChoices.map((cat) => {
+                        return <li className="category">{cat}</li>;
+                      })}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <div>No project</div>
+            )}
           </section>
           <div className="profile-right">
             <img src="/images/logo-sm.png" className="logo-md"></img>
@@ -159,7 +164,9 @@ const Profile = () => {
               <p>Introduce yourself here.</p>
             </div>
             <div className="profile-right-interest">
-              <p>{`${userInfo.projectInterests}`||"Introduce yourself here."}</p>
+              <p>
+                {`${userInfo.projectInterests}` || "Introduce yourself here."}
+              </p>
             </div>
           </div>
         </section>

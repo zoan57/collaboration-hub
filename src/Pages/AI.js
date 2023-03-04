@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import axios from "axios";
-import { SendIcon } from "../components/Icons";
+import { SendIcon } from "../components/ui/Icons";
 
 const AI = () => {
   const [input, setInput] = useState("");
@@ -18,8 +18,8 @@ const AI = () => {
       const { data } = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `"I'm looking for ideas on ${input}, give a fresh inspiration in one sentence.`,
-        temperature: 0.8,
-        max_tokens: 20,
+        temperature: 1,
+        max_tokens: 100,
       });
       console.log(data);
       return data.choices[0].text;
@@ -34,7 +34,8 @@ const AI = () => {
     setInput(value);
   };
 
-  const handleClick = async () => {
+  const handleClick = async (e) => {
+    e.preventDefault();
     try {
       if (OPENAI_API_KEY && input) {
         const replyFromAI = await fetchOpenAI(input);
@@ -55,21 +56,19 @@ const AI = () => {
         ></img>
         <span>Hey! Need some cool ideas? Let me do it for you 😉</span>
       </div>
-      <div className="ai-inputbar">
+      <form className="ai-inputbar" onSubmit={handleClick}>
         <input
           className="inputbar-long dec-txt"
           placeholder="Enter the topic you want to be inspired!"
           value={input}
           onChange={handleChange}
         />
-        <button type="button" className="ai-send-btn" onClick={handleClick}>
+        <button type="submit" className="ai-send-btn">
           <SendIcon width="30" height="30" />
         </button>
-      </div>
+      </form>
       {completedSentence && (
-        <div className="ai-reply-bar">
-          {completedSentence}
-        </div>
+        <div className="ai-reply-bar">{completedSentence}</div>
       )}
     </div>
   );

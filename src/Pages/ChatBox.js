@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db } from "../firebase";
@@ -172,6 +172,7 @@ const ChatBox = () => {
           <Link to={`/profile/${receiverID}`}>
             <div className="msg-receiverName">{receiverName}</div>
           </Link>
+
           <div className="messages">
             {showMessages &&
               messages.map((msg, index) => (

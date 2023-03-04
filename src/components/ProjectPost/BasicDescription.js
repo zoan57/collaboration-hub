@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from "../Dropdown";
 import usePostFormContext from "../../hook/usePostFormContext";
-import ButtonAdd from "../button-add";
+import ButtonAdd from "../ui/button-add";
 
 const BasicDescription = () => {
   const { data, handleChange } = usePostFormContext();

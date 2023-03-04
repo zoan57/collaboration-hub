@@ -18,32 +18,42 @@
     border-radius: 10px;
     text-align: start;
 }
-.mypr-top{
+
+.mypr-top {
     display: flex;
     justify-content: space-between;
 }
-.mypr-top button{
+
+.mypr-top button {
     height: 40px;
 }
 
-.mypr-link{
+
+.mypr-link {
     display: inline-flex;
 }
 
-.mypr-link:hover{
+.mypr-link span {
+    line-height: 1.5;
+    word-break: break-all;
+}
+
+.mypr-link:hover {
     text-decoration: underline;
 }
 
-.mypr-category div,.mypr-skills div{
+.mypr-category div, .mypr-skills div {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
-.mypr-category h5,.mypr-skills h5{
+
+.mypr-category h5, .mypr-skills h5 {
     display: inline;
     margin-left: 5px;
 }
-.mypr-category span,.mypr-skills span {
+
+.mypr-category span, .mypr-skills span {
     display: inline-flex;
     justify-content: center;
     min-width: 60px;
@@ -53,6 +63,24 @@
     margin: 0 0 10px 10px;
     background-color: #cfed07;
 }
+.mypr-btn-delete{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+.mypr-no-projects{
+    margin: 20px;
+}
+.mypr-no-projects h5{
+    font-size: 1.5rem;
+}
+.mypr-btn-addpr{
+    width: auto;
+    padding: 20px;
+    background-color: #E4FF3F;
+}
 
 @media screen and (max-width: 700px) {
 
@@ -60,15 +88,17 @@
     .mypr-top {
         flex-direction: column-reverse;
     }
-    .mypr-top button{
+
+    .mypr-top button {
         width: 60px;
         height: 30px;
         font-size: 20px;
         margin-bottom: 10px;
     }
 }
+
 @media screen and (max-width: 500px) {
-    .myproject{
+    .myproject {
         width: 90%;
     }
 }

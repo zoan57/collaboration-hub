@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { db,auth } from "../firebase";
+import { db, auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import InputBarLong from "./InputBar-long";
-import { InstagramIcon } from "./Icons";
-import { FacebookIcon } from "./Icons";
-import { LinkIcon } from "./Icons";
-import { CategoryIcon } from "./Icons";
-import { ToolIcon } from "./Icons";
+import InputBarLong from "./ui/InputBar-long";
+import { InstagramIcon } from "./ui/Icons";
+import { FacebookIcon } from "./ui/Icons";
+import { LinkIcon } from "./ui/Icons";
+import { CategoryIcon } from "./ui/Icons";
+import { ToolIcon } from "./ui/Icons";
 import {
   doc,
   updateDoc,
@@ -34,13 +34,13 @@ const Edit = ({
     instagram: userInfo.instagram,
     facebook: userInfo.facebook,
     otherLink: userInfo.otherLink,
-    projectInterests:userInfo.projectInterests,
+    projectInterests: userInfo.projectInterests,
   });
-  const handleSave = async(e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    const userRef=doc(db,"Users",userInfo.uid)
-    if(userRef){
-      const user=await updateDoc(userRef,updateData)
+    const userRef = doc(db, "Users", userInfo.uid);
+    if (userRef) {
+      const user = await updateDoc(userRef, updateData);
       setEditing(!editing);
     }
   };
@@ -48,7 +48,7 @@ const Edit = ({
     const type = e.target.type;
     const name = e.target.name;
     const value = e.target.value;
-    if (value.trim() !== '') {
+    if (value.trim() !== "") {
       setUpdateData((prevData) => ({
         ...prevData,
         [name]: value,
@@ -103,7 +103,7 @@ const Edit = ({
         </div>
         <h4 className="dec-txt">{userInfo.name}</h4>
         <div className="profile-edit-ig">
-          <InstagramIcon width="3rem" height="3rem" className="ig-icon" />
+          <InstagramIcon width="40px" height="40px" className="ig-icon" />
           <InputBarLong
             className="edit-input"
             name="instagram"
@@ -113,7 +113,7 @@ const Edit = ({
           />
         </div>
         <div className="profile-edit-fb">
-          <FacebookIcon width="3rem" height="3rem" className="ig-icon" />
+          <FacebookIcon width="40px" height="40px" className="ig-icon" />
           <InputBarLong
             name="facebook"
             value={updateData.facebook}
@@ -123,7 +123,7 @@ const Edit = ({
           />
         </div>
         <div className="profile-edit-link">
-          <LinkIcon width="3rem" height="3rem" className="ig-icon" />
+          <LinkIcon width="40px" height="40px" className="ig-icon" />
           <InputBarLong
             name="otherLink"
             value={updateData.otherLink}

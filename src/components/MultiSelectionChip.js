@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import usePostFormContext from "../hook/usePostFormContext";
-import { HeartIcon } from "./Icons";
+import { HeartIcon } from "./ui/Icons";
 
 const MultiSelectionChip = (props) => {
   const { data, setData } = usePostFormContext();
@@ -10,7 +10,6 @@ const MultiSelectionChip = (props) => {
   const classNameOfList = props.classNameOfList;
   const classNameOfSelectedIcon = props.classNameOfSelectedIcon;
   const [optionValue, setOptionValue] = useState([]);
-
 
   // For Category Item Click
   const onCategoryItemClick = (option) => {

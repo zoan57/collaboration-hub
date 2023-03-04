@@ -10,13 +10,15 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import { CategoryIcon } from "../components/Icons";
-import { ToolIcon } from "../components/Icons";
+import { CategoryIcon } from "../components/ui/Icons";
+import { ToolIcon } from "../components/ui/Icons";
+import { TrashIcon } from "../components/ui/Icons";
+import { DeleteDoc } from "../components/DeleteDoc";
 
 const MyProjects = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [currentUser, setCurrentUser] = useState();
-  const [myProjects, setMyprojects] = useState([]);
+  const [currentUser, setCurrentUser] = useState("");
+  const [myProjects, setMyprojects] = useState(null);
 
   const getMyProjects = async () => {
     const projectRef = collection(db, "Projects");
@@ -28,9 +30,23 @@ const MyProjects = () => {
         const data = doc.data();
         projects.push({ id: doc.id, ...data });
       });
-      setMyprojects(projects);
-      console.log(projects);
+      if (projects !== null) {
+        setMyprojects(projects);
+      }
     }
+  };
+
+  const handleOnDeleteProject = async (collectionName, projectID) => {
+    await DeleteDoc(collectionName, projectID);
+    // fetch projects again from firestore
+    const projectsRef = collection(db, collectionName);
+    const projectQuery = query(projectsRef, where("uid", "==", currentUser));
+    const snapshot = await getDocs(projectQuery);
+    const updatedProjects = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setMyprojects(updatedProjects);
   };
 
   useEffect(() => {
@@ -46,7 +62,8 @@ const MyProjects = () => {
   }, [currentUser]);
 
   return (
-    currentUser && (
+    currentUser &&
+    (myProjects === null ? (
       <section className="myprojects">
         {myProjects &&
           myProjects.map((project) => (
@@ -99,10 +116,30 @@ const MyProjects = () => {
                   <span>No requirements</span>
                 )}
               </div>
+              <div
+                onClick={() => handleOnDeleteProject("Projects", project.id)}
+                className="mypr-btn-delete"
+              >
+                <TrashIcon width="25px" height="25px" />
+              </div>
             </div>
           ))}
       </section>
-    )
+    ) : (
+      <section className="myprojects">
+        <div className="mypr-no-projects">
+          <h5>
+            We don't have any projects yet. But hey, no worries, let's get yours
+            added in!
+          </h5>
+          <Link to="/add-new-project">
+            <button className="btn mypr-btn-addpr">
+              Post your project here
+            </button>
+          </Link>
+        </div>
+      </section>
+    ))
   );
 };
 export default MyProjects;

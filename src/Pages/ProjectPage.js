@@ -14,9 +14,9 @@ import {
 import { db } from "../firebase";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { ChatTextIcon } from "../components/Icons";
-import { ToolIcon } from "../components/Icons";
-import { CategoryIcon } from "../components/Icons";
+import { ChatTextIcon } from "../components/ui/Icons";
+import { ToolIcon } from "../components/ui/Icons";
+import { CategoryIcon } from "../components/ui/Icons";
 
 const ProjectPage = () => {
   const [projectData, setProjectData] = useState([]);
