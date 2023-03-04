@@ -25,7 +25,6 @@ import { ToolIcon } from "../components/ui/Icons";
 import { CategoryIcon } from "../components/ui/Icons";
 import { ChatTextIcon } from "../components/ui/Icons";
 import { TruncateText } from "../components/TruncateText";
-import { hi } from "date-fns/locale";
 
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -45,29 +44,31 @@ const Profile = () => {
   );
 
   //To subscribe someone
-  const heartRef = useRef();
   const handleSubscribeClick = async () => {
     if (!subscribeAnimating && profileUser && profileUser !== currentUser) {
       await updateDoc(doc(db, "Users", currentUser), {
-        yourFavorites: arrayUnion(profileUser),
+        yourFavoriteUsers: arrayUnion(profileUser),
       });
       setSubscribeAnimating(true);
+      console.log("subscribe");
     } else if (
       subscribeAnimating &&
       profileUser &&
       profileUser !== currentUser
     ) {
       await updateDoc(doc(db, "Users", currentUser), {
-        yourFavorites: arrayRemove(profileUser),
+        yourFavoriteUsers: arrayRemove(profileUser),
       });
       setSubscribeAnimating(false);
+      console.log("unsubscribe");
     }
   };
+
   useEffect(() => {
     if (currentUser) {
       let unsub = onSnapshot(doc(db, "Users", currentUser), (doc) => {
         if (doc.data()) {
-          const favorites = doc.data().yourFavorites;
+          const favorites = doc.data().yourFavoriteUsers;
           const containsUserID = favorites.includes(profileUser);
           if (containsUserID) {
             setSubscribeAnimating(true);
@@ -138,7 +139,9 @@ const Profile = () => {
           <section className="profile-left profile-info">
             <div className="profile-avatar">
               <img src="/images/logo-sm.png" className="logo-md"></img>
-              <h4 className="dec-txt">{userInfo.name}</h4>
+              <h4 className="dec-txt">
+                {userInfo.name ? userInfo.name : "Unknown"}
+              </h4>
               {currentUser === profileUser && (
                 <button className="edit" onClick={() => setEditing(!editing)}>
                   Edit
@@ -171,12 +174,11 @@ const Profile = () => {
             <div className="profile-dis-flexbox">
               <div
                 onClick={handleSubscribeClick}
-                ref={heartRef}
-                className={`HeartAnimation ${
+                className={`HeartAnimation profile-heart ${
                   subscribeAnimating ? "heart-animate" : ""
                 }`}
               ></div>
-              <span className="profile-heart-txt">Subscribe</span>
+              <span className="profile-heart-txt">{`${subscribeAnimating?("Subscribed"):("Subscribe")}`}</span>
             </div>
           </section>
           <div className="profile-middle">
@@ -187,6 +189,7 @@ const Profile = () => {
                 <p>"There is currently no introduction."</p>
               )}
             </div>
+            <div className="divide"></div>
             <div className="profile-right-interest profile-bg-gradient">
               {userInfo.projectInterests ? (
                 <p

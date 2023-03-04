@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
+  doc,
   collection,
   getDocs,
   onSnapshot,
@@ -30,7 +31,7 @@ const MyProjects = () => {
         const data = doc.data();
         projects.push({ id: doc.id, ...data });
       });
-      if (projects.length>0) {
+      if (projects.length > 0) {
         setMyprojects(projects);
       }
     }
@@ -60,6 +61,27 @@ const MyProjects = () => {
   useEffect(() => {
     getMyProjects();
   }, [currentUser]);
+
+  useEffect(() => {
+    if (currentUser) {
+      const projectRef = collection(db, "Projects");
+      const projectQuery = query(projectRef, where("uid", "==", currentUser));
+      let unsub = onSnapshot(projectQuery, (snapshot) => {
+        const projects = [];
+        snapshot.forEach((doc) => {
+          projects.push({ ...doc.data(), id: doc.id });
+        });
+        if (projects.length > 0) {
+          setMyprojects(projects);
+        } else {
+          setMyprojects(null);
+        }
+      });
+      return () => {
+        unsub();
+      };
+    }
+  }, [myProjects]);
 
   return (
     currentUser &&

@@ -5,6 +5,7 @@ import {
   doc,
   getDoc,
   updateDoc,
+  onSnapshot,
   serverTimestamp,
   setDoc,
   query,
@@ -25,14 +26,25 @@ const ProjectPage = () => {
   const [basicDescriLocation, setBasicDescriLocation] = useState("");
   const [skillNeededSkills, setSkillNeededSkills] = useState("");
   const [categoryChoices, setCategoryChoices] = useState("");
-  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState("");
+  const [subscribeAnimating, setSubscribeAnimating] = useState(false);
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (user) {
+      setCurrentUser(user.uid);
+    }
+  }, [currentUser, loading]);
   const getYourProject = async () => {
     const yourProjectRef = doc(db, "Projects", projectId);
     const yourProjectDoc = await getDoc(yourProjectRef);
     if (yourProjectDoc.exists()) {
       const yourProjectData = yourProjectDoc.data();
-      setProjectData(yourProjectData);
+      setProjectData({ ...yourProjectData, id: yourProjectDoc.id });
       setBasicDescriLocation(yourProjectData.basicDescriLocation.join(", "));
       setSkillNeededSkills(yourProjectData.skillNeededSkills.join(", "));
       setCategoryChoices(yourProjectData.categoryChoices.join(", "));
@@ -85,6 +97,39 @@ const ProjectPage = () => {
     getYourProject();
   }, [projectId]);
 
+  //To subscribe someone
+  const handleSubscribeClick = async () => {
+    if (!subscribeAnimating && projectData && currentUser) {
+      await updateDoc(doc(db, "Users", currentUser), {
+        yourFavoriteProjects: arrayUnion(projectData.id),
+      });
+      setSubscribeAnimating(true);
+      console.log("subscribe");
+    } else if (subscribeAnimating && projectData && currentUser) {
+      await updateDoc(doc(db, "Users", currentUser), {
+        yourFavoriteProjects: arrayRemove(projectData.id),
+      });
+      setSubscribeAnimating(false);
+      console.log("unsubscribe");
+    }
+  };
+  useEffect(() => {
+    if (currentUser) {
+      let unsub = onSnapshot(doc(db, "Users", currentUser), (doc) => {
+        if (doc.data()) {
+          const favorites = doc.data().yourFavoriteProjects;
+          const containsProjectID = favorites.includes(projectData.id);
+          if (containsProjectID) {
+            setSubscribeAnimating(true);
+          }
+        }
+      });
+      return () => {
+        unsub();
+      };
+    }
+  }, [currentUser, subscribeAnimating, projectData]);
+
   return (
     <section className="yourProject">
       <div className="basicDescription">
@@ -118,14 +163,25 @@ const ProjectPage = () => {
           <br />
           <br />
           <br />
-          <h4>
-            Posted by:
-            <b>
-              <Link to={`/profile/${projectData.uid}`}>
-                {projectData.username}
-              </Link>
-            </b>
-          </h4>
+          <div className="projectCard-bottom">
+            <h4>
+              Posted by:
+              <b>
+                <Link to={`/profile/${projectData.uid}`}>
+                  {projectData.username}
+                </Link>
+              </b>
+            </h4>
+            <div className="profile-subscribe">
+              <div
+                onClick={handleSubscribeClick}
+                className={`HeartAnimation ${
+                  subscribeAnimating ? "heart-animate" : ""
+                }`}
+              ></div>
+              <span>{`${subscribeAnimating?("Subscribed"):("Subscribe")}`}</span>
+            </div>
+          </div>
         </div>
 
         <div className="projectIntro">
@@ -156,16 +212,18 @@ const ProjectPage = () => {
                   <span>******@****.***</span>
                 )}
                 <br></br>
-                {user?(
-                <span>{projectData.contactMobile}</span>
-                ):(<span>+**********</span>)}
+                {user ? (
+                  <span>{projectData.contactMobile}</span>
+                ) : (
+                  <span>+**********</span>
+                )}
               </div>
               <button
                 type="button"
                 className="cursor-pointer btn-chatbox-sender"
                 onClick={handleChatBoxClick}
               >
-                <ChatTextIcon width="30px" height="30px"/>
+                <ChatTextIcon width="30px" height="30px" />
               </button>
             </div>
             <div className="yourLocation">
