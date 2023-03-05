@@ -40,6 +40,7 @@ const ChatBox = () => {
   const [showMessages, setShowMessages] = useState(false);
   const [user, loading, error] = useAuthState(auth);
   const [currentUser, setCurrentUser] = useState("");
+  const [currentUsername, setCurrentUsername] = useState("");
   const [receiverID, setReceiverID] = useState("");
   const [receiverName, setReceiverName] = useState("");
   const [chats, setChats] = useState([]);
@@ -57,6 +58,7 @@ const ChatBox = () => {
       navigate("/login");
     } else {
       setCurrentUser(user.uid);
+      setCurrentUsername(user.displayName);
     }
   }, [user, loading]);
   useEffect(() => {
@@ -151,7 +153,9 @@ const ChatBox = () => {
                 onClick={() => {
                   handleOnChatClick(chat);
                   setReceiverName(
-                    chat.usernames.find((username) => username !== currentUser)
+                    chat.usernames.find(
+                      (username) => username !== currentUsername
+                    )
                   );
                   setReceiverID(
                     chat.users.find((user) => user !== currentUser)
@@ -159,7 +163,9 @@ const ChatBox = () => {
                 }}
               >
                 <h5>
-                  {chat.usernames.find((username) => username !== currentUser)}
+                  {chat.usernames.find(
+                    (username) => username !== currentUsername
+                  ) || "Unknown"}
                 </h5>
                 <br />
                 <span>
@@ -170,10 +176,19 @@ const ChatBox = () => {
         </div>
         <div className="message-list">
           <Link to={`/profile/${receiverID}`}>
-            <div className="msg-receiverName">{receiverName}</div>
+            <div className="msg-receiverName">
+              <span>{receiverName ? receiverName : "Choose a user"}</span>
+            </div>
           </Link>
 
           <div className="messages">
+            {receiverName ? (
+              <div>
+                <div className="msg-start-txt">
+                  <span>Your conversation starts here.</span>
+                </div>
+              </div>
+            ) : null}
             {showMessages &&
               messages.map((msg, index) => (
                 <div

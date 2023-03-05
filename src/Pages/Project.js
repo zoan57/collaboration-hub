@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 import {
   collection,
   getDocs,
@@ -12,12 +14,24 @@ import {
 import TruncateText from "../components/TruncateText";
 
 const Project = () => {
-  //If projects are not sorted
-  const [allowAllProjects, setAllowAllProjects] = useState(true);
-  const [allowLatestProjects, setAllowLatestProjects] = useState(false);
-  const [projectData, setProjectData] = useState([]); //all projects
-
-  const navigate = useNavigate();
+   //If projects are not sorted
+   const [allowAllProjects, setAllowAllProjects] = useState(true);
+   const [allowLatestProjects, setAllowLatestProjects] = useState(false);
+   const [projectData, setProjectData] = useState([]); //all projects
+   const [currentUser, setCurrentUser] = useState("");
+   const navigate = useNavigate();
+   //Define current user
+   const [user, loading, error] = useAuthState(auth);
+ 
+   useEffect(() => {
+     if (loading) {
+       // maybe trigger a loading screen
+       return;
+     }
+     if (user) {
+       setCurrentUser(user.uid);
+     }
+   }, [user, loading]);
 
   //Filter projects in one week
   const latestProjectsFilter = projectData.filter((data) => {
@@ -65,6 +79,20 @@ const Project = () => {
   }
   useEffect(() => {
     getProjects();
+    if (currentUser) {
+      let unsub = onSnapshot(doc(db, "Users", currentUser), (doc) => {
+        if (doc.data()) {
+          const favorites = doc.data().myFavoriteProjects;
+          const containsProjectID = favorites.includes(projectData.id);
+          if (containsProjectID) {
+            setSubscribeAnimating(true);
+          }
+        }
+      });
+      return () => {
+        unsub();
+      };
+    }
     /*async function fetchProjects() {
       // Check if the query results are already saved in localStorage
       let cachedProjects = JSON.parse(localStorage.getItem("projects"));

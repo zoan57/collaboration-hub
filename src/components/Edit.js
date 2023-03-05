@@ -32,11 +32,13 @@ const Edit = ({
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   const [updateData, setUpdateData] = useState({
-    introduction: userInfo.introduction,
-    instagram: userInfo.instagram,
-    facebook: userInfo.facebook,
-    otherLink: userInfo.otherLink,
-    projectInterests: userInfo.projectInterests,
+    introduction: userInfo.introduction || "Introduce yourself here.",
+    instagram: userInfo.instagram || "/collab_hub2023",
+    facebook: userInfo.facebook || "/collab_hub2023",
+    otherLink: userInfo.otherLink || "https://collaborationhub2023.web.app/",
+    projectInterests:
+      userInfo.projectInterests || "Describe the projects you like here.",
+    avatarPhotoUrl: userInfo.avatarPhotoUrl || "no url",
   });
   const handleSave = async (e) => {
     e.preventDefault();

@@ -58,7 +58,7 @@ const AI = () => {
       </div>
       <form className="ai-inputbar" onSubmit={handleClick}>
         <input
-          className="inputbar-long dec-txt"
+          className="inputbar-long dec-txt ai-input"
           placeholder="Enter the topic you want to be inspired!"
           value={input}
           onChange={handleChange}

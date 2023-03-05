@@ -1,0 +1,77 @@
+.favorites {
+    margin-top: 120px;
+}
+
+.fav-title h4 {
+    font-weight: 500;
+}
+
+
+.fav-svg-box {
+    position: mixed;
+    display: flex;
+    justify-content: center;
+}
+
+.fav-title-svg {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 100px;
+    margin: 30px 10px;
+    cursor: pointer;
+}
+
+.fav-icon-color-checked {
+    fill: #e33e;
+}
+.fav-icon-color-not-checked{
+    fill:rgba(196, 196, 196, 0.933)
+}
+
+.fav-title-svg.fav-title-svg:hover {
+    box-shadow: none;
+}
+
+.fav-lists {
+    display: flex;
+    justify-content: center;
+
+}
+
+.fav-project, .fav-user {
+    position: relative;
+    min-height: 120px;
+    padding: 20px;
+    margin: 10px;
+    height: auto;
+    border: solid 1px;
+    border-radius: 10px;
+    text-align: start;
+}
+
+.fav-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+}
+
+.fav-user-info {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.fav-user-avatar {
+    display: flex;
+    align-items: center;
+}
+
+
+.fav-user-intro span {
+    display: inline-flex;
+    line-height: 1.5;
+    word-break: break-all;
+}

@@ -5,6 +5,7 @@ import "./css/ai.css"
 import "./css/profile.css";
 import "./css/myprojects.css";
 import "./css/projectEdit.css";
+import "./css/favorite.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./Pages/Landing";
 import Login from "./Pages/Login";
@@ -17,6 +18,7 @@ import AddProject from "./Pages/AddProject";
 import AI from "./Pages/AI";
 import ChatBox from "./Pages/ChatBox";
 import ProjectEdit from "./ProjectEdit";
+import Favorites from "./Pages/Favorites";
 
 const App = () => {
   return (
@@ -31,6 +33,7 @@ const App = () => {
       <Route path="/project/:projectId/edit" element={<ProjectEdit/>} />
       <Route path="/profile/:uid" element={<Profile />} />
       <Route path="/add-new-project" element={<AddProject />} />
+      <Route path="/favorites" element={<Favorites/>}/>
       <Route path="/AI" element={<AI />} />
     </Routes>
   );

@@ -24,8 +24,8 @@ export const HeartIcon = (props) => {
 };
 
 export const ChatTextIcon = (props) => {
-  const width=props.width
-  const height=props.height
+  const width = props.width;
+  const height = props.height;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -332,6 +332,163 @@ export const TrashIcon = (props) => {
           d="M3.9231 7.5H20.0767L19.1344 20.2216C19.0183 21.7882 17.7135 23 16.1426 23H7.85724C6.28636 23 4.98148 21.7882 4.86544 20.2216L3.9231 7.5Z"
           fill="#000000"
         ></path>
+      </g>
+    </svg>
+  );
+};
+
+export const CollapseToOnIcon = (props) => {
+  const width = props.width;
+  const height = props.heightl;
+  return (
+    <svg
+      fill="#000000"
+      width={width}
+      height={height}
+      viewBox="0 0 36 36"
+      version="1.1"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      transform="rotate(180)"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <title>collapse-line</title>
+        <path
+          class="clr-i-outline clr-i-outline-path-1"
+          d="M29,19.41a1,1,0,0,1-.71-.29L18,8.83,7.71,19.12a1,1,0,0,1-1.41-1.41L18,6,29.71,17.71A1,1,0,0,1,29,19.41Z"
+        ></path>
+        <path
+          class="clr-i-outline clr-i-outline-path-2"
+          d="M29,30.41a1,1,0,0,1-.71-.29L18,19.83,7.71,30.12a1,1,0,0,1-1.41-1.41L18,17,29.71,28.71A1,1,0,0,1,29,30.41Z"
+        ></path>
+        <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect>
+      </g>
+    </svg>
+  );
+};
+
+export const CollapseToOffIcon = (props) => {
+  const width = props.width;
+  const height = props.heightl;
+  return (
+    <svg
+      fill="#000000"
+      width={width}
+      height={height}
+      viewBox="0 0 36 36"
+      version="1.1"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      transform="rotate(0)"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <title>collapse-line</title>
+        <path
+          class="clr-i-outline clr-i-outline-path-1"
+          d="M29,19.41a1,1,0,0,1-.71-.29L18,8.83,7.71,19.12a1,1,0,0,1-1.41-1.41L18,6,29.71,17.71A1,1,0,0,1,29,19.41Z"
+        ></path>
+        <path
+          class="clr-i-outline clr-i-outline-path-2"
+          d="M29,30.41a1,1,0,0,1-.71-.29L18,19.83,7.71,30.12a1,1,0,0,1-1.41-1.41L18,17,29.71,28.71A1,1,0,0,1,29,30.41Z"
+        ></path>
+        <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect>
+      </g>
+    </svg>
+  );
+};
+export const AvatarIcon = (props) => {
+  const width = props.width;
+  const height = props.heightl;
+  const className = props.className;
+  return (
+    <svg
+      className={className}
+      version="1.1"
+      id="Capa_1"
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox="-30.61 -30.61 159.96 159.96"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0">
+        <rect
+          x="-30.61"
+          y="-30.61"
+          width="159.96"
+          height="159.96"
+          rx="79.98"
+          fill="#ffffff"
+          strokewidth="0"
+        ></rect>
+      </g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <g>
+            <path d="M26.417,56.739c0-5.115,1.688-9.838,4.528-13.656c-2.974-2.673-6.893-4.313-11.205-4.313 c-9.272,0-16.789,7.518-16.789,16.789c0,0,3.95,35.276,16.789,35.276c4.962,0,8.592-5.274,11.184-11.739 c-3.025-9.953-4.248-19.888-4.488-22.026L26.417,56.739z"></path>
+            <path d="M19.74,37.554c5.617,0,10.503-3.125,13.02-7.729c-2.513-3.413-4.006-7.619-4.006-12.173c0-2.066,0.313-4.06,0.882-5.943 c-2.625-2.358-6.088-3.808-9.896-3.808c-8.188,0-14.826,6.639-14.826,14.827C4.914,30.915,11.552,37.554,19.74,37.554z"></path>
+            <path d="M78.996,38.77c-4.312,0-8.23,1.64-11.205,4.313c2.842,3.818,4.528,8.541,4.528,13.656l-0.019,0.33 c-0.24,2.14-1.463,12.073-4.488,22.026c2.592,6.465,6.222,11.739,11.184,11.739c12.839,0,16.789-35.276,16.789-35.276 C95.785,46.288,88.268,38.77,78.996,38.77z"></path>
+            <path d="M65.977,29.824c2.517,4.604,7.401,7.729,13.02,7.729c8.188,0,14.826-6.639,14.826-14.826 c0-8.188-6.639-14.827-14.826-14.827c-3.809,0-7.271,1.449-9.896,3.808c0.568,1.884,0.883,3.877,0.883,5.943 C69.982,22.205,68.489,26.411,65.977,29.824z"></path>
+            <path d="M49.368,36.751c-11.039,0-19.988,8.949-19.988,19.988c0,0,4.704,41.997,19.988,41.997s19.987-41.997,19.987-41.997 C69.355,45.7,60.407,36.751,49.368,36.751z"></path>
+            <circle cx="49.368" cy="17.651" r="17.651"></circle>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+export const ProjectsIcon = (props) => {
+  const width = props.width;
+  const height = props.heightl;
+  const className = props.className;
+  const ref=props.ref
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox="-16.64 -16.64 85.28 85.28"
+      enable-background="new 0 0 52 52"
+      className={className}
+      fill="rgba(191, 191, 191, 0.933)"
+      ref={ref}
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0">
+        <rect
+          x="-16.64"
+          y="-16.64"
+          width="85.28"
+          height="85.28"
+          rx="42.64"
+          fill="#ffffff"
+          strokewidth="0"
+        ></rect>
+      </g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M44,2H18c-2.2,0-4,1.8-4,4v2h24c2.2,0,4,1.8,4,4v28h2c2.2,0,4-1.8,4-4V6C48,3.8,46.2,2,44,2z"></path>
+        <path d="M38,16c0-2.2-1.8-4-4-4H8c-2.2,0-4,1.8-4,4v30c0,2.2,1.8,4,4,4h26c2.2,0,4-1.8,4-4V16z M20,23 c0,0.6-0.4,1-1,1h-8c-0.6,0-1-0.4-1-1v-2c0-0.6,0.4-1,1-1h8c0.6,0,1,0.4,1,1V23z M28,39c0,0.6-0.4,1-1,1H11c-0.6,0-1-0.4-1-1v-2 c0-0.6,0.4-1,1-1h16c0.6,0,1,0.4,1,1V39z M32,31c0,0.6-0.4,1-1,1H11c-0.6,0-1-0.4-1-1v-2c0-0.6,0.4-1,1-1h20c0.6,0,1,0.4,1,1V31z"></path>
       </g>
     </svg>
   );

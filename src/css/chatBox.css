@@ -43,7 +43,7 @@
 
 .msg-receiverName {
     position: fixed;
-    width: 75vw;
+    width: 100%;
     height: 40px;
     font-size: 1.5rem;
     background-color: rgba(255, 255, 255, 0.6);
@@ -51,6 +51,9 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     z-index: 100;
+}
+.msg-receiverName span{
+    margin-right: 15%;
 }
 
 .messages {
@@ -89,7 +92,12 @@
     border-radius: 100px;
 }
 
-
+.msg-start-txt{
+    color: gray;
+    font-size: large;
+    margin:0px 0 50px 0;
+    background-color: rgb(252, 252, 252);
+}
 .msg-txt {
     display: flex;
     flex-wrap: wrap;
@@ -120,8 +128,6 @@
 }
 
 .message-input {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     height: 80px;
     border-top: 1px #333 solid;
@@ -152,4 +158,47 @@
 .message-input-bar:focus {
     border: none;
     box-shadow: none;
+}
+@media screen and (max-width: 700px) {
+
+    /* CHAT ROOM */
+    .messagebox{
+margin-top: 110px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    /* PROFILE */
+    .profile-middle-intro,
+    .profile-middle-pr-description {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /* .chatbox-list{
+        display: none;
+    } */
+    .messages{
+        height: calc(100vh - 200px);
+    }
+    .messagebox{
+        margin-top: 100px;
+    }
+    .msg-txt{
+        max-width: 100%;
+    }
+    .message-input-bar{
+        width: 100%;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+   
+   
+    .messagebox{
+        margin-top: 110px;
+    }
 }

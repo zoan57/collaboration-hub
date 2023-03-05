@@ -45,10 +45,12 @@
     all: unset;
     cursor: pointer;
 }
-.ai-reply-bar{
+
+.ai-reply-bar {
     width: 60%;
     min-height: 300px;
 }
+
 
 @keyframes flipflop {
     0% {
@@ -70,5 +72,11 @@
 
         -webkit-transform: scaleX(1);
         transform: scaleX(1);
+    }
+}
+@media screen and (max-width: 390px) {
+   
+    .ai-input{
+        border: solid 0.5px;
     }
 }

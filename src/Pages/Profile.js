@@ -45,22 +45,26 @@ const Profile = () => {
 
   //To subscribe someone
   const handleSubscribeClick = async () => {
-    if (!subscribeAnimating && profileUser && profileUser !== currentUser) {
-      await updateDoc(doc(db, "Users", currentUser), {
-        yourFavoriteUsers: arrayUnion(profileUser),
-      });
-      setSubscribeAnimating(true);
-      console.log("subscribe");
-    } else if (
-      subscribeAnimating &&
-      profileUser &&
-      profileUser !== currentUser
-    ) {
-      await updateDoc(doc(db, "Users", currentUser), {
-        yourFavoriteUsers: arrayRemove(profileUser),
-      });
-      setSubscribeAnimating(false);
-      console.log("unsubscribe");
+    if (!user) {
+      alert("Please login to subscribe.");
+    } else {
+      if (!subscribeAnimating && profileUser && profileUser !== currentUser) {
+        await updateDoc(doc(db, "Users", currentUser), {
+          myFavoriteUsers: arrayUnion(profileUser),
+        });
+        setSubscribeAnimating(true);
+        console.log("subscribe");
+      } else if (
+        subscribeAnimating &&
+        profileUser &&
+        profileUser !== currentUser
+      ) {
+        await updateDoc(doc(db, "Users", currentUser), {
+          myFavoriteUsers: arrayRemove(profileUser),
+        });
+        setSubscribeAnimating(false);
+        console.log("unsubscribe");
+      }
     }
   };
 
@@ -68,7 +72,7 @@ const Profile = () => {
     if (currentUser) {
       let unsub = onSnapshot(doc(db, "Users", currentUser), (doc) => {
         if (doc.data()) {
-          const favorites = doc.data().yourFavoriteUsers;
+          const favorites = doc.data().myFavoriteUsers;
           const containsUserID = favorites.includes(profileUser);
           if (containsUserID) {
             setSubscribeAnimating(true);
@@ -171,15 +175,19 @@ const Profile = () => {
               </Link>
               <span>Message</span>
             </div>
-            <div className="profile-dis-flexbox">
-              <div
-                onClick={handleSubscribeClick}
-                className={`HeartAnimation profile-heart ${
-                  subscribeAnimating ? "heart-animate" : ""
-                }`}
-              ></div>
-              <span className="profile-heart-txt">{`${subscribeAnimating?("Subscribed"):("Subscribe")}`}</span>
-            </div>
+            {profileUser !== currentUser ? (
+              <div className="profile-dis-flexbox">
+                <div
+                  onClick={handleSubscribeClick}
+                  className={`HeartAnimation profile-heart ${
+                    subscribeAnimating ? "heart-animate" : ""
+                  }`}
+                ></div>
+                <span className="profile-heart-txt">{`${
+                  subscribeAnimating ? "Subscribed" : "Subscribe"
+                }`}</span>
+              </div>
+            ) : null}
           </section>
           <div className="profile-middle">
             <div className="profile-middle-intro profile-bg-gradient">

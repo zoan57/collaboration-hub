@@ -101,13 +101,13 @@ const ProjectPage = () => {
   const handleSubscribeClick = async () => {
     if (!subscribeAnimating && projectData && currentUser) {
       await updateDoc(doc(db, "Users", currentUser), {
-        yourFavoriteProjects: arrayUnion(projectData.id),
+        myFavoriteProjects: arrayUnion(projectData.id),
       });
       setSubscribeAnimating(true);
       console.log("subscribe");
     } else if (subscribeAnimating && projectData && currentUser) {
       await updateDoc(doc(db, "Users", currentUser), {
-        yourFavoriteProjects: arrayRemove(projectData.id),
+        myFavoriteProjects: arrayRemove(projectData.id),
       });
       setSubscribeAnimating(false);
       console.log("unsubscribe");
@@ -117,7 +117,7 @@ const ProjectPage = () => {
     if (currentUser) {
       let unsub = onSnapshot(doc(db, "Users", currentUser), (doc) => {
         if (doc.data()) {
-          const favorites = doc.data().yourFavoriteProjects;
+          const favorites = doc.data().myFavoriteProjects;
           const containsProjectID = favorites.includes(projectData.id);
           if (containsProjectID) {
             setSubscribeAnimating(true);
