@@ -6,6 +6,7 @@ import Edit from "../components/Edit";
 import { db } from "../firebase";
 import {
   doc,
+  setDoc,
   getDoc,
   getDocs,
   updateDoc,
@@ -65,6 +66,44 @@ const Profile = () => {
         setSubscribeAnimating(false);
         console.log("unsubscribe");
       }
+    }
+  };
+
+  //To set a message
+  const handleChatBoxClick = async (e) => {
+    e.preventDefault();
+    if (currentUser) {
+      const currentUsername = user.displayName;
+
+      const profileUsername = userInfo.name || "unknown";
+      const chatID = [profileUser, currentUser].sort().join("-");
+
+      const docRef = doc(db, "ChatBox", chatID);
+
+      const docSnap = await getDoc(docRef);
+      const userRef = doc(db, "Users", currentUser);
+      const profileUserRef = doc(db, "Users", profileUser);
+      if (!docSnap.exists()) {
+        const docPayload = {
+          users: [profileUser, currentUser],
+          usernames: [profileUsername, currentUsername],
+          lastAt: Date.now(),
+          lastMessage: "No new message yet.",
+        };
+        const messageRef = doc(db, "Message", chatID);
+        await setDoc(messageRef, { messages: [] });
+        await setDoc(docRef, docPayload);
+        if (userRef && profileUserRef) {
+          await updateDoc(userRef, { chatBox: arrayUnion(chatID) });
+          await updateDoc(profileUserRef, { chatBox: arrayUnion(chatID) });
+        }
+        navigate("/message");
+      } else {
+        navigate("/message");
+      }
+    }
+    if (!user) {
+      navigate("/login");
     }
   };
 
@@ -170,9 +209,9 @@ const Profile = () => {
               </Link>
             </div>
             <div className="profile-dis-flexbox profile-msg">
-              <Link to="/message">
+              <div onClick={handleChatBoxClick}>
                 <ChatTextIcon width="30px" height="30px" />
-              </Link>
+              </div>
               <span>Message</span>
             </div>
             {profileUser !== currentUser ? (

@@ -56,9 +56,12 @@ const ChatBox = () => {
     }
     if (!user) {
       navigate("/login");
-    } else {
+    } 
+    if(user) {
       setCurrentUser(user.uid);
+      console.log(user.uid)
       setCurrentUsername(user.displayName);
+      console.log(user.displayName)
     }
   }, [user, loading]);
   useEffect(() => {
@@ -136,7 +139,7 @@ const ChatBox = () => {
   };
   useEffect(() => {
     getChats();
-  }, [currentUser]);
+  }, [currentUsername]);
 
   return (
     <div>

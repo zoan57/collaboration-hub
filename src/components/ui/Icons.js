@@ -340,6 +340,7 @@ export const TrashIcon = (props) => {
 export const CollapseToOnIcon = (props) => {
   const width = props.width;
   const height = props.heightl;
+  const className=props.className
   return (
     <svg
       fill="#000000"
@@ -350,6 +351,7 @@ export const CollapseToOnIcon = (props) => {
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
       transform="rotate(180)"
+      className={className}
     >
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g

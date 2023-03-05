@@ -20,6 +20,7 @@ const CategoryChoice = () => {
     { value: "Data Visualization", label: "Data Visualization" },
     { value: "SEO", label: "SEO" },
     { value: "Cybersecurity", label: "Cybersecurity" },
+    { value: "Other", label: "Other" },
   ];
   return (
     <section className="addproject">

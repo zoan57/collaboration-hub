@@ -55,24 +55,22 @@ const ProjectPage = () => {
 
   const handleChatBoxClick = async (e) => {
     e.preventDefault();
-    if (user) {
+    if (currentUser) {
       let projectUser = "Unknown";
       let currentUser = user.uid;
       let currentUsername = "Unknown";
       let projectUsername = "Unknown";
       projectUser = projectData.uid;
       currentUsername = user.displayName;
-      projectUsername = projectData.username;
-
+      projectUsername = projectData.username || "unknown";
       const chatID = [projectUser, currentUser].sort().join("-");
+
       const docRef = doc(db, "ChatBox", chatID);
+
       const docSnap = await getDoc(docRef);
       const userRef = doc(db, "Users", currentUser);
       const projectUserRef = doc(db, "Users", projectUser);
-      if (docSnap.exists()) {
-        // Document exists
-        navigate("/message");
-      } else {
+      if (!docSnap.exists()) {
         const docPayload = {
           users: [projectUser, currentUser],
           usernames: [projectUsername, currentUsername],
@@ -87,8 +85,11 @@ const ProjectPage = () => {
           await updateDoc(projectUserRef, { chatBox: arrayUnion(chatID) });
         }
         navigate("/message");
+      } else {
+        navigate("/message");
       }
-    } else {
+    }
+    if (!user) {
       navigate("/login");
     }
   };
@@ -179,7 +180,9 @@ const ProjectPage = () => {
                   subscribeAnimating ? "heart-animate" : ""
                 }`}
               ></div>
-              <span>{`${subscribeAnimating?("Subscribed"):("Subscribe")}`}</span>
+              <span>{`${
+                subscribeAnimating ? "Subscribed" : "Subscribe"
+              }`}</span>
             </div>
           </div>
         </div>

@@ -61,8 +61,12 @@ const Favorites = () => {
         if (doc.data()) {
           const users = doc.data().myFavoriteUsers;
           const projects = doc.data().myFavoriteProjects;
-          setUsers(users);
-          setProjects(projects);
+          if (users) {
+            setUsers(users);
+          }
+          if (projects) {
+            setProjects(projects);
+          }
         }
       });
       return () => {
@@ -72,7 +76,7 @@ const Favorites = () => {
   }, [currentUser]);
   //Get favorite projects and users
   useEffect(() => {
-    if (users.length > 0) {
+    if (users) {
       const favUsers = [];
       const getUserDocs = users.map((uid) => getDoc(doc(db, "Users", uid)));
       Promise.all(getUserDocs).then((docs) => {
@@ -87,7 +91,7 @@ const Favorites = () => {
   }, [users]);
 
   const handlProjectOnClick = async () => {
-    if (projects.length > 0) {
+    if (projects) {
       setIsChecked(false);
       const favProjects = [];
       const getProjectDocs = projects.map((projectId) =>
@@ -100,12 +104,11 @@ const Favorites = () => {
           }
         });
         setUserData(favProjects);
-        console.log(favProjects);
       });
     }
   };
   const handlUserOnClick = async () => {
-    if (users.length > 0) {
+    if (users) {
       setIsChecked(true);
       const favUsers = [];
       const getUsersDocs = users.map((userId) =>
@@ -118,13 +121,13 @@ const Favorites = () => {
           }
         });
         setUserData(favUsers);
-        console.log(favUsers);
+
       });
     }
   };
 
   useEffect(() => {
-    if (projects.length > 0) {
+    if (projects != null && projects.length > 0) {
       const favProjects = [];
       const getProjectDocs = projects.map((projectId) =>
         getDoc(doc(db, "Projects", projectId))
@@ -135,7 +138,6 @@ const Favorites = () => {
             favProjects.push({ id: doc.id, ...doc.data() });
           }
         });
-        console.log(favProjects);
         setProjectData(favProjects);
       });
     }
@@ -175,7 +177,9 @@ const Favorites = () => {
               width="60px"
               height="60px"
               className={`fav-title-svg ${
-                !isChecked ? "fav-icon-color-not-checked" : "fav-icon-color-checked"
+                !isChecked
+                  ? "fav-icon-color-not-checked"
+                  : "fav-icon-color-checked"
               }`}
             />
           </div>
@@ -184,7 +188,9 @@ const Favorites = () => {
               width="60px"
               height="60px"
               className={`fav-title-svg ${
-                isChecked ? "fav-icon-color-not-checked" : "fav-icon-color-checked"
+                isChecked
+                  ? "fav-icon-color-not-checked"
+                  : "fav-icon-color-checked"
               }`}
             />
           </div>
@@ -193,7 +199,7 @@ const Favorites = () => {
       <section className="fav-lists">
         {!isChecked && (
           <div className="fav-lists-projects">
-            {projectData.length > 0 ? (
+            {projectData && projects!=null&&projects.length > 0 ? (
               projectData.map((doc) => (
                 <div className="fav-project">
                   <div className="mypr-top">
@@ -261,7 +267,7 @@ const Favorites = () => {
         )}
         {isChecked && (
           <div className="fav-lists-users">
-            {userData.length > 0 ? (
+            {userData && users != null && users.length > 0 ? (
               userData.map((user) => (
                 <div className="fav-user">
                   <div className="fav-user-info">
