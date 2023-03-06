@@ -4,7 +4,6 @@ const LandingID = () => {
   return (
     <div className="dec-txt">
       <div className="id-container">
-        <h4 className="id-top-txt">...with who?</h4>
         <div className="landing-identity">
           <Link to="/register">
             <img src="/images/landing-developer.svg"></img>

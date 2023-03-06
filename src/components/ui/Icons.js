@@ -32,7 +32,7 @@ export const ChatTextIcon = (props) => {
       width={width}
       height={height}
       fill="#333"
-      class="bi bi-chat-right-dots-fill "
+      class={`bi bi-chat-right-dots-fill ${props.className}`}
       viewBox="0 0 16 16"
     >
       <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
@@ -340,7 +340,7 @@ export const TrashIcon = (props) => {
 export const CollapseToOnIcon = (props) => {
   const width = props.width;
   const height = props.heightl;
-  const className=props.className
+  const className = props.className;
   return (
     <svg
       fill="#000000"
@@ -364,10 +364,12 @@ export const CollapseToOnIcon = (props) => {
         <path
           class="clr-i-outline clr-i-outline-path-1"
           d="M29,19.41a1,1,0,0,1-.71-.29L18,8.83,7.71,19.12a1,1,0,0,1-1.41-1.41L18,6,29.71,17.71A1,1,0,0,1,29,19.41Z"
+          transform="rotate(180 18 18)"
         ></path>
         <path
           class="clr-i-outline clr-i-outline-path-2"
           d="M29,30.41a1,1,0,0,1-.71-.29L18,19.83,7.71,30.12a1,1,0,0,1-1.41-1.41L18,17,29.71,28.71A1,1,0,0,1,29,30.41Z"
+          transform="rotate(180 18 18)"
         ></path>
         <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect>
       </g>
@@ -387,7 +389,7 @@ export const CollapseToOffIcon = (props) => {
       version="1.1"
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
-      transform="rotate(0)"
+      transform="rotate(300)"
     >
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g
@@ -400,10 +402,12 @@ export const CollapseToOffIcon = (props) => {
         <path
           class="clr-i-outline clr-i-outline-path-1"
           d="M29,19.41a1,1,0,0,1-.71-.29L18,8.83,7.71,19.12a1,1,0,0,1-1.41-1.41L18,6,29.71,17.71A1,1,0,0,1,29,19.41Z"
+          transform="rotate(0 18 18)"
         ></path>
         <path
           class="clr-i-outline clr-i-outline-path-2"
           d="M29,30.41a1,1,0,0,1-.71-.29L18,19.83,7.71,30.12a1,1,0,0,1-1.41-1.41L18,17,29.71,28.71A1,1,0,0,1,29,30.41Z"
+          transform="rotate(0 18 18)"
         ></path>
         <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect>
       </g>
@@ -460,7 +464,7 @@ export const ProjectsIcon = (props) => {
   const width = props.width;
   const height = props.heightl;
   const className = props.className;
-  const ref=props.ref
+  const ref = props.ref;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -491,6 +495,85 @@ export const ProjectsIcon = (props) => {
       <g id="SVGRepo_iconCarrier">
         <path d="M44,2H18c-2.2,0-4,1.8-4,4v2h24c2.2,0,4,1.8,4,4v28h2c2.2,0,4-1.8,4-4V6C48,3.8,46.2,2,44,2z"></path>
         <path d="M38,16c0-2.2-1.8-4-4-4H8c-2.2,0-4,1.8-4,4v30c0,2.2,1.8,4,4,4h26c2.2,0,4-1.8,4-4V16z M20,23 c0,0.6-0.4,1-1,1h-8c-0.6,0-1-0.4-1-1v-2c0-0.6,0.4-1,1-1h8c0.6,0,1,0.4,1,1V23z M28,39c0,0.6-0.4,1-1,1H11c-0.6,0-1-0.4-1-1v-2 c0-0.6,0.4-1,1-1h16c0.6,0,1,0.4,1,1V39z M32,31c0,0.6-0.4,1-1,1H11c-0.6,0-1-0.4-1-1v-2c0-0.6,0.4-1,1-1h20c0.6,0,1,0.4,1,1V31z"></path>
+      </g>
+    </svg>
+  );
+};
+
+export const GoldMedalIcon = (props) => {
+  const width = props.width;
+  const height = props.heightl;
+  const className = props.className;
+  const ref = props.ref;
+  return (
+    <svg viewBox="-3.5 0 32 32" width={width} height={height} fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M9.73795 18.8436L12.9511 20.6987L6.42625 32L4.55349 27.8233L9.73795 18.8436Z"
+          fill="#CE4444"
+        ></path>
+        <path
+          d="M9.73795 18.8436L6.52483 16.9885L0 28.2898L4.55349 27.8233L9.73795 18.8436Z"
+          fill="#983535"
+        ></path>
+        <path
+          d="M14.322 18.8436L11.1088 20.6987L17.6337 32L19.5064 27.8233L14.322 18.8436Z"
+          fill="#983535"
+        ></path>
+        <path
+          d="M14.322 18.8436L17.5351 16.9885L24.0599 28.2898L19.5064 27.8233L14.322 18.8436Z"
+          fill="#CE4444"
+        ></path>
+        <path
+          d="M22.9936 11.0622C22.9936 17.1716 18.0409 22.1243 11.9314 22.1243C5.82194 22.1243 0.869249 17.1716 0.869249 11.0622C0.869249 4.9527 5.82194 0 11.9314 0C18.0409 0 22.9936 4.9527 22.9936 11.0622Z"
+          fill="url(#paint0_linear_103_1801)"
+        ></path>
+        <path
+          d="M20.5665 11.0621C20.5665 15.8311 16.7004 19.6972 11.9315 19.6972C7.16247 19.6972 3.29645 15.8311 3.29645 11.0621C3.29645 6.29315 7.16247 2.42713 11.9315 2.42713C16.7004 2.42713 20.5665 6.29315 20.5665 11.0621Z"
+          fill="#A88300"
+        ></path>
+        <path
+          d="M21.0477 11.984C21.0477 16.7641 17.1727 20.6391 12.3926 20.6391C7.61251 20.6391 3.73748 16.7641 3.73748 11.984C3.73748 7.20389 7.61251 3.32887 12.3926 3.32887C17.1727 3.32887 21.0477 7.20389 21.0477 11.984Z"
+          fill="#C28B37"
+        ></path>
+        <path
+          d="M20.5868 11.0621C20.5868 15.8422 16.7118 19.7172 11.9317 19.7172C7.15159 19.7172 3.27656 15.8422 3.27656 11.0621C3.27656 6.28205 7.15159 2.40702 11.9317 2.40702C16.7118 2.40702 20.5868 6.28205 20.5868 11.0621Z"
+          fill="#C09525"
+        ></path>
+        <path
+          d="M11.9781 5.04096L13.8451 8.77502L17.5792 9.24178L15.0151 12.117L15.7122 16.2431L11.9781 14.3761L8.24404 16.2431L8.94729 12.117L6.37701 9.24178L10.1111 8.77502L11.9781 5.04096Z"
+          fill="url(#paint1_linear_103_1801)"
+        ></path>
+        <defs>
+          <linearGradient
+            id="paint0_linear_103_1801"
+            x1="11.1804"
+            y1="4.03192"
+            x2="12.6813"
+            y2="31.965"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#FFC600"></stop>
+            <stop offset="1" stop-color="#FFDE69"></stop>
+          </linearGradient>
+          <linearGradient
+            id="paint1_linear_103_1801"
+            x1="11.9783"
+            y1="5.04096"
+            x2="11.9783"
+            y2="16.2431"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#FFFCDD"></stop>
+            <stop offset="1" stop-color="#FFE896"></stop>
+          </linearGradient>
+        </defs>
       </g>
     </svg>
   );

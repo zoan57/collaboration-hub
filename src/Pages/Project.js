@@ -17,6 +17,7 @@ import TruncateText from "../components/TruncateText";
 import { CollapseToOnIcon } from "../components/ui/Icons";
 import Favorites from "./Favorites";
 import AI from "./AI";
+import { PopOut } from "../components/PopOut";
 
 const Project = () => {
   //If projects are not sorted
@@ -151,16 +152,28 @@ const Project = () => {
 
   return (
     <div>
+      {!user && (
+        <PopOut delay="1000">
+          <h2>Haven't logged in yet? Let's get started!</h2>
+        </PopOut>
+      )}
       <section className="project">
         <section className="project-main">
-          <div className="project-main-to-add">
-            <span>Hey, let's get that new project added!</span>
-            <Link to="/add-new-project">
-              <button text="Post" className="btn btn-project-add">
-                POST
-              </button>
-            </Link>
-          </div>
+          {user && (
+            <div className="project-main-to-add">
+              <h4>
+                Welcome back{user.displayName && `, ${user.displayName}`}{" "}
+              </h4>
+              <div className="project-main-to-add-txt">
+                <span>Hey, let's get that new project added!</span>
+                <Link to="/add-new-project">
+                  <button text="Post" className="btn btn-project-add">
+                    POST
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
           <div className="pr-main-list">
             <div className="project-recmd-grid">
               <div className="pr-recmd" onClick={() => getProjects()}>
@@ -266,7 +279,11 @@ const Project = () => {
                 ))}
             </div>
             <div onClick={handleCollapse} className="pr-collapse-on-svg">
-              <CollapseToOnIcon width="30px" height="30px" />
+              <CollapseToOnIcon
+                width="30px"
+                height="30px"
+                transform="rotate(70)"
+              />
             </div>
           </div>
         </section>

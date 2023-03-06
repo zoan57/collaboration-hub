@@ -151,35 +151,62 @@ input:focus {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 
 }
+
 .HeartAnimation {
     padding-top: 2em;
     background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/66955/web_heart_animation.png');
-      background-repeat: no-repeat;
-      background-size: 2900%;
+    background-repeat: no-repeat;
+    background-size: 2900%;
     background-position: left;
-      height: 80px;
-      width: 80px;
+    height: 80px;
+    width: 80px;
     margin: 0 auto;
     cursor: pointer;
-  }
-  
-  .heart-animate {
+}
+
+.heart-animate {
     animation: heart-burst .5s steps(28) forwards;
-  }
-  
-  @keyframes heart-burst {
-      0% {
-          background-position: left
-      }
-      100% {
-          background-position: right
-      }
-  }
-  .divide{
+}
+
+@keyframes heart-burst {
+    0% {
+        background-position: left
+    }
+
+    100% {
+        background-position: right
+    }
+}
+
+.divide {
     width: 100%;
     height: 1px;
     background-color: #333;
-  }
+}
+
+
+/* POP OUT WINDOW*/
+.pop-out-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.pop-out-msg-box {
+    width: 50%;
+    height: 50%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 20px 1px rgb(160, 160, 160);
+
+}
 
 /* Page Margin*/
 .addproject,
@@ -200,7 +227,8 @@ input:focus {
     align-items: center;
     justify-content: space-between;
     width: 100vw;
-    height: 80px;
+    height: auto;
+    min-height: 80px;
     padding: 0 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-bottom: solid 1px;
@@ -251,7 +279,8 @@ input:focus {
 .header-right nav {
     display: inline-flex;
 }
-.header-right a{
+
+.header-right a {
     margin: 0 5px;
 }
 
@@ -301,7 +330,7 @@ input:focus {
     list-style: none;
     padding: 0;
     margin: 0;
-    
+
 }
 
 .menu-dropdown li {
@@ -377,6 +406,7 @@ LANDING PAGE
     width: 10rem;
     right: 0;
     bottom: 0;
+    z-index: 10;
 }
 
 @keyframes shimmy {
@@ -392,9 +422,13 @@ LANDING PAGE
 .landing-bg-txt-1 {
     position: absolute;
     right: 0;
-    top: 40px;
-    z-index: -1;
+    top: 60px;
+    color: #e4e4e4;
+    text-shadow: rgb(244, 244, 244) 7px 0px;
+    z-index: 2;
 }
+
+
 
 .landing-bg-txt-2 {
     position: absolute;
@@ -402,7 +436,9 @@ LANDING PAGE
     top: 65px;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    z-index: -1;
+    color: #858585;
+    text-shadow: rgb(198, 198, 198) 10px -1px;
+    z-index: 1;
 }
 
 .landing-main {
@@ -414,7 +450,7 @@ LANDING PAGE
 
 .landing-identity {
     width: 900px;
-    height: 330px;
+    height: 300px;
     margin-top: -10px;
     display: flex;
     align-items: center;
@@ -423,6 +459,8 @@ LANDING PAGE
     background: rgb(238, 238, 238);
     background: linear-gradient(0deg, rgba(238, 238, 238, 1) 1%, rgba(255, 255, 255, 0) 20%);
     overflow: hidden;
+    position: relative;
+    z-index: 10;
 }
 
 .landing-identity img {
@@ -452,6 +490,7 @@ LANDING PAGE
     font-size: 30px;
     line-height: 0;
     font-weight: 100;
+    font-size: 1.2rem;
 }
 
 .main {
@@ -583,6 +622,9 @@ input[type="checkbox"] {
     margin: 0;
     padding: 15px;
     width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -590,10 +632,16 @@ input[type="checkbox"] {
     z-index: 10;
 }
 
+.project-main-to-add h4 {
+    font-weight: 500;
+    text-align: start;
+}
+
 .pr-main-list {
     margin-top: 60px;
     display: flex;
-    flex-direction: column;}
+    flex-direction: column;
+}
 
 .project-main-grid, .project-recmd-grid {
     display: grid;
@@ -601,13 +649,18 @@ input[type="checkbox"] {
 }
 
 /* Project Lists*/
-.pr-collapse-on-svg{
+.pr-collapse-on-svg {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
-.pr-cateory-tag{
+
+.pr-collapse-on-svg svg {
+    transform: rotate(0deg);
+}
+
+.pr-cateory-tag {
     display: inline-flex;
     justify-content: center;
     padding: 2px 5px;
@@ -615,11 +668,13 @@ input[type="checkbox"] {
     background-color: #f9ffd5;
     color: #333;
 }
-.pr-card-intro{
+
+.pr-card-intro {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .pr-lists {
     margin: 20px 10px;
     max-width: 500px;
@@ -636,7 +691,6 @@ input[type="checkbox"] {
 .pr-lists, .pr-recmd {
     cursor: pointer;
 }
-
 .pr-card-inner {
     position: absolute;
     width: 100%;
@@ -658,13 +712,17 @@ input[type="checkbox"] {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+
 }
 
 .pr-card-front {
-    background-color: rgb(66, 129, 246);
+    
     padding: 5px 10px;
+    background-color: #A9C9FF;
+    background-image: linear-gradient(240deg, #A9C9FF 0%, #FFBBEC 100%);
 }
-.pr-card-top{
+
+.pr-card-top {
     display: flex;
     flex-direction: column;
 }
@@ -745,17 +803,20 @@ input[type="checkbox"] {
     border-radius: 10px;
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
 }
-.projectCard-bottom{
+
+.projectCard-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
 }
-.profile-subscribe{
+
+.profile-subscribe {
     display: flex;
     align-items: center;
 }
-.profile-subscribe span{
+
+.profile-subscribe span {
     margin-left: -20px;
 }
 
@@ -1309,7 +1370,7 @@ input:checked+.btn-check-slider:before {
 
     .landing-identity {
         width: 800px;
-        height: 350px;
+        height: 300px;
     }
 
     .landing-identity img {
@@ -1381,10 +1442,26 @@ input:checked+.btn-check-slider:before {
     }
 }
 
+@media screen and (max-width: 750px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .project-main-to-add {
+        margin: 0px 0 0 0;
+        padding: 15px 0 5px 0;
+    }
+
+    .pr-main-list {
+        margin-top: 70px;
+    }
+}
+
 @media screen and (max-width: 700px) {
-    .addproject, .project, .login, .register, .ai{
+    .addproject, .project, .login, .register, .ai {
         margin-top: 100px;
     }
+
     .btn {
         height: 40px;
     }
@@ -1421,6 +1498,11 @@ input:checked+.btn-check-slider:before {
     .landing-bg-txt-1,
     .landing-bg-txt-2 {
         font-size: 100px;
+        top: 85px;
+    }
+
+    .id-container {
+        margin-top: 130px;
     }
 
     .landing-identity {
@@ -1436,6 +1518,10 @@ input:checked+.btn-check-slider:before {
     /*PROJECT*/
     .project-main-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .project-main-to-add h4 {
+        font-size: 1rem;
     }
 
 
@@ -1464,7 +1550,7 @@ input:checked+.btn-check-slider:before {
     /*LANDING PAGE*/
     .landing-bg-txt-1 {
         font-size: 100px;
-        top: 55px;
+        top: 85px;
     }
 
     .landing-bg-txt-2 {
@@ -1510,6 +1596,13 @@ input:checked+.btn-check-slider:before {
         grid-template-columns: 1fr;
     }
 
+    .project-main-to-add-txt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 10px;
+    }
+
     .project-recmd-grid {
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -1535,10 +1628,11 @@ input:checked+.btn-check-slider:before {
     /*LANDING PAGE*/
     .landing-bg-txt-1 {
         font-size: 80px;
-        top: 58px;
+        top: 85px;
     }
 
-    
+
+
 
     .nav-logo {
         display: inline-block;
@@ -1585,6 +1679,11 @@ input:checked+.btn-check-slider:before {
     }
 
     .yourTeamIntro {
+        width: 80%;
+    }
+
+    /* POP OUT WINDOW */
+    .pop-out-msg-box {
         width: 80%;
     }
 }

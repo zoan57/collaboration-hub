@@ -5,7 +5,8 @@ import "./css/ai.css"
 import "./css/profile.css";
 import "./css/myprojects.css";
 import "./css/projectEdit.css";
-import "./css/favorite.css"
+import "./css/favorite.css";
+import "./css/landing.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./Pages/Landing";
 import Login from "./Pages/Login";
@@ -19,6 +20,7 @@ import AI from "./Pages/AI";
 import ChatBox from "./Pages/ChatBox";
 import ProjectEdit from "./ProjectEdit";
 import Favorites from "./Pages/Favorites";
+import LandingPage from "./Pages/LandingPage";
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
       <Route path="/add-new-project" element={<AddProject />} />
       <Route path="/favorites" element={<Favorites/>}/>
       <Route path="/AI" element={<AI />} />
+      <Route path="/landing" element={<LandingPage/>}/>
     </Routes>
   );
 };

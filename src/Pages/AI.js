@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Configuration, OpenAIApi } from "openai";
-import axios from "axios";
 import { SendIcon } from "../components/ui/Icons";
 
 const AI = () => {
@@ -17,7 +16,7 @@ const AI = () => {
     try {
       const { data } = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `"I'm looking for ideas on ${input}, give a fresh inspiration in one sentence.`,
+        prompt: `"I'm looking for ideas on ${input}, please provide a fresh inspiration in one sentence, context and details about what you want to describe is needed.`,
         temperature: 1,
         max_tokens: 100,
       });
@@ -46,6 +45,16 @@ const AI = () => {
     }
   };
 
+  useEffect(() => {
+    if (replyRef.current) {
+      replyRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    }
+  }, [completedSentence]);
+
   return (
     <div className="ai">
       <div className="ai-title">
@@ -68,8 +77,11 @@ const AI = () => {
         </button>
       </form>
       {completedSentence && (
-        <div className="ai-reply-bar">{completedSentence}</div>
+        <div className="ai-reply-bar">
+          {completedSentence}
+        </div>
       )}
+      <div ref={replyRef}></div>
     </div>
   );
 };
