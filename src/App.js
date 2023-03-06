@@ -8,7 +8,6 @@ import "./css/projectEdit.css";
 import "./css/favorite.css";
 import "./css/landing.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from "./Pages/Landing";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Project from "./Pages/Project";
@@ -25,7 +24,7 @@ import LandingPage from "./Pages/LandingPage";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/projects" element={<Project />} />

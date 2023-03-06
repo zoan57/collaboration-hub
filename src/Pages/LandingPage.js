@@ -43,22 +43,26 @@ const LandingPage = () => {
                 Post
               </div>
             </Link>
-            <div className="landing-intro-icon">
-              <ChatTextIcon
-                width="30px"
-                height="30px"
-                className="landing-pr-msg-icon"
-              />
-              Message
-            </div>
-            <div className="landing-intro-icon">
-              <AvatarIcon
-                width="45px"
-                height="45px"
-                className="landing-pr-icon"
-              />
-              Subscribe
-            </div>
+            <Link to="/message">
+              <div className="landing-intro-icon">
+                <ChatTextIcon
+                  width="30px"
+                  height="30px"
+                  className="landing-pr-msg-icon"
+                />
+                Message
+              </div>
+            </Link>
+            <Link to="/favorites">
+              <div className="landing-intro-icon">
+                <AvatarIcon
+                  width="45px"
+                  height="45px"
+                  className="landing-pr-icon"
+                />
+                Subscribe
+              </div>
+            </Link>
           </div>
           <div className="landing-2nd-txt">
             <p>

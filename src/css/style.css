@@ -361,6 +361,7 @@ input:focus {
     background-color: #DE5CFF;
     color: white;
     margin-right: 1rem;
+    background-image: linear-gradient( 135deg, #e9b7f5 10%, #C346C2 100%);
 }
 
 .nav-btn {
@@ -569,6 +570,7 @@ input[type="checkbox"] {
 .btn-project-add {
     margin-left: 10px;
     background-color: #E4FF3F;
+    background-image: linear-gradient( 135deg, #FFF720 10%, #48ff00 100%);
 }
 
 .btn-project-category-opt {
@@ -665,7 +667,7 @@ input[type="checkbox"] {
     justify-content: center;
     padding: 2px 5px;
     margin: 10px;
-    background-color: #f9ffd5;
+    background-color: #fffdeb;
     color: #333;
 }
 
@@ -746,8 +748,7 @@ input[type="checkbox"] {
     border-radius: 800px;
     transition: 0.2s;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    background: rgb(241, 0, 0);
-    background: linear-gradient(47deg, rgba(241, 0, 0, 1) 0%, rgba(255, 104, 0, 1) 0%, rgba(254, 185, 0, 1) 100%);
+    background-image: linear-gradient( 135deg, #FAD7A1 10%, #E96D71 100%);
     color: white;
     padding: 1rem;
     font-weight: 600;
@@ -784,7 +785,10 @@ input[type="checkbox"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 80px;
+    padding-top: 10px;
+    background-color: #efe9ff;
+    background-image: linear-gradient(45deg, #efe9ff 4%, #ffffff 26%, #ffffff 63%, #ffffff 97%);
 }
 
 .basicDescription {
@@ -796,12 +800,14 @@ input[type="checkbox"] {
 .projectCard {
     position: relative;
     margin: 0px 20px;
-    padding: 0 10px;
+    padding: 5px 10px;
     width: 700px;
     min-height: 400px;
-    border: #333 solid 1px;
+    border: none;
     border-radius: 10px;
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
+    background-color: #efe9ff;
+    background-image: linear-gradient(45deg, #efe9ff 16%, #FFDEE9 26%, #ffffff 63%, #ffffff 97%);
 }
 
 .projectCard-bottom {
@@ -872,7 +878,6 @@ input[type="checkbox"] {
     width: 90%;
     min-width: 150px;
     height: auto;
-    border: solid 0.5px;
 }
 
 .yourTeamIntro h4 {
@@ -896,7 +901,6 @@ input[type="checkbox"] {
 
 .yourCategoryChoices {
     padding: 10px;
-    border: solid 1px;
     margin-top: 20px;
 }
 
@@ -912,7 +916,6 @@ input[type="checkbox"] {
 
 .yourWantingSkills {
     margin-top: 50px;
-    border: 1px solid;
     padding: 10px;
 }
 
@@ -947,6 +950,11 @@ input[type="checkbox"] {
 .btn-chatbox-sender {
     all: unset;
     cursor: pointer;
+    position: relative;
+}
+.btn-chatbox-sender svg{
+    position: absolute;
+    top:10px;
 }
 
 
@@ -965,7 +973,7 @@ input[type="checkbox"] {
     width: 100px;
     height: 50px;
     border-radius: 50px;
-    border: solid 1px #656D51;
+    border:none;
     color: #333;
     font-size: 24px;
     font-family: 'Homenaje', 'Noto Sans TC', sans-serif;
@@ -974,6 +982,7 @@ input[type="checkbox"] {
     text-align: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #e2ff5e;
+    background-image: linear-gradient( 135deg, #FFF720 0%, #ddff47 100%);
 
 }
 
@@ -1428,6 +1437,9 @@ input:checked+.btn-check-slider:before {
     }
 
     /*YOUR PROJECT*/
+    .yourProject{
+        padding-top: 50px;
+    }
     .basicDescription {
         flex-direction: column;
     }
@@ -1675,7 +1687,11 @@ input:checked+.btn-check-slider:before {
 
     /*YOUR PROJECT*/
     .projectCard {
-        width: 300px;
+        width: 90%;
+    }
+    .yourProject{
+        background-image: none;
+        background-color: white;
     }
 
     .yourTeamIntro {
