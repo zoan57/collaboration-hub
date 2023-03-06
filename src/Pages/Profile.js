@@ -208,7 +208,7 @@ const Profile = () => {
                 <LinkIcon width="40px" height="40px" />
               </Link>
             </div>
-            <div className="profile-dis-flexbox profile-msg">
+            <div className="profile-dis-flexbox">
               <div onClick={handleChatBoxClick} className="profile-dis-flexbox profile-msg-svg">
                 <ChatTextIcon width="30px" height="30px" />
               </div>

@@ -90,7 +90,7 @@ const LandingPage = () => {
           </div>
         </div>
         <img
-          src="/images/landing-elements/gradient bubble-5.PNG"
+          src="/images/landing-elements/gradient bubble-5.png"
           className="landing-bubble-5"
         />
       </div>

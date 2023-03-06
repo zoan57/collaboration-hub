@@ -47,7 +47,6 @@
     position: relative;
     display: flex;
     justify-content: center;
-    
     align-items: center;
     margin: 20px;
 }
@@ -62,10 +61,11 @@
     left: -8px;
 }
 
-.profile-dis-flexbox  {
+.profile-dis-flexbox {
     margin-right: 5px;
 }
-.profile-msg-svg{
+
+.profile-msg-svg {
     cursor: pointer;
 }
 
@@ -201,7 +201,7 @@
 
 .profile-msg {
     margin-top: 50px;
-    align-items: start;
+    align-items: center;
 }
 
 /*---------*\

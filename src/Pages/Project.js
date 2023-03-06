@@ -153,8 +153,9 @@ const Project = () => {
   return (
     <div>
       {!user && (
-        <PopOut delay="1000">
-          <h2>Haven't logged in yet? Let's get started!</h2>
+        <PopOut delay="10000">
+          <h2>Don't have an account yet? Let's get started!</h2>
+          <button className="btn">Register</button>
         </PopOut>
       )}
       <section className="project">
