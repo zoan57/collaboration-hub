@@ -652,7 +652,11 @@ input[type="checkbox"] {
     flex-direction: column;
 }
 
-.project-main-grid, .project-recmd-grid {
+.project-recmd-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.project-main-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -1432,7 +1436,7 @@ input:checked+.btn-check-slider:before {
     }
 
     .project-recmd-grid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .pr-recmd {
@@ -1624,7 +1628,7 @@ input:checked+.btn-check-slider:before {
     }
 
     .project-recmd-grid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .pr-recmd {

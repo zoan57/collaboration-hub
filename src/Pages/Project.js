@@ -153,9 +153,11 @@ const Project = () => {
   return (
     <div>
       {!user && (
-        <PopOut delay="10000">
+        <PopOut delay="5000">
           <h2>Don't have an account yet? Let's get started!</h2>
-          <button className="btn">Register</button>
+          <Link to="/register">
+            <button className="btn">Register</button>
+          </Link>
         </PopOut>
       )}
       <section className="project">
@@ -187,9 +189,6 @@ const Project = () => {
                 }}
               >
                 <h4>Projects this Week</h4>
-              </div>
-              <div className="pr-recmd" onClick={() => getSomeOtherProjects()}>
-                <h4>Something Interesting</h4>
               </div>
             </div>
             <div className="project-main-grid">

@@ -67,6 +67,12 @@
 
 .profile-msg-svg {
     cursor: pointer;
+    position: relative;
+    margin-left: 7px;
+}
+
+.profile-msg-svg svg {
+    margin-right: 10px;
 }
 
 
