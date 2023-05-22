@@ -3,7 +3,7 @@ Collaboration Hub is committed to building a platform for front-end developers a
 To see the website, please click [here](https://collaborationhub2023.web.app).
 
 >**Landing Page**
-![image](https://github.com/zoan57/illustrations/blob/main/Collaboration_Hub/ezgif-1-0c27b0084d.gif)![image](https://github.com/zoan57/illustrations/blob/main/Collaboration_Hub/Collaboration_hub_02.png)
+![image](https://github.com/zoan57/illustrations/blob/main/Collaboration_Hub/Collaboration_hub_01.gif)![image](https://github.com/zoan57/illustrations/blob/main/Collaboration_Hub/Collaboration_hub_02.png)
 
 >**Profile**
 ![image](https://github.com/zoan57/illustrations/blob/main/Collaboration_Hub/Collaboration_hub_03.png)
