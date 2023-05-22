@@ -112,6 +112,8 @@ const ProjectPage = () => {
       });
       setSubscribeAnimating(false);
       console.log("unsubscribe");
+    }else{
+      navigate("/login");
     }
   };
   useEffect(() => {

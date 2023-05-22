@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import { SendIcon } from "../components/ui/Icons";
+import { el } from "date-fns/locale";
 
 const AI = () => {
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const [completedSentence, setCompletedSentence] = useState("");
   const OPENAI_API_KEY = process.env.openAIAPI;
   const replyRef = useRef();
@@ -18,13 +20,15 @@ const AI = () => {
         model: "text-davinci-003",
         prompt: `"I'm looking for ideas on ${input}, please provide a fresh inspiration in one sentence, context and details about what you want to describe is needed.`,
         temperature: 1,
-        max_tokens: 100,
+        max_tokens: 50,
       });
       console.log(data);
       return data.choices[0].text;
     } catch (error) {
       console.error(error);
-      return "";
+      return alert(
+        "Your Chat AI is currently unavailable due to the token limitations. Please try again later."
+      );
     }
   };
 
@@ -36,9 +40,13 @@ const AI = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       if (OPENAI_API_KEY && input) {
         const replyFromAI = await fetchOpenAI(input);
         setCompletedSentence(replyFromAI);
+        setLoading(false);
+      } else {
+        setLoading(true);
       }
     } catch (error) {
       console.log(error);
@@ -76,11 +84,12 @@ const AI = () => {
           <SendIcon width="30" height="30" />
         </button>
       </form>
-      {completedSentence && (
-        <div className="ai-reply-bar">
-          {completedSentence}
-        </div>
-      )}
+      {loading ? (
+      <div className="loader"></div>
+    ) : (
+      completedSentence && <div className="ai-reply-bar">{completedSentence}</div>
+    )}
+      
       <div ref={replyRef}></div>
     </div>
   );
